@@ -33,20 +33,41 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
-
-
-//        String pathInfo = request.getPathInfo();
-//        String page = "landing.jsp";
-//
-//        if (pathInfo.equals("/register")) {
-//            page = register(request);
-//        }
-//        if (pathInfo.equals("/home")) {
-//            page = home(request);
-//        }
-
         
+
+
+        String pathInfo = request.getPathInfo();
+        String page = "landing.jsp";
+
+        if (pathInfo.equals("/register")) {
+            page = register(request);
+        }
+        if (pathInfo.equals("/home")) {
+            page = home(request);
+        }
+        if (pathInfo.equals("/searchMovies")) {
+            page = searchMovies(request);
+        }
+        if (pathInfo.equals("/searchProjections")) {
+            page = searchProjections(request);
+        }
+        if (pathInfo.equals("/createReservation")) {
+            page = createReservation(request);
+        }
+        if (pathInfo.equals("/myReservations")) {
+            page = myReservations(request);
+        }
+        if (pathInfo.equals("/reviews")) {
+            page = reviews(request);
+        }
+        if (pathInfo.equals("/editProfile")) {
+            page = editProfile(request);
+        }
+        if (pathInfo.equals("/logout")) {
+            page = logout(request);
+        }
+
+        request.getRequestDispatcher(page).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -88,11 +109,32 @@ public class FrontController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-//    private String register(HttpServletRequest request) {
-//        return "/WEB-INF/pages/register.jsp";
-//    }
-//    private String home(HttpServletRequest request) {
-//        return "/WEB-INF/pages/home.jsp";
-//    }
+    private String register(HttpServletRequest request) {
+        return "/WEB-INF/pages/register.jsp";
+    }
+    private String home(HttpServletRequest request) {
+        return "/WEB-INF/pages/home.jsp";
+    }
+    private String searchMovies(HttpServletRequest request) {
+        return "/WEB-INF/pages/searchMovies.jsp";
+    }
+    private String searchProjections(HttpServletRequest request) {
+        return "/WEB-INF/pages/searchProjections.jsp";
+    }
+    private String createReservation(HttpServletRequest request) {
+        return "/WEB-INF/pages/createReservation.jsp";
+    }
+    private String myReservations(HttpServletRequest request) {
+        return "/WEB-INF/pages/myReservations.jsp";
+    }
+    private String reviews(HttpServletRequest request) {
+        return "/WEB-INF/pages/reviews.jsp";
+    }
+    private String editProfile(HttpServletRequest request) {
+        return "/WEB-INF/pages/editProfile.jsp";
+    }
+    private String logout(HttpServletRequest request) {
+        return "/WEB-INF/pages/logout.jsp";
+    }
 
 }

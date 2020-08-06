@@ -15,7 +15,7 @@
     <body>
         <h1>Hello landing!</h1>
         <div class="container">
-            <form action="/NJT/app/landing" method="post">
+            <form action="/NJT/app/home" method="post">
                 Username:
                 <div> 
                     <input type="text" id="username" name="username"/> 
@@ -30,9 +30,9 @@
                 <input type="submit" id="Login" value="Log in"/>
                 <p/>
             </form>
-<!--            <form action="/NJT/app/register" method="post">
+            <form action="/NJT/app/register" method="post">
                 <input type="submit" id="Register" value="Register"/>
-            </form>-->
+            </form>
         </div>
         <script type="text/javascript" src="/NJT/webjars/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="/NJT/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>

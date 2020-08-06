@@ -22,10 +22,10 @@
                 <!-- Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/NJT/app/pages/searchMovies">Search movies</a>
+                        <a class="nav-link" href="/NJT/app/searchMovies">Search movies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Search projections</a>
+                        <a class="nav-link" href="/NJT/app/searchProjections">Search projections</a>
                     </li>
 
                     <!-- Dropdown -->
@@ -34,20 +34,20 @@
                             Reservations
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Create reservation</a>
-                            <a class="dropdown-item" href="#">My reservations</a>
+                            <a class="dropdown-item" href="/NJT/app/createReservation">Create reservation</a>
+                            <a class="dropdown-item" href="/NJT/app/myReservations">My reservations</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reviews</a>
+                        <a class="nav-link" href="/NJT/app/reviews">Reviews</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             My profile
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Edit profile</a>
-                            <a class="dropdown-item" href="/NJT/app/landing">Logout</a>
+                            <a class="dropdown-item" href="/NJT/app/editProfile">Edit profile</a>
+                            <a class="dropdown-item" href="/NJT/app/logout">Logout</a>
                         </div>
                     </li>
                 </ul>
