@@ -39,6 +39,9 @@ public class FrontController extends HttpServlet {
         if (pathInfo.equals("/register")) {
             page = landing(request);
         }
+        if (pathInfo.equals("/home")) {
+            page = home(request);
+        }
 
         request.getRequestDispatcher(page).forward(request, response);
     }
@@ -84,6 +87,9 @@ public class FrontController extends HttpServlet {
 
     private String landing(HttpServletRequest request) {
         return "/WEB-INF/pages/register.jsp";
+    }
+    private String home(HttpServletRequest request) {
+        return "/WEB-INF/pages/home.jsp";
     }
 
 }

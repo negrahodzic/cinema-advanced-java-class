@@ -1,7 +1,7 @@
 <%-- 
-    Document   : home
-    Created on : Aug 5, 2020, 8:53:52 PM
-    Author     : Negra
+    Document   : searchMovies
+    Created on : Aug 6, 2020, 6:09:51 PM
+    Author     : remmi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,10 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home page</title>
+        <title>Search movies</title>
     </head>
     <body>
-        <%@include file="/WEB-INF/templates/menu.jsp" %>
-        <h1>Welcome to home page!</h1>
+        <h1>Search movies</h1>
     </body>
 </html>
