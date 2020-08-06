@@ -32,18 +32,21 @@ public class FrontController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
 
-        String pathInfo = request.getPathInfo();
-        String page = "register.jsp";
 
-        if (pathInfo.equals("/register")) {
-            page = landing(request);
-        }
-        if (pathInfo.equals("/home")) {
-            page = home(request);
-        }
+//        String pathInfo = request.getPathInfo();
+//        String page = "landing.jsp";
+//
+//        if (pathInfo.equals("/register")) {
+//            page = register(request);
+//        }
+//        if (pathInfo.equals("/home")) {
+//            page = home(request);
+//        }
 
-        request.getRequestDispatcher(page).forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -85,11 +88,11 @@ public class FrontController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private String landing(HttpServletRequest request) {
-        return "/WEB-INF/pages/register.jsp";
-    }
-    private String home(HttpServletRequest request) {
-        return "/WEB-INF/pages/home.jsp";
-    }
+//    private String register(HttpServletRequest request) {
+//        return "/WEB-INF/pages/register.jsp";
+//    }
+//    private String home(HttpServletRequest request) {
+//        return "/WEB-INF/pages/home.jsp";
+//    }
 
 }
