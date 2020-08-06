@@ -12,7 +12,7 @@
         <title>This is landing page</title>
     </head>
     <body>
-        <h1>Hello landing</h1>
+        <h1>Hello landing!</h1>
 
         <form action="/NJT/app/landing" method="post">
             Username:
@@ -20,7 +20,7 @@
                 <input type="text" id="username" name="username"/> 
             </div>
 
-            Password: asdasdas
+            Password: 
             <div> 
                 <input type="password" id="password" name="password"/> 
             </div>
