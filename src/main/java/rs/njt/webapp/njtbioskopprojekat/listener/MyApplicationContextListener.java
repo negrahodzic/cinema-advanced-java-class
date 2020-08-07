@@ -19,7 +19,8 @@ import rs.njt.webapp.njtbioskopprojekat.model.Projection;
  * @author Negra
  */
 public class MyApplicationContextListener implements ServletContextListener {
-        public MyApplicationContextListener() {
+
+    public MyApplicationContextListener() {
         System.out.println("=========================================");
         System.out.println("=======MyApplicationContextListener======");
         System.out.println("=========================================");
@@ -27,10 +28,10 @@ public class MyApplicationContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-                System.out.println("=========================================");
+        System.out.println("=========================================");
         System.out.println("============contextInitialized===========");
         System.out.println("=========================================");
-        
+
         sce.getServletContext().setAttribute("movies", createMovies());
         sce.getServletContext().setAttribute("projections", createProjections());
 
@@ -47,18 +48,24 @@ public class MyApplicationContextListener implements ServletContextListener {
                 add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
                 add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
                 add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
+                add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
+                add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
+                add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
             }
 
         };
     }
 
     private List<Projection> createProjections() {
-         return new ArrayList<Projection>() {
+        return new ArrayList<Projection>() {
             {
-                add(new Projection(new Date(2020,8,10,18,30), "3D", "da"));
-                add(new Projection(new Date(2020,8,10,18,30), "3D", "ne"));
-                add(new Projection(new Date(2020,8,10,18,30), "3D", "ne"));
-                
+                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "titlovano"));
+                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "sihronizovano"));
+                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "/"));
+                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "titlovano"));
+                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "sihronizovano"));
+                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "/"));
+
             }
 
         };

@@ -25,7 +25,7 @@
                 <option>Thriller</option>
             </select>
             <p/>
-            <table border="0">
+<!--            <table border="0">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -37,21 +37,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="movie" items="${applicationScope.movies}">
-                    <tr>
-                        <td>${movie.title}</td>
-                        <td>${movie.description}</td>
-                        <td>${movie.length}</td>
-                        <td>${movie.genre}</</td>
-                        <td><a href="/NJT/app/reviews">Reviews</a></td>
-                        <td><a href="/NJT/app/searchProjections">See projections</a></td>
-                    </tr>
-                </c:forEach>
-                        <c:forEach var="movie" items="movies">
-                        </c:forEach>
+                    <c:forEach var="movie" items="${applicationScope.movies}">
+                        <tr>
+                            <td>${movie.title}</td>
+                            <td>${movie.description}</td>
+                            <td>${movie.length}</td>
+                            <td>${movie.genre}</</td>
+                            <td><a href="/NJT/app/reviews">Reviews</a></td>
+                            <td><a href="/NJT/app/searchProjections">See projections</a></td>
+                        </tr>
+                    </c:forEach>
+                    <c:forEach var="movie" items="movies">
+                    </c:forEach>
                 </tbody>
-            </table>
+            </table>-->
 
+            <div class="row">
+                <c:forEach var="movie" items="${applicationScope.movies}">
+                    <div class="col-md-3">
+                        <div class="card" style="width: 14rem;">
+                            <img src="../star.png" class="card-img-top" alt="Here goes image" style="height: 8rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">${movie.title}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${movie.length} min, <span class="badge badge-dark">${movie.genre}</span></h6>
+                                <p class="card-text">${movie.description}
+                                    <a href="/NJT/app/reviews" class="card-link">Reviews</a>
+                                </p>
+                                <div class="text-center">
+                                    <a href="/NJT/app/searchProjections" class="btn btn-outline-primary">See projections</a>
+                                </div>
+                            </div>
+                        </div>
+                                    <p/>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
 
         <script type="text/javascript" src="/NJT/webjars/jquery/3.5.1/jquery.min.js"></script>
