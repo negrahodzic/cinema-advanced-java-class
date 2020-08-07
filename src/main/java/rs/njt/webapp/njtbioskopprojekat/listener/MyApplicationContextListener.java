@@ -6,10 +6,12 @@
 package rs.njt.webapp.njtbioskopprojekat.listener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import rs.njt.webapp.njtbioskopprojekat.model.Movie;
+import rs.njt.webapp.njtbioskopprojekat.model.Projection;
 
 /**
  * Web application lifecycle listener.
@@ -30,6 +32,8 @@ public class MyApplicationContextListener implements ServletContextListener {
         System.out.println("=========================================");
         
         sce.getServletContext().setAttribute("movies", createMovies());
+        sce.getServletContext().setAttribute("projections", createProjections());
+
     }
 
     @Override
@@ -43,6 +47,18 @@ public class MyApplicationContextListener implements ServletContextListener {
                 add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
                 add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
                 add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
+            }
+
+        };
+    }
+
+    private List<Projection> createProjections() {
+         return new ArrayList<Projection>() {
+            {
+                add(new Projection(new Date(2020,8,10,18,30), "3D", "da"));
+                add(new Projection(new Date(2020,8,10,18,30), "3D", "ne"));
+                add(new Projection(new Date(2020,8,10,18,30), "3D", "ne"));
+                
             }
 
         };

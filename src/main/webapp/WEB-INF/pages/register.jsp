@@ -16,14 +16,19 @@
         <form action="register" method="POST">
             First name:
             <input type="text" name="firstname" value="" />
+            <p/>
             Last name:
             <input type="text" name="lastname" value="" />
+            <p/>
             Email:
             <input type="text" name="email" value="" />
+            <p/>
             Username:
             <input type="text" name="username" value="" />
+            <p/>
             Password:
             <input type="password" name="password" value="" />
+           
             <p/>
             <input type="submit" value="Register" name="register" />
         </form>
