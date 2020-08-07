@@ -7,11 +7,13 @@ package rs.njt.webapp.njtbioskopprojekat.frontcontroller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
 
 /**
  *
@@ -113,7 +115,8 @@ public class FrontController extends HttpServlet {
         return "/WEB-INF/pages/register.jsp";
     }
     private String home(HttpServletRequest request) {
-        return "/WEB-INF/pages/home.jsp";
+        request.getServletContext().getAttribute("movies");
+        return "/WEB-INF/pages/searchMovies.jsp";
     }
     private String searchMovies(HttpServletRequest request) {
         return "/WEB-INF/pages/searchMovies.jsp";
@@ -134,7 +137,21 @@ public class FrontController extends HttpServlet {
         return "/WEB-INF/pages/editProfile.jsp";
     }
     private String logout(HttpServletRequest request) {
-        return "/WEB-INF/pages/logout.jsp";
+        return "/landing.jsp";
     }
 
+//    @Override
+//    public void init() throws ServletException {
+//        super.init(); //To change body of generated methods, choose Tools | Templates.
+//    }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config); //To change body of generated methods, choose Tools | Templates.
+       
+        ApplicationContext applicationContext = (ApplicationContext) config.getServletContext().getAttribute("applicationContext");
+        
+    }
+
+    
 }

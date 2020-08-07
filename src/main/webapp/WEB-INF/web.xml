@@ -8,6 +8,10 @@
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/app</url-pattern>
     </servlet-mapping>-->
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>rs.njt.webapp.njtbioskopprojekat.listener.MyApplicationContextListener</listener-class>
+    </listener>
     <session-config>
         <session-timeout>
             30
