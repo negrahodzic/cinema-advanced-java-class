@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="/NJT/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
     </head>
     <body>
-        
+
         <div class="container" style="height: 100px; text-align: center; margin-top:  50px;">
             <h3>Welcome to our cinema page! Please login to continue.</h3>
         </div>
-        <div class="container align-middle">
+        <div class="container">
             <div class="row ">
                 <div class="col-md-3">
                 </div>
@@ -36,10 +36,13 @@
                             </div>
                         </div>
                         <p/>
-                        <input type="submit" id="Login" value="Log in" class="btn btn-outline-primary"/>
-                        <p/>
+                        <div class="text-center">
+                            <input type="submit" id="Login" value="Log in" class="btn btn-outline-primary"/>
+                            <p/>
+                            <p> Don't have account? <a href="/NJT/app/register">Register</a>. </p>
+                        </div>
                     </form>
-                    <p> Don't have account? <a href="/NJT/app/register">Register</a>. </p>
+                    
                 </div>
                 <div class="col-md-3">    
                 </div>
