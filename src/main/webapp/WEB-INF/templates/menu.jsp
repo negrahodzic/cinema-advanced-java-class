@@ -22,22 +22,22 @@
                 <!-- Links -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/NJT/app/searchMovies">Search movies</a>
+                        <a class="nav-link" href="/NJT/searchMovies">Search movies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/NJT/app/searchProjections">Search projections</a>
+                        <a class="nav-link" href="/NJT/searchProjections">Search projections</a>
                     </li>
       
                     <li class="nav-item">
-                        <a class="nav-link" href="/NJT/app/myReservations">My reservations</a>
+                        <a class="nav-link" href="/NJT/myReservations">My reservations</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             My profile
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/NJT/app/editProfile">Edit profile</a>
-                            <a class="dropdown-item" href="/NJT/app/logout">Logout</a>
+                            <a class="dropdown-item" href="/NJT/editProfile">Edit profile</a>
+                            <a class="dropdown-item" href="/NJT/logout">Logout</a>
                         </div>
                     </li>
                 </ul>

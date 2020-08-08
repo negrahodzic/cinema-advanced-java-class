@@ -56,15 +56,15 @@
                 <c:forEach var="movie" items="${applicationScope.movies}">
                     <div class="col-md-3">
                         <div class="card" style="width: 14rem;">
-                            <img src="../star.png" class="card-img-top" alt="Here goes image" style="height: 8rem;">
+                            <img src="<c:url value="star.png"/>" class="card-img-top" alt="Here goes image" style="height: 8rem;">
                             <div class="card-body">
                                 <h5 class="card-title">${movie.title}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">${movie.length} min, <span class="badge badge-dark">${movie.genre}</span></h6>
                                 <p class="card-text">${movie.description}
-                                    <a href="/NJT/app/reviews" class="card-link">Reviews</a>
+                                    <a href="<c:url value="/searchMovies/seeReviews"/>" class="card-link">Reviews</a>
                                 </p>
                                 <div class="text-center">
-                                    <a href="/NJT/app/searchProjections" class="btn btn-outline-primary">See projections</a>
+                                    <a href="<c:url value="/searchMovies/seeProjections"/>" class="btn btn-outline-primary">See projections</a>
                                 </div>
                             </div>
                         </div>

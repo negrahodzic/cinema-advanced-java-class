@@ -63,7 +63,7 @@
                                             <li class="list-group-item" style="border: 0 none;">${projection.dateOfProjection}</li>
                                             <li class="list-group-item" style="border: 0 none;">${projection.technology}</li>
                                             <li class="list-group-item" style="border: 0 none;">${projection.subtitle}</li>   
-                                            <li class="list-group-item" style="border: 0 none;"><a href="/NJT/app/createReservation" class="btn btn-outline-primary">Create reservation</a></li>   
+                                            <li class="list-group-item" style="border: 0 none;"><a href="<c:url value="/searchProjections/createReservation"/>" class="btn btn-outline-primary">Create reservation</a></li>   
                                         </ul>
                                     </div>
                                 </div>

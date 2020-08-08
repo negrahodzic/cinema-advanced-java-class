@@ -5,11 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>This is register.jsp!</title>
+        <title>This is register!</title>
         <link rel="stylesheet" href="/NJT/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
     </head>
     <body>
@@ -22,7 +23,7 @@
                 </div>
 
                 <div class="col-md-6 border border-primary rounded" style="padding: 20px;">
-                    <form action="/NJT/app/register" method="post">
+                    <form action="<c:url value="/register/save"/>" method="post">
                         <div class="form-group">
                             <label>First name</label>
                             <div> 

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +17,7 @@
         <%@include file="/WEB-INF/templates/menu.jsp" %>
         <div class="container">
             <h1>Edit profile</h1>
-        <form action="save" method="POST">
+        <form action="<c:url value="/editProfile/save"/>" method="post">
             <p/>
             First name:
             <input type="text" name="firstname" value="" />
