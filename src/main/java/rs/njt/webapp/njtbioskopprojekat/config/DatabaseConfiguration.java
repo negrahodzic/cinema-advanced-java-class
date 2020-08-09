@@ -43,7 +43,7 @@ public class DatabaseConfiguration {
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan(new String[]{"rs.njt.webapp.njtbioskopprojekat.entity"});
-        
+
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());
@@ -54,7 +54,8 @@ public class DatabaseConfiguration {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+   //     properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("spring.jpa.hibernate.ddl-auto", "update");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.setProperty("hibernate.show_sql", "true");
 

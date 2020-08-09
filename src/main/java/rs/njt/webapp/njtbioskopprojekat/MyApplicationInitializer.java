@@ -15,13 +15,15 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
+import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
+import rs.njt.webapp.njtbioskopprojekat.service.impl.GenreServiceImpl;
 
 /**
  *
  * @author remmi
  */
-public class MyApplicationInitializer implements WebApplicationInitializer{
-    
+public class MyApplicationInitializer implements WebApplicationInitializer {
+
 //    private List<Movie> createMovies() {
 //        return new ArrayList<Movie>() {
 //            {
@@ -49,25 +51,37 @@ public class MyApplicationInitializer implements WebApplicationInitializer{
 //
 //        };
 //    }
-    
     @Override
     public void onStartup(ServletContext sc) throws ServletException {
         System.out.println("====================== MyApplicationInitializer ===============================");
-        AnnotationConfigWebApplicationContext webApplicationContext=new AnnotationConfigWebApplicationContext();
+        AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
         webApplicationContext.register(MyWebApplicationContextConfig.class);
         webApplicationContext.setServletContext(sc);
-        
+
         //konfigurisati DispatcherServlet
         ServletRegistration.Dynamic dispatcherServlet = sc.addServlet("myDispatcherServlet", new DispatcherServlet(webApplicationContext));
         dispatcherServlet.addMapping("/");
         dispatcherServlet.setLoadOnStartup(1);
-        
+        Genre GenreServiceImpl;
+
 //        List<Movie> listMovies = createMovies();
 //        sc.setAttribute("movies", listMovies);
 //        
 //        List<Projection> listProjections = createProjections();
 //        sc.setAttribute("projections", listProjections);
-        
+//        GenreServiceImpl gs = null;
+//        gs.getAll();
+//
+//        List<Genre> gList = gs.getAll();
+//        System.out.println("===============================");
+//        System.out.println("===============================");
+//        System.out.println("===============================");
+//        System.out.println("===============================");
+//        System.out.println("Genre: " + gList.get(0).toString());
+//        System.out.println("===============================");
+//        System.out.println("===============================");
+//        System.out.println("===============================");
+
     }
-    
+
 }

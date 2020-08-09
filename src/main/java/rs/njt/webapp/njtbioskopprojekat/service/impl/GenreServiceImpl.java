@@ -31,4 +31,5 @@ public class GenreServiceImpl implements GenreService {
     public Genre getById(Long id) {
         return genreRepository.getById(id);
     }
+    
 }

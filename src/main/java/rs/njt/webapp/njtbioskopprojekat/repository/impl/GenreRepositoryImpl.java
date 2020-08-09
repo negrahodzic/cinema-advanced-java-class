@@ -40,7 +40,8 @@ public class GenreRepositoryImpl implements GenreRepository {
 //        }
 
         System.out.println("===========GenreRepositoryImpl.getAll()===========");
-        String query = "select g from Genre g";
+        String query = "select * from genre";
+        System.out.println("==========="+entityManager.createQuery(query, Genre.class).getResultList().toString());
         return entityManager.createQuery(query, Genre.class).getResultList();
     }
 

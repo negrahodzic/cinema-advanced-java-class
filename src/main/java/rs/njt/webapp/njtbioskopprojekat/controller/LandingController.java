@@ -5,10 +5,13 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.controller;
 
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
+import rs.njt.webapp.njtbioskopprojekat.service.impl.GenreServiceImpl;
 
 /**
  *
@@ -25,6 +28,16 @@ public class LandingController {
     }
     @GetMapping(path="register")
     public String register(){
+        GenreServiceImpl gs = new GenreServiceImpl();
+        List<Genre> gList = gs.getAll();
+        System.out.println("===============================");
+        System.out.println("===============================");
+        System.out.println("===============================");
+        System.out.println("===============================");
+        System.out.println("Genre: " + gList.get(0).toString());
+        System.out.println("===============================");
+        System.out.println("===============================");
+        System.out.println("===============================");
         return "register";
     }
     @GetMapping
