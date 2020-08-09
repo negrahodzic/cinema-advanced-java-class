@@ -15,8 +15,6 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
-import rs.njt.webapp.njtbioskopprojekat.model.Movie;
-import rs.njt.webapp.njtbioskopprojekat.model.Projection;
 
 /**
  *
@@ -24,33 +22,33 @@ import rs.njt.webapp.njtbioskopprojekat.model.Projection;
  */
 public class MyApplicationInitializer implements WebApplicationInitializer{
     
-    private List<Movie> createMovies() {
-        return new ArrayList<Movie>() {
-            {
-                add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
-                add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
-                add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
-                add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
-                add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
-                add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
-            }
-
-        };
-    }
-    private List<Projection> createProjections() {
-        return new ArrayList<Projection>() {
-            {
-                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "titlovano"));
-                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "sihronizovano"));
-                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "/"));
-                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "titlovano"));
-                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "sihronizovano"));
-                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "/"));
-
-            }
-
-        };
-    }
+//    private List<Movie> createMovies() {
+//        return new ArrayList<Movie>() {
+//            {
+//                add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
+//                add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
+//                add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
+//                add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
+//                add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
+//                add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
+//            }
+//
+//        };
+//    }
+//    private List<Projection> createProjections() {
+//        return new ArrayList<Projection>() {
+//            {
+//                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "titlovano"));
+//                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "sihronizovano"));
+//                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "/"));
+//                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "titlovano"));
+//                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "sihronizovano"));
+//                add(new Projection(new Date(2020, 8, 10, 18, 30), "3D", "/"));
+//
+//            }
+//
+//        };
+//    }
     
     @Override
     public void onStartup(ServletContext sc) throws ServletException {
@@ -64,11 +62,11 @@ public class MyApplicationInitializer implements WebApplicationInitializer{
         dispatcherServlet.addMapping("/");
         dispatcherServlet.setLoadOnStartup(1);
         
-        List<Movie> listMovies = createMovies();
-        sc.setAttribute("movies", listMovies);
-        
-        List<Projection> listProjections = createProjections();
-        sc.setAttribute("projections", listProjections);
+//        List<Movie> listMovies = createMovies();
+//        sc.setAttribute("movies", listMovies);
+//        
+//        List<Projection> listProjections = createProjections();
+//        sc.setAttribute("projections", listProjections);
         
     }
     

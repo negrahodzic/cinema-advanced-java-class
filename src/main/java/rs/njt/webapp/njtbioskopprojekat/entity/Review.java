@@ -6,7 +6,6 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,37 +46,5 @@ public class Review implements Serializable{
     public void setReviewId(Long reviewId) {
         this.reviewId = reviewId;
     }
-
-    @Override
-    public String toString() {
-        return "Review{" + "reviewId=" + reviewId + ", comment=" + comment + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.reviewId);
-        hash = 79 * hash + Objects.hashCode(this.comment);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Review other = (Review) obj;
-        if (!Objects.equals(this.reviewId, other.reviewId)) {
-            return false;
-        }
-        return true;
-    }
-    
     
 }

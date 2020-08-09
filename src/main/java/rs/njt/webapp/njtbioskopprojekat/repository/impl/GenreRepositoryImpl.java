@@ -51,7 +51,7 @@ public class GenreRepositoryImpl implements GenreRepository {
     }
 
 //    @Override
-//    public void add(Genre genre) {
+//    public void add(Genre1 genre) {
 //        System.out.println("GenreRepositoryImpl.add()");
 //        entityManager.persist(genre);
 //    }

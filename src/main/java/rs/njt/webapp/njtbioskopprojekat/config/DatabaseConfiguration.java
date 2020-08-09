@@ -29,8 +29,8 @@ public class DatabaseConfiguration {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/njtbioskopprojekat");
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/njtbioskopprojekat?zeroDateTimeBehavior=convertToNull");
         dataSource.setUsername("root");
         dataSource.setPassword("");
 
@@ -41,11 +41,9 @@ public class DatabaseConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
-        System.out.println("==================entityManagerFactory em.setDataSource(dataSource()) ===================");
         em.setDataSource(dataSource());
-        System.out.println("==================entityManagerFactory setPackagesToScan===================");
         em.setPackagesToScan(new String[]{"rs.njt.webapp.njtbioskopprojekat.entity"});
-        System.out.println("==================entityManagerFactory vendorAdapter===================");
+        
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());
@@ -56,7 +54,7 @@ public class DatabaseConfiguration {
 
     Properties additionalProperties() {
         Properties properties = new Properties();
-        //properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
         properties.setProperty("hibernate.show_sql", "true");
 

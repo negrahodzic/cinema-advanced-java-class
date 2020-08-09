@@ -18,5 +18,4 @@ public interface GenreService {
 
     Genre getById(Long id);
 
-//    void add(Genre genre);
 }

@@ -13,7 +13,8 @@ import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
  * @author Negra
  */
 public interface GenreRepository {
+
     List<Genre> getAll();
+
     Genre getById(Long id);
-//    void add(Genre genre);
 }

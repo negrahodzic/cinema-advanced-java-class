@@ -17,10 +17,10 @@ import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
  * @author Negra
  */
 @Service
-public class GenreServiceImpl implements GenreService{
+public class GenreServiceImpl implements GenreService {
+
     @Autowired
     private GenreRepository genreRepository;
-
 
     @Override
     public List<Genre> getAll() {
@@ -31,11 +31,4 @@ public class GenreServiceImpl implements GenreService{
     public Genre getById(Long id) {
         return genreRepository.getById(id);
     }
-//
-//    @Override
-//    public void add(Genre genre) {
-//        genreRepository.add(genre);
-//    } 
-
-    
 }

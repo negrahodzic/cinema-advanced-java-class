@@ -7,8 +7,6 @@ package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,25 +24,16 @@ public class Projection implements Serializable{
     private Date dateTimeOfProjection;
     private String technology;
     private String edited; // Titlovano, Sihronizovano
-    private List<Reservation> reservations;
+//    private List<Reservation> reservations;
 
     public Projection() {
     }
 
-    public Projection(Long projectionId, Date dateTimeOfProjection, String technology, String edited, List<Reservation> reservations) {
+    public Projection(Long projectionId, Date dateTimeOfProjection, String technology, String edited) {
         this.projectionId = projectionId;
         this.dateTimeOfProjection = dateTimeOfProjection;
         this.technology = technology;
         this.edited = edited;
-        this.reservations = reservations;
-    }
-
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
     }
 
     public Long getProjectionId() {
@@ -78,39 +67,4 @@ public class Projection implements Serializable{
     public void setEdited(String edited) {
         this.edited = edited;
     }
-
-    @Override
-    public String toString() {
-        return "Projection{" + "projectionId=" + projectionId + ", dateTimeOfProjection=" + dateTimeOfProjection + ", technology=" + technology + ", edited=" + edited + ", reservations=" + reservations + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.projectionId);
-        hash = 61 * hash + Objects.hashCode(this.dateTimeOfProjection);
-        hash = 61 * hash + Objects.hashCode(this.technology);
-        hash = 61 * hash + Objects.hashCode(this.edited);
-        hash = 61 * hash + Objects.hashCode(this.reservations);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Projection other = (Projection) obj;
-        if (!Objects.equals(this.projectionId, other.projectionId)) {
-            return false;
-        }
-        return true;
-    }
-    
 }
