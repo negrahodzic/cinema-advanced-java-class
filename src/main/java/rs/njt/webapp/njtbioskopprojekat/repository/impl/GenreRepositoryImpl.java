@@ -5,6 +5,7 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.repository.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,16 +34,19 @@ public class GenreRepositoryImpl implements GenreRepository {
     @Transactional(propagation = Propagation.REQUIRED)//ako postoi u okviru nje, ako ne bez
     @Override
     public List<Genre> getAll() {
-//        System.out.println("TransactionSynchronizationManager.isActualTransactionActive(): "+TransactionSynchronizationManager.isActualTransactionActive());
-//        System.out.println("TransactionAspectSupport.currentTransactionStatus(): "+ TransactionAspectSupport.currentTransactionStatus().isNewTransaction());
-//        if (TransactionSynchronizationManager.isActualTransactionActive()) {
-//            TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
-//        }
+        System.out.println("TransactionSynchronizationManager.isActualTransactionActive(): "+TransactionSynchronizationManager.isActualTransactionActive());
+        System.out.println("TransactionAspectSupport.currentTransactionStatus(): "+ TransactionAspectSupport.currentTransactionStatus().isNewTransaction());
+        if (TransactionSynchronizationManager.isActualTransactionActive()) {
+            TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
+        }
 
         System.out.println("===========GenreRepositoryImpl.getAll()===========");
-        String query = "select * from genre";
-        System.out.println("==========="+entityManager.createQuery(query, Genre.class).getResultList().toString());
-        return entityManager.createQuery(query, Genre.class).getResultList();
+        String query = "select g from Genre g";
+//        System.out.println("==========="+entityManager.createQuery(query, Genre.class).getResultList().toString());
+         return entityManager.createQuery(query, Genre.class).getResultList();
+//         List<Genre> genreList = new ArrayList<Genre>();
+//         genreList.add(new Genre("KRIMEEEEEEEE"));
+//         return genreList;
     }
 
     @Override

@@ -6,10 +6,13 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,7 +29,10 @@ public class User  implements Serializable{
     private String email;
     private String username;
     private String password;
-   // private List<Reservation> reservations;
+    @OneToMany
+    @JoinColumn(name = "userId")
+//    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
     //private List<Review> reviews;
 
     public User() {

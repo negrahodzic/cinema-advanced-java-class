@@ -24,6 +24,9 @@ public class Genre implements Serializable {
     private Long id;
     private String genreName;
 
+    public Genre() {
+    }
+
     public Long getId() {
         return id;
     }
