@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>This is landing page</title>
-        <link rel="stylesheet" href="/NJT/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+        
     </head>
     <body>
 
@@ -49,7 +49,6 @@
                 <div class="col-md-3">    
                 </div>
             </div>
-            <script type="text/javascript" src="/NJT/webjars/jquery/3.5.1/jquery.min.js"></script>
-            <script type="text/javascript" src="/NJT/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+            
     </body>
 </html>

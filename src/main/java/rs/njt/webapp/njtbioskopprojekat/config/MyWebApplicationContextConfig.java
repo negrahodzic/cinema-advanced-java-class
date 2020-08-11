@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 /**
  *
@@ -28,11 +30,33 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 })
 
 public class MyWebApplicationContextConfig {
-    @Bean
+    /*@Bean
     public ViewResolver createViewResolver(){
         InternalResourceViewResolver viewResolver= new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/pages/");
         viewResolver.setSuffix(".jsp");
         return  viewResolver;
+    }*/
+    
+    @Bean
+    public ViewResolver tilesViewResolver(){
+        TilesViewResolver tilesViewResolver = new TilesViewResolver();
+        tilesViewResolver.setOrder(0);
+        return tilesViewResolver;
     }
+    
+    @Bean
+    public TilesConfigurer tilesConfigurer(){
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions( 
+                new String[] {"/WEB-INF/pages/tiles/tiles.xml"}
+        );
+        return tilesConfigurer;
+    }
+    
+    
+    
+    
+    
+    
 }

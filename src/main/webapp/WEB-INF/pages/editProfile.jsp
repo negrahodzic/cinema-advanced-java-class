@@ -11,10 +11,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit profile</title>
-        <link rel="stylesheet" href="/NJT/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
+        
     </head>
     <body>
-        <%@include file="/WEB-INF/templates/menu.jsp" %>
+        
         <div class="container">
             <h1>Edit profile</h1>
         <form action="<c:url value="/editProfile/save"/>" method="post">
@@ -38,8 +38,6 @@
         </form>
 
         </div>
-        <script type="text/javascript" src="/NJT/webjars/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" src="/NJT/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+        
     </body>
 </html>

@@ -8,6 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -31,5 +32,11 @@ public class MoviesController {
         return "reviews";
     }
     
+    @GetMapping
+    public ModelAndView searchMovies2(){
+        System.out.println("==============================================USPELO");
+        ModelAndView modelAndView = new ModelAndView("searchMovies");
+        return modelAndView; 
+    }
     
 }
