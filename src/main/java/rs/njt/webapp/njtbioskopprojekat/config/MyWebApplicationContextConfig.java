@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
@@ -29,7 +31,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
     "rs.njt.webapp.njtbioskopprojekat.service"
 })
 
-public class MyWebApplicationContextConfig {
+public class MyWebApplicationContextConfig implements WebMvcConfigurer {
     /*@Bean
     public ViewResolver createViewResolver(){
         InternalResourceViewResolver viewResolver= new InternalResourceViewResolver();
@@ -53,10 +55,11 @@ public class MyWebApplicationContextConfig {
         );
         return tilesConfigurer;
     }
-    
-    
-    
-    
-    
-    
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+ 
 }

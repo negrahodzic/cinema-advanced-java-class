@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
 import rs.njt.webapp.njtbioskopprojekat.entity.User;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
@@ -85,13 +86,20 @@ public class LandingController {
         return "landing";
     }
 
-    @GetMapping(path = "logout")
+    /*@GetMapping(path = "logout")
     public String logout() {
         return "landing";
-    }
+    }*/
 
     @PostMapping(path = "/register/save")
     public String registerUser() {
         return "landing";
+    }
+    
+    @GetMapping(path = "logout")
+    public ModelAndView logout(){
+        System.out.println("==============================================USPELO");
+        ModelAndView modelAndView = new ModelAndView("landing");
+        return modelAndView; 
     }
 }

@@ -18,10 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(path="/searchMovies")
 
 public class MoviesController {
-    @GetMapping
+    /*@GetMapping
     public String searchMovies(){
         return "searchMovies";
-    }
+    }*/
     @GetMapping(path="/seeProjections")
     public String seeProjections(){
         return "searchProjections";
@@ -33,10 +33,11 @@ public class MoviesController {
     }
     
     @GetMapping
-    public ModelAndView searchMovies2(){
+    public ModelAndView searchMovies(){
         System.out.println("==============================================USPELO");
         ModelAndView modelAndView = new ModelAndView("searchMovies");
         return modelAndView; 
     }
+    
     
 }
