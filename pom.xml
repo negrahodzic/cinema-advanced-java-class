@@ -15,9 +15,9 @@
         <jstl.version>1.2</jstl.version>
         <spring.version>5.2.4.RELEASE</spring.version>
         <apachetiles.version>3.0.8</apachetiles.version>
-       <!-- <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-       -->
+        <!-- <maven.compiler.source>1.8</maven.compiler.source>
+         <maven.compiler.target>1.8</maven.compiler.target>
+        -->
  
     </properties>
     
@@ -163,7 +163,11 @@
             <version>${apachetiles.version}</version>
         </dependency>
 
-        
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-extras</artifactId>
+            <version>3.0.8</version>
+        </dependency>
     </dependencies>
 
     <build>

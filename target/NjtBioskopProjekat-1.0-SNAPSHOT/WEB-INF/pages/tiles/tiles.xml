@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+    
+<tiles-definitions>
+    <definition name="base-definition" template="/WEB-INF/pages/tiles/layout/defaultLayout.jsp">
+        <put-attribute name="title" value=""></put-attribute>
+        <put-attribute name="header" value="/WEB-INF/pages/tiles/template/defaultHeader.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/pages/tiles/template/defaultFooter.jsp"></put-attribute>
+        <put-attribute name="menu" value="/WEB-INF/pages/tiles/template/defaultMenu.jsp"></put-attribute>
+        <put-attribute name="body" value=""></put-attribute>
+    </definition>
+    
+    <definition name="landing" extends="base-definition">
+        <put-attribute name="title" value="Welcome page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/pages/landing.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="searchMovies" extends="base-definition">
+        <put-attribute name="title" value="Search movies page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/pages/searchMovies.jsp"></put-attribute>
+    </definition>
+    
+</tiles-definitions>
