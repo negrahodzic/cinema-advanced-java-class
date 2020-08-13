@@ -7,24 +7,35 @@ package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Negra
  */
 @Entity
-public class Projection implements Serializable{
+public class Projection implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectionId;
     private Date dateTimeOfProjection;
     private String technology;
     private String edited; // Titlovano, Sihronizovano
-//    private List<Reservation> reservations;
+    @Column(name = "MOVIE_ID")
+    private Long movieId;
+    @OneToMany
+    @JoinColumn(name = "PROJECTION_ID")
+    private List<Reservation> reservations;
+    @Column(name = "ROOM_ID")
+    private Long roomId;
 
     public Projection() {
     }

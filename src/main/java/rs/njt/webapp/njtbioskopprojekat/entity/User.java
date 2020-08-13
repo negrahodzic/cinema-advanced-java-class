@@ -7,7 +7,9 @@ package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,9 +31,13 @@ public class User  implements Serializable{
     private String email;
     private String username;
     private String password;
-    @OneToMany
-    @JoinColumn(name = "userId")
+//    @OneToMany
+//    @JoinColumn(name = "userId")
 //    @OneToMany(mappedBy = "user")
+    @OneToMany
+    @JoinColumn(name = "USER_ID")
+//    @OneToMany(cascade = {CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     private List<Reservation> reservations;
     //private List<Review> reviews;
 
@@ -96,5 +102,14 @@ public class User  implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     } 
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
    
+    
 }

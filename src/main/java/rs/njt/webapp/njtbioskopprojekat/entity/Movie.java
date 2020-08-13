@@ -6,10 +6,13 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,9 +27,15 @@ public class Movie implements Serializable {
     private String title;
     private String description;
     private int duration;
-//    private List<Genre> genres;
-//    private List<Review> reviews;
-//    private List<Projection> projections;
+    @OneToMany
+    @JoinColumn(name = "MOVIE_ID")
+    private List<Genre> genres;
+    @OneToMany
+    @JoinColumn(name = "MOVIE_ID")
+    private List<Review> reviews;
+    @OneToMany
+    @JoinColumn(name = "MOVIE_ID")
+    private List<Projection> projections;
 
     public Movie() {
     }
@@ -71,7 +80,4 @@ public class Movie implements Serializable {
         this.duration = duration;
     }
 
-
-    
-    
 }

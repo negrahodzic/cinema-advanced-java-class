@@ -6,6 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,12 +17,14 @@ import javax.persistence.Id;
  * @author Negra
  */
 @Entity
-public class Review implements Serializable{
-    
+public class Review implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
     private String comment;
+    @Column(name = "MOVIE_ID")
+    private Long movieId;
 
     public Review() {
     }
@@ -46,5 +49,5 @@ public class Review implements Serializable{
     public void setReviewId(Long reviewId) {
         this.reviewId = reviewId;
     }
-    
+
 }

@@ -7,6 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,17 +20,21 @@ import javax.persistence.ManyToOne;
  * @author Negra
  */
 @Entity
-public class Reservation implements Serializable{
-    
+public class Reservation implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reservationId;
     private Date dateTimeOfReservation;
     private int ticketQuantity;
+    @Column(name = "USER_ID")
+    private Long userId;
+    @Column(name = "PROJECTION_ID")
+    private Long projectionId;
+
 //    @ManyToOne
 //    @JoinColumn(name = "fk_user")
 //    private User user;
-
     public Reservation() {
     }
 
@@ -63,5 +68,4 @@ public class Reservation implements Serializable{
         this.dateTimeOfReservation = dateTimeOfReservation;
     }
 
-    
 }

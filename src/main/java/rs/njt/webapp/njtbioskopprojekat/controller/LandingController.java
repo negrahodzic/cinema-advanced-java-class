@@ -19,6 +19,7 @@ import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 import rs.njt.webapp.njtbioskopprojekat.service.impl.GenreServiceImpl;
+import rs.njt.webapp.njtbioskopprojekat.service.impl.UserServiceImpl;
 
 /**
  *
@@ -78,6 +79,21 @@ public class LandingController {
 //            System.out.println("===============================");
 //        }
 
+//
+//        UserServiceImpl us = new UserServiceImpl();
+//        List<User> gList = us.getAll();
+//        int i = 0;
+//         for (User user : gList) {
+//            System.out.println("===============================");
+//            System.out.println("===============================");
+//            System.out.println("**************** User email: " + user.getEmail());
+//            System.out.println("**************** User first name: " + user.getFirstname());
+//            System.out.println("**************** User List: " + user.getReservations().get(i));
+//            i++;
+//            System.out.println("===============================");
+//            System.out.println("===============================");
+//        }
+        
         return "register";
     }
 

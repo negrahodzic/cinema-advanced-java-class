@@ -5,6 +5,7 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.repository.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,7 +31,18 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (TransactionSynchronizationManager.isActualTransactionActive()) {
+            TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
+        }
+        //        String query = "select * FROM User";
+        //
+        //        return entityManager.createQuery(query, User.class).getResultList();
+        //     em.find(ManufacturerEntity.class, id);
+        User user = entityManager.find(User.class, 1);
+        List<User> users = new ArrayList<User>();
+        users.add(user);
+        
+        return users;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -42,7 +54,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         String query = "select u FROM User u WHERE u.username = ?1";
 
-        return entityManager.createQuery(query, User.class).setParameter(1,username).getResultList().get(0);
+        return entityManager.createQuery(query, User.class).setParameter(1, username).getResultList().get(0);
 
     }
 

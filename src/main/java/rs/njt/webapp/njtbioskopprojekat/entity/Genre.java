@@ -6,6 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,8 @@ public class Genre implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String genreName;
+    @Column(name = "MOVIE_ID") // PROMENITI U MANT TO MANY
+    private Long movieId;
 
     public Genre() {
     }
@@ -42,5 +45,5 @@ public class Genre implements Serializable {
     public void setGenreName(String genreName) {
         this.genreName = genreName;
     }
-    
+
 }
