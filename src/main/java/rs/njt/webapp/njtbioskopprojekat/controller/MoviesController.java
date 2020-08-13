@@ -21,12 +21,12 @@ public class MoviesController {
     /*@GetMapping
     public String searchMovies(){
         return "searchMovies";
-    }*/
+    }
     @GetMapping(path="/seeProjections")
     public String seeProjections(){
         return "searchProjections";
     }
-    
+    */
     @GetMapping(path="/seeReviews")
     public String reviews(){
         return "reviews";
@@ -36,6 +36,13 @@ public class MoviesController {
     public ModelAndView searchMovies(){
         System.out.println("==============================================USPELO");
         ModelAndView modelAndView = new ModelAndView("searchMovies");
+        return modelAndView; 
+    }
+    
+    @GetMapping(path="/seeProjections")
+    public ModelAndView seeProjections(){
+        System.out.println("==============================================USPELO");
+        ModelAndView modelAndView = new ModelAndView("searchProjections");
         return modelAndView; 
     }
     

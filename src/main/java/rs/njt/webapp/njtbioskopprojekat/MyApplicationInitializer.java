@@ -16,27 +16,35 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.servlet.DispatcherServlet;
 import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
 import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
+import rs.njt.webapp.njtbioskopprojekat.entity.Movie;
 import rs.njt.webapp.njtbioskopprojekat.service.impl.GenreServiceImpl;
+import rs.njt.webapp.njtbioskopprojekat.service.impl.MovieServiceImpl;
 
 /**
  *
  * @author remmi
  */
 public class MyApplicationInitializer implements WebApplicationInitializer {
-
-//    private List<Movie> createMovies() {
-//        return new ArrayList<Movie>() {
-//            {
+    
+    
+    /*
+    private List<Movie> createMovies() {
+        
+       
+        
+        return new ArrayList<Movie>() {
+            {   
+                add(movieServiceImpl.getById(1L));
 //                add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
 //                add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
 //                add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
 //                add(new Movie("Godfather", "This is godfather movie.", 160, "Crime"));
 //                add(new Movie("Joker", "This is Joker movie.", 122, "Triller"));
 //                add(new Movie("Parasit", "This is Parasit movie.", 132, "Comedy"));
-//            }
+            }
 //
-//        };
-//    }
+        };
+    }*/
 //    private List<Projection> createProjections() {
 //        return new ArrayList<Projection>() {
 //            {
@@ -63,10 +71,15 @@ public class MyApplicationInitializer implements WebApplicationInitializer {
         dispatcherServlet.addMapping("/");
         dispatcherServlet.setLoadOnStartup(1);
         Genre GenreServiceImpl;
-
-//        List<Movie> listMovies = createMovies();
-//        sc.setAttribute("movies", listMovies);
-//        
+        
+        /*
+        MovieServiceImpl movieServiceImpl = new MovieServiceImpl();
+        Movie movie = movieServiceImpl.getById(1L);
+        
+        List<Movie> listMovies = new ArrayList<Movie>();
+        listMovies.add(movie);
+        sc.setAttribute("movies", listMovies);
+//       */ 
 //        List<Projection> listProjections = createProjections();
 //        sc.setAttribute("projections", listProjections);
 //        GenreServiceImpl gs = null;

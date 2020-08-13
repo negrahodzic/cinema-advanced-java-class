@@ -8,6 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping(path="/searchProjections")
 public class ProjectionsController {
-    @GetMapping
+    /*@GetMapping
     public String searchProjections(){
         return "searchProjections";
-    }
+    }*/
     @GetMapping(path="/createReservation")
     public String createReservation(){
         return "createReservation";
@@ -27,5 +28,12 @@ public class ProjectionsController {
     @GetMapping(path="/landing")
     public String logout(){
         return "landing";
+    }
+    
+    @GetMapping
+    public ModelAndView searchProjections(){
+        System.out.println("==============================================USPELO");
+        ModelAndView modelAndView = new ModelAndView("searchProjections");
+        return modelAndView; 
     }
 }

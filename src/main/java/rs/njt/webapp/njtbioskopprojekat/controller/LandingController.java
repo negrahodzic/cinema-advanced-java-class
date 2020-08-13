@@ -40,7 +40,7 @@ public class LandingController {
     }
 
     @PostMapping(path = "searchMovies") // promeni u login
-    public String login(HttpServletRequest request) {
+    public ModelAndView login(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
@@ -48,19 +48,24 @@ public class LandingController {
         System.out.println("===== username:"+username+" =====");
         
         User user = userService.findByUsername(username);
+        
+        ModelAndView modelAndView =  new ModelAndView("redirect:/");
         if(user == null) {
             System.out.println("===== USER DOES NOT EXIST =====");
         }
         else {
             //proveri sifru
             if(user.getPassword().equals(password)){
-                return "searchMovies";
+                modelAndView.setViewName("searchMovies");
+                return modelAndView; 
             }
 //            request.getSession(true).setAttribute("loggedUser", user);
 //            System.out.println("===== username:"+username+" =====");
         }
         System.out.println(" POGRRESNA SIFRAAAA");
-        return "redirect:/";
+        //return "redirect:/";
+        
+        return modelAndView;
     }
 
     @GetMapping(path = "register")

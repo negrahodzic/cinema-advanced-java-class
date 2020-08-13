@@ -33,7 +33,8 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public Movie getById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    return entityManager.find(Movie.class, id);
     }
     
 }
