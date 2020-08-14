@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import rs.njt.webapp.njtbioskopprojekat.entity.Projection;
+import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.ProjectionRepository;
 
 /**
@@ -26,12 +26,12 @@ public class ProjectionRepositoryImpl implements ProjectionRepository {
     EntityManager entityManager;
 
     @Override
-    public List<Projection> getAll() {
+    public List<ProjectionEntity> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Projection getById(Long id) {
+    public ProjectionEntity getById(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

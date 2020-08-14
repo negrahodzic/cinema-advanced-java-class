@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
-import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
+import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
 
 /**
@@ -33,7 +33,7 @@ public class GenreRepositoryImpl implements GenreRepository {
     //@Transactional(propagation = Propagation.SUPPORTS)//ako postoi u okviru nje, ako ne bez
     @Transactional(propagation = Propagation.REQUIRED)//ako postoi u okviru nje, ako ne bez
     @Override
-    public List<Genre> getAll() {
+    public List<GenreEntity> getAll() {
         System.out.println("TransactionSynchronizationManager.isActualTransactionActive(): "+TransactionSynchronizationManager.isActualTransactionActive());
         System.out.println("TransactionAspectSupport.currentTransactionStatus(): "+ TransactionAspectSupport.currentTransactionStatus().isNewTransaction());
         if (TransactionSynchronizationManager.isActualTransactionActive()) {
@@ -42,17 +42,17 @@ public class GenreRepositoryImpl implements GenreRepository {
 
         System.out.println("===========GenreRepositoryImpl.getAll()===========");
         String query = "select g from Genre g";
-//        System.out.println("==========="+entityManager.createQuery(query, Genre.class).getResultList().toString());
-         return entityManager.createQuery(query, Genre.class).getResultList();
+//        System.out.println("==========="+entityManager.createQuery(query, GenreEntity.class).getResultList().toString());
+         return entityManager.createQuery(query, GenreEntity.class).getResultList();
 //         List<Genre> genreList = new ArrayList<Genre>();
-//         genreList.add(new Genre("KRIMEEEEEEEE"));
+//         genreList.add(new GenreEntity("KRIMEEEEEEEE"));
 //         return genreList;
     }
 
     @Override
-    public Genre getById(Long id) {
+    public GenreEntity getById(Long id) {
         System.out.println("GenreRepositoryImpl.getById()");
-        return entityManager.find(Genre.class, id);
+        return entityManager.find(GenreEntity.class, id);
     }
 
 //    @Override

@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import rs.njt.webapp.njtbioskopprojekat.entity.Room;
+import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.RoomRepository;
 
 /**
@@ -26,12 +26,12 @@ public class RoomRepositoryImpl implements RoomRepository {
     EntityManager entityManager;
 
     @Override
-    public List<Room> getAll() {
+    public List<RoomEntity> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Room getById(Long id) {
+    public RoomEntity getById(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

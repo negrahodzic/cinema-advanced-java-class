@@ -8,16 +8,23 @@ package rs.njt.webapp.njtbioskopprojekat.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author remmi
  */
 @Controller
-@RequestMapping(path="/myReservations")
+@RequestMapping(path = "/myReservations")
 public class ReservationController {
+
+    private ModelAndView modelAndView = new ModelAndView();
+
     @GetMapping
-    public String myReservations(){
-        return "myReservations";
+    public ModelAndView myReservations() {
+        modelAndView.setViewName("myReservations");
+        return modelAndView;
     }
+    
+    //TODO: dodati /details, /delete
 }

@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.Room;
+import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
 
 /**
  *
@@ -14,7 +14,7 @@ import rs.njt.webapp.njtbioskopprojekat.entity.Room;
  */
 public interface RoomRepository {
 
-    List<Room> getAll();
+    List<RoomEntity> getAll();
 
-    Room getById(Long id);
+    RoomEntity getById(Long id);
 }

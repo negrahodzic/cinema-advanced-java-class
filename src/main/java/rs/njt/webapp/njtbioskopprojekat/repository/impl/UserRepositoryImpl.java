@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
-import rs.njt.webapp.njtbioskopprojekat.entity.User;
+import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.UserRepository;
 
 /**
@@ -30,16 +30,16 @@ public class UserRepositoryImpl implements UserRepository {
     EntityManager entityManager;
 
     @Override
-    public List<User> getAll() {
+    public List<UserEntity> getAll() {
         if (TransactionSynchronizationManager.isActualTransactionActive()) {
             TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
         }
-        //        String query = "select * FROM User";
+        //        String query = "select * FROM UserEntity";
         //
-        //        return entityManager.createQuery(query, User.class).getResultList();
+        //        return entityManager.createQuery(query, UserEntity.class).getResultList();
         //     em.find(ManufacturerEntity.class, id);
-        User user = entityManager.find(User.class, 1);
-        List<User> users = new ArrayList<User>();
+        UserEntity user = entityManager.find(UserEntity.class, 1);
+        List<UserEntity> users = new ArrayList<UserEntity>();
         users.add(user);
         
         return users;
@@ -47,14 +47,14 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public User findByUsername(String username) {
+    public UserEntity findByUsername(String username) {
         if (TransactionSynchronizationManager.isActualTransactionActive()) {
             TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
         }
 
         String query = "select u FROM User u WHERE u.username = ?1";
 
-        return entityManager.createQuery(query, User.class).setParameter(1, username).getResultList().get(0);
+        return entityManager.createQuery(query, UserEntity.class).setParameter(1, username).getResultList().get(0);
 
     }
 

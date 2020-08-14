@@ -24,7 +24,7 @@
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-6 border border-primary rounded" style="padding: 20px;">
-                    <form action="${pageContext.request.contextPath}/searchMovies" method="post">
+                    <form action="${pageContext.request.contextPath}/login" method="post">
                         <div class="form-group">
                             <label>Username</label>
                             <div> 

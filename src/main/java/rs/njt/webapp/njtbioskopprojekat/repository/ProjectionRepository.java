@@ -6,13 +6,13 @@
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.Projection;
+import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 
 /**
  *
  * @author Negra
  */
 public interface ProjectionRepository {      
-    List<Projection> getAll();
-    Projection getById(Long id);
+    List<ProjectionEntity> getAll();
+    ProjectionEntity getById(Long id);
 }

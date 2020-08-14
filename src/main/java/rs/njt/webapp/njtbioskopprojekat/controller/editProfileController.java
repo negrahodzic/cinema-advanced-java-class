@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping(path="/editProfile")
-public class editProfileController {
+public class EditProfileController {
     @GetMapping
     public String editProfile(){
         return "editProfile";

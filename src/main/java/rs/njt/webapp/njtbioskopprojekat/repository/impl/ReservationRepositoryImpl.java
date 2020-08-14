@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import rs.njt.webapp.njtbioskopprojekat.entity.Reservation;
+import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.ReservationRepository;
 
 /**
@@ -26,12 +26,12 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     EntityManager entityManager;
 
     @Override
-    public List<Reservation> getAll() {
+    public List<ReservationEntity> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Reservation getById(Long id) {
+    public ReservationEntity getById(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

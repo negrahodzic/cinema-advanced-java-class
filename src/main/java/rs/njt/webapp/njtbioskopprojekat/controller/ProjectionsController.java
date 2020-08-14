@@ -15,25 +15,21 @@ import org.springframework.web.servlet.ModelAndView;
  * @author remmi
  */
 @Controller
-@RequestMapping(path="/searchProjections")
+@RequestMapping(path = "/searchProjections")
 public class ProjectionsController {
-    /*@GetMapping
-    public String searchProjections(){
-        return "searchProjections";
-    }*/
-    @GetMapping(path="/createReservation")
-    public String createReservation(){
-        return "createReservation";
-    }
-    @GetMapping(path="/landing")
-    public String logout(){
-        return "landing";
-    }
-    
+
+    private ModelAndView modelAndView = new ModelAndView();
+
     @GetMapping
-    public ModelAndView searchProjections(){
-        System.out.println("==============================================USPELO");
-        ModelAndView modelAndView = new ModelAndView("searchProjections");
-        return modelAndView; 
+    public ModelAndView searchProjections() {
+        modelAndView.setViewName("searchProjections");
+        return modelAndView;
     }
+
+    @GetMapping(path = "/createReservation")
+    public ModelAndView createReservation() {
+        modelAndView.setViewName("createReservation");
+        return modelAndView;
+    }
+
 }

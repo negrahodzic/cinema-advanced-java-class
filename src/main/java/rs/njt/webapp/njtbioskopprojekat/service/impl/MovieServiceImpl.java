@@ -8,7 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.njt.webapp.njtbioskopprojekat.entity.Movie;
+import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.MovieRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 
@@ -23,12 +23,12 @@ public class MovieServiceImpl implements MovieService {
     private MovieRepository movieRepository;
     
     @Override
-    public List<Movie> getAll() {
+    public List<MovieEntity> getAll() {
         return movieRepository.getAll();
     }
 
     @Override
-    public Movie getById(Long id) {
+    public MovieEntity getById(Long id) {
         return movieRepository.getById(id);
     }
     

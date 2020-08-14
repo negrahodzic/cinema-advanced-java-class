@@ -8,7 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.njt.webapp.njtbioskopprojekat.entity.Projection;
+import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.ProjectionRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
@@ -23,12 +23,12 @@ public class ProjectionServiceImpl implements ProjectionService {
     private ProjectionRepository projectionRepository;
 
     @Override
-    public List<Projection> getAll() {
+    public List<ProjectionEntity> getAll() {
         return projectionRepository.getAll();
     }
 
     @Override
-    public Projection getById(Long id) {
+    public ProjectionEntity getById(Long id) {
         return projectionRepository.getById(id);
     }
 

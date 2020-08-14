@@ -7,7 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.service;
 
 import rs.njt.webapp.njtbioskopprojekat.repository.*;
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.User;
+import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
 
 /**
  *
@@ -15,7 +15,7 @@ import rs.njt.webapp.njtbioskopprojekat.entity.User;
  */
 public interface UserService {
 
-    List<User> getAll();
+    List<UserEntity> getAll();
 
-    User findByUsername(String username);
+    UserEntity findByUsername(String username);
 }

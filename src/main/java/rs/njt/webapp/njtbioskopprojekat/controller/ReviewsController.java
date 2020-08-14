@@ -8,18 +8,24 @@ package rs.njt.webapp.njtbioskopprojekat.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
  * @author remmi
  */
 @Controller
-@RequestMapping(path="/reviews")
-
-    
+@RequestMapping(path = "/reviews")
 public class ReviewsController {
+
+    private ModelAndView modelAndView = new ModelAndView();
+
     @GetMapping
-    public String reviews(){
-        return "reviews";
+    public ModelAndView reviews() {
+        modelAndView.setViewName("reviews");
+        return modelAndView;
     }
+    
+    //TODO: dodati /createReview, /editReview, /save, /delete
+    //TODO: negde dodati opciju za davanje ocene tj review
 }

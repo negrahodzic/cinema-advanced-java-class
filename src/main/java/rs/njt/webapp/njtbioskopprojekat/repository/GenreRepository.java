@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
+import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 
 /**
  *
@@ -14,7 +14,7 @@ import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
  */
 public interface GenreRepository {
 
-    List<Genre> getAll();
+    List<GenreEntity> getAll();
 
-    Genre getById(Long id);
+    GenreEntity getById(Long id);
 }

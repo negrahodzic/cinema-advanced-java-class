@@ -15,36 +15,27 @@ import org.springframework.web.servlet.ModelAndView;
  * @author remmi
  */
 @Controller
-@RequestMapping(path="/searchMovies")
-
+@RequestMapping(path = "/searchMovies")
 public class MoviesController {
-    /*@GetMapping
-    public String searchMovies(){
-        return "searchMovies";
-    }
-    @GetMapping(path="/seeProjections")
-    public String seeProjections(){
-        return "searchProjections";
-    }
-    */
-    @GetMapping(path="/seeReviews")
-    public String reviews(){
-        return "reviews";
-    }
-    
+
+    private ModelAndView modelAndView = new ModelAndView();
+
     @GetMapping
-    public ModelAndView searchMovies(){
-        System.out.println("==============================================USPELO");
-        ModelAndView modelAndView = new ModelAndView("searchMovies");
-        return modelAndView; 
+    public ModelAndView searchMovies() {
+        modelAndView.setViewName("searchMovies");
+        return modelAndView;
     }
-    
-    @GetMapping(path="/seeProjections")
-    public ModelAndView seeProjections(){
-        System.out.println("==============================================USPELO");
-        ModelAndView modelAndView = new ModelAndView("searchProjections");
-        return modelAndView; 
+
+    @GetMapping(path = "/seeReviews")
+    public ModelAndView reviews() { //TODO: dodati logiku, reviews za izabran film
+        modelAndView.setViewName("reviews");
+        return modelAndView;
     }
-    
-    
+
+    @GetMapping(path = "/seeProjections")
+    public ModelAndView seeProjections() { //TODO: dodati logiku, projections za izabran film
+        modelAndView.setViewName("searchProjections");
+        return modelAndView;
+    }
+
 }

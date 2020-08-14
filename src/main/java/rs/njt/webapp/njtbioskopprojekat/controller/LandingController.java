@@ -5,7 +5,6 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.controller;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,13 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
-import rs.njt.webapp.njtbioskopprojekat.entity.User;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
-import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
-import rs.njt.webapp.njtbioskopprojekat.service.impl.GenreServiceImpl;
-import rs.njt.webapp.njtbioskopprojekat.service.impl.UserServiceImpl;
 
 /**
  *
@@ -27,53 +21,64 @@ import rs.njt.webapp.njtbioskopprojekat.service.impl.UserServiceImpl;
  */
 @Controller
 @RequestMapping(path = "/")
-
 public class LandingController {
 
-    private final GenreRepository genreRepository;
     private final UserService userService;
+    private ModelAndView modelAndView =  new ModelAndView();;
 
     @Autowired
-    public LandingController(GenreRepository genreRepository, UserService userService) {
-        this.genreRepository = genreRepository;
+    public LandingController(UserService userService) {
         this.userService = userService;
+       // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
     }
 
-    @PostMapping(path = "searchMovies") // promeni u login
+    @GetMapping
+    public ModelAndView landing() {
+        modelAndView.setViewName("landing");
+        return modelAndView;
+    }
+
+    @PostMapping(path = "login")
     public ModelAndView login(HttpServletRequest request) {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        
-        System.out.println("===== Pozvana LoginAction =====");
-        System.out.println("===== username:"+username+" =====");
-        
-        User user = userService.findByUsername(username);
-        
-        ModelAndView modelAndView =  new ModelAndView("redirect:/");
-        if(user == null) {
-            System.out.println("===== USER DOES NOT EXIST =====");
-        }
-        else {
-            //proveri sifru
-            if(user.getPassword().equals(password)){
-                modelAndView.setViewName("searchMovies");
-                return modelAndView; 
-            }
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//
+//        User user = userService.findByUsername(username);
+//
+//        if (user == null) { 
+//            modelAndView.setViewName("redirect:/");
+//        } else if (user.getPassword().equals(password)) {
 //            request.getSession(true).setAttribute("loggedUser", user);
-//            System.out.println("===== username:"+username+" =====");
-        }
-        System.out.println(" POGRRESNA SIFRAAAA");
-        //return "redirect:/";
-        
+//            modelAndView.setViewName("searchMovies");
+//        }
+        modelAndView.setViewName("searchMovies"); // privrmeno, bez logovanja
         return modelAndView;
     }
 
     @GetMapping(path = "register")
-    public String register() {
+    public ModelAndView register() {
+        modelAndView.setViewName("register");
+        return modelAndView;
+    }
+
+    @GetMapping(path = "logout")
+    public ModelAndView logout() {
+        //TODO: izlogovati, obrisati session
+        modelAndView.setViewName("landing");
+        return modelAndView;
+    }
+
+    //TODO: promeni u model and view + dodaj logiku
+    @PostMapping(path = "/register/save")
+    public String registerUser() {
+        return "landing";
+    }
+}
+
 //        GenreServiceImpl gs = new GenreServiceImpl();
 //        List<Genre> gList = gs.getAll();
 //        List<Genre> genreList = genreRepository.getAll();
-        //    GenreDto genreDto = new GenreDto("crime");
+//    GenreDto genreDto = new GenreDto("crime");
 //        User user = userService.findByUsername("marko");
 //        for (Genre genre : genreList) {
 //            System.out.println("===============================");
@@ -83,7 +88,6 @@ public class LandingController {
 //            System.out.println("===============================");
 //            System.out.println("===============================");
 //        }
-
 //
 //        UserServiceImpl us = new UserServiceImpl();
 //        List<User> gList = us.getAll();
@@ -98,29 +102,4 @@ public class LandingController {
 //            System.out.println("===============================");
 //            System.out.println("===============================");
 //        }
-        
-        return "register";
-    }
 
-    @GetMapping
-    public String landing() {
-        return "landing";
-    }
-
-    /*@GetMapping(path = "logout")
-    public String logout() {
-        return "landing";
-    }*/
-
-    @PostMapping(path = "/register/save")
-    public String registerUser() {
-        return "landing";
-    }
-    
-    @GetMapping(path = "logout")
-    public ModelAndView logout(){
-        System.out.println("==============================================USPELO");
-        ModelAndView modelAndView = new ModelAndView("landing");
-        return modelAndView; 
-    }
-}

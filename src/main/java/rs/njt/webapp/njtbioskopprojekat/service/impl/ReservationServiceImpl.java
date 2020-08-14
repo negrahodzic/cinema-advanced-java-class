@@ -8,7 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.njt.webapp.njtbioskopprojekat.entity.Reservation;
+import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.ReservationRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ReservationService;
 
@@ -23,12 +23,12 @@ public class ReservationServiceImpl implements ReservationService {
     private ReservationRepository reservationRepository;
 
     @Override
-    public List<Reservation> getAll() {
+    public List<ReservationEntity> getAll() {
         return reservationRepository.getAll();
     }
 
     @Override
-    public Reservation getById(Long id) {
+    public ReservationEntity getById(Long id) {
         return reservationRepository.getById(id);
     }
 

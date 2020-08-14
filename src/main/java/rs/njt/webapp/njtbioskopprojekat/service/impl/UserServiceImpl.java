@@ -8,7 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.njt.webapp.njtbioskopprojekat.entity.User;
+import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.UserRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
@@ -23,12 +23,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> getAll() {
+    public List<UserEntity> getAll() {
         return  userRepository.getAll();
     }
 
     @Override
-    public User findByUsername(String username) {
+    public UserEntity findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
     

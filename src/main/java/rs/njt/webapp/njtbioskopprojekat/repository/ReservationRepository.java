@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.Reservation;
+import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 
 /**
  *
@@ -14,7 +14,7 @@ import rs.njt.webapp.njtbioskopprojekat.entity.Reservation;
  */
 public interface ReservationRepository {
 
-    List<Reservation> getAll();
+    List<ReservationEntity> getAll();
 
-    Reservation getById(Long id);
+    ReservationEntity getById(Long id);
 }

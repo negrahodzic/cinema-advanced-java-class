@@ -8,7 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.njt.webapp.njtbioskopprojekat.entity.Review;
+import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.ReviewRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 
@@ -23,12 +23,12 @@ public class ReviewServiceImpl implements ReviewService {
     private ReviewRepository reviewRepository;
 
     @Override
-    public List<Review> getAll() {
+    public List<ReviewEntity> getAll() {
         return reviewRepository.getAll();
     }
 
     @Override
-    public Review getById(Long id) {
+    public ReviewEntity getById(Long id) {
         return reviewRepository.getById(id);
     }
 }

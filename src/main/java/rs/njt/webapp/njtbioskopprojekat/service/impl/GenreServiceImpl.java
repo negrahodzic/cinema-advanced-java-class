@@ -8,7 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.njt.webapp.njtbioskopprojekat.entity.Genre;
+import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 
@@ -23,13 +23,13 @@ public class GenreServiceImpl implements GenreService {
     private GenreRepository genreRepository;
 
     @Override
-    public List<Genre> getAll() {
+    public List<GenreEntity> getAll() {
         //
         return genreRepository.getAll();
     }
 
     @Override
-    public Genre getById(Long id) {
+    public GenreEntity getById(Long id) {
         return genreRepository.getById(id);
     }
     

@@ -25,6 +25,11 @@ and open the template in the editor.
         <put-attribute name="menu" value=""></put-attribute>
     </definition>
     
+    <definition name="login" extends="base-definition">
+        <put-attribute name="title" value="Search movies page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/pages/searchMovies.jsp"></put-attribute>
+    </definition>
+    
     <definition name="searchMovies" extends="base-definition">
         <put-attribute name="title" value="Search movies page"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/pages/searchMovies.jsp"></put-attribute>
@@ -35,6 +40,14 @@ and open the template in the editor.
         <put-attribute name="body" value="/WEB-INF/pages/searchProjections.jsp"></put-attribute>
     </definition>
     
+    <definition name="register" extends="base-definition">
+        <put-attribute name="title" value="Register page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/pages/register.jsp"></put-attribute>
+        <put-attribute name="header" value=""></put-attribute>
+        <put-attribute name="footer" value=""></put-attribute>
+        <put-attribute name="menu" value=""></put-attribute>
+    </definition>
+    
     <definition name="myReservations" extends="base-definition">
         <put-attribute name="title" value="My reservations page"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/pages/myReservations.jsp"></put-attribute>
@@ -43,6 +56,16 @@ and open the template in the editor.
     <definition name="editProfile" extends="base-definition">
         <put-attribute name="title" value="Edit profile page"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/pages/editProfile.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="reviews" extends="base-definition">
+        <put-attribute name="title" value="Review page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/pages/reviews.jsp"></put-attribute>
+    </definition>
+    
+    <definition name="createReservation" extends="base-definition">
+        <put-attribute name="title" value="Create reservation page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/pages/createReservation.jsp"></put-attribute>
     </definition>
     
     
