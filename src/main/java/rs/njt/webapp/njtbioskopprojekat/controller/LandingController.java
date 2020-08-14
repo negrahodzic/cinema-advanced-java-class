@@ -5,6 +5,7 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.controller;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
+import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
+import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
+import rs.njt.webapp.njtbioskopprojekat.service.impl.MovieServiceImpl;
 
 /**
  *
@@ -24,12 +29,13 @@ import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 public class LandingController {
 
     private final UserService userService;
-    private ModelAndView modelAndView =  new ModelAndView();;
+    private ModelAndView modelAndView = new ModelAndView();
 
     @Autowired
     public LandingController(UserService userService) {
         this.userService = userService;
-       // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
+
+        // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
     }
 
     @GetMapping
@@ -40,23 +46,25 @@ public class LandingController {
 
     @PostMapping(path = "login")
     public ModelAndView login(HttpServletRequest request) {
-//        String username = request.getParameter("username");
-//        String password = request.getParameter("password");
-//
-//        User user = userService.findByUsername(username);
-//
-//        if (user == null) { 
-//            modelAndView.setViewName("redirect:/");
-//        } else if (user.getPassword().equals(password)) {
-//            request.getSession(true).setAttribute("loggedUser", user);
-//            modelAndView.setViewName("searchMovies");
-//        }
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        UserEntity user = userService.findByUsername(username);
+
+        if (user == null) { 
+            modelAndView.setViewName("redirect:/");
+        } else if (user.getPassword().equals(password)) {
+            request.getSession(true).setAttribute("loggedUser", user);
+            modelAndView.setViewName("searchMovies");
+        }
         modelAndView.setViewName("searchMovies"); // privrmeno, bez logovanja
         return modelAndView;
     }
 
     @GetMapping(path = "register")
     public ModelAndView register() {
+        MovieServiceImpl ms = new MovieServiceImpl();
+        ms.getAll();
         modelAndView.setViewName("register");
         return modelAndView;
     }

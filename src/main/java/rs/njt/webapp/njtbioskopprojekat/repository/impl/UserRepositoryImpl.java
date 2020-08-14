@@ -52,7 +52,7 @@ public class UserRepositoryImpl implements UserRepository {
             TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
         }
 
-        String query = "select u FROM User u WHERE u.username = ?1";
+        String query = "select u FROM UserEntity u WHERE u.username = ?1";
 
         return entityManager.createQuery(query, UserEntity.class).setParameter(1, username).getResultList().get(0);
 

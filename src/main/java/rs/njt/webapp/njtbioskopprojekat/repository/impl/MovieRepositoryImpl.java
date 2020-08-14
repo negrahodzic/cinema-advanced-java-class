@@ -5,14 +5,21 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.repository.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.MovieRepository;
+import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
+import rs.njt.webapp.njtbioskopprojekat.service.impl.MovieServiceImpl;
 
 /**
  *
@@ -28,7 +35,20 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public List<MovieEntity> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (TransactionSynchronizationManager.isActualTransactionActive()) {
+            TransactionStatus status = TransactionAspectSupport.currentTransactionStatus();
+        }
+
+        String query = "select m from Movie m";
+//      System.out.println("==========="+entityManager.createQuery(query, GenreEntity.class).getResultList().toString());
+         //entityManager.createQuery(query, MovieEntity.class).getResultList();
+         
+
+        MovieEntity movie = entityManager.find(MovieEntity.class, 1L);
+        List<MovieEntity> movies = new ArrayList<MovieEntity>();
+        movies.add(movie);
+        
+        return movies;
     }
 
     @Override

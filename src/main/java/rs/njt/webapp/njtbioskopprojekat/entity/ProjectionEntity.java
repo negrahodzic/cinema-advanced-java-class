@@ -36,14 +36,15 @@ public class ProjectionEntity implements Serializable {
     @JoinColumn(name = "ROOM_ID", referencedColumnName = "ROOM_ID")
     private RoomEntity room;
     
+    @Column(name = "MOVIE_ID")
+    private Long movieId;
     
-//    @Column(name = "MOVIE_ID")
-//    private Long movieId;
 //    @OneToMany
 //    @JoinColumn(name = "PROJECTION_ID")
 //    private List<ReservationEntity> reservations;
 
     public ProjectionEntity() {
+        
     }
 
     public ProjectionEntity(Long projectionId, Date dateTimeOfProjection, String technology, String edited) {

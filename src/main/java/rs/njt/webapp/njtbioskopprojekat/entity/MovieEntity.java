@@ -6,6 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,20 +31,23 @@ public class MovieEntity implements Serializable {
     private String title;
     private String description;
     private int duration;
+    
     @ManyToOne // Note: U nasem slucaju, film ima samo jedan zanr 
     @JoinColumn(name = "GENRE_ID", referencedColumnName = "GENRE_ID")
     private GenreEntity genre;
     
+    @OneToMany
+    @JoinColumn(name = "MOVIE_ID", referencedColumnName = "movieId")
+    private List<ProjectionEntity> projections; 
     
     
 //    @OneToMany
 //    @JoinColumn(name = "MOVIE_ID")
 //    private List<ReviewEntity> reviews;
-//    @OneToMany
-//    @JoinColumn(name = "MOVIE_ID")
-//    private List<ProjectionEntity> projections;
+
 
     public MovieEntity() {
+        projections = new ArrayList();
     }
 
     public MovieEntity(Long movieId, String title, String description, int duration) {
