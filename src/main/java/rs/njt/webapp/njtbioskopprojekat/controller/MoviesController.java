@@ -5,10 +5,16 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.controller;
 
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
+import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 
 /**
  *
@@ -17,9 +23,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(path = "/searchMovies")
 public class MoviesController {
-
+    
+//    private final MovieService movieService;
     private ModelAndView modelAndView = new ModelAndView();
 
+//    @Autowired
+//    public MoviesController(MovieService movieService) {
+//        this.movieService = movieService;
+//        System.out.println("+++++++++++++++++++++++++ LandingController(TestService testService, MovieService movieService) +++++++++++++++++++=");
+//        // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
+//    }
     @GetMapping
     public ModelAndView searchMovies() {
         modelAndView.setViewName("searchMovies");

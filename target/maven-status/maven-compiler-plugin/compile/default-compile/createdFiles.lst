@@ -1,6 +1,5 @@
 rs\njt\webapp\njtbioskopprojekat\repository\ProjectionRepository.class
 rs\njt\webapp\njtbioskopprojekat\service\ReviewService.class
-rs\njt\webapp\njtbioskopprojekat\service\impl\TestServiceImpl.class
 rs\njt\webapp\njtbioskopprojekat\repository\MovieRepository.class
 rs\njt\webapp\njtbioskopprojekat\controller\LandingController.class
 rs\njt\webapp\njtbioskopprojekat\controller\MoviesController.class
@@ -24,13 +23,11 @@ rs\njt\webapp\njtbioskopprojekat\service\impl\ReviewServiceImpl.class
 rs\njt\webapp\njtbioskopprojekat\entity\UserEntity.class
 rs\njt\webapp\njtbioskopprojekat\controller\ReviewsController.class
 rs\njt\webapp\njtbioskopprojekat\entity\ProjectionEntity_.class
-rs\njt\webapp\njtbioskopprojekat\repository\TestRepository.class
 rs\njt\webapp\njtbioskopprojekat\model\RoomDto.class
 rs\njt\webapp\njtbioskopprojekat\controller\EditProfileController.class
 rs\njt\webapp\njtbioskopprojekat\MyApplicationInitializer.class
 rs\njt\webapp\njtbioskopprojekat\entity\MovieEntity_.class
 rs\njt\webapp\njtbioskopprojekat\model\ProjectionDto.class
-rs\njt\webapp\njtbioskopprojekat\service\TestService.class
 rs\njt\webapp\njtbioskopprojekat\entity\ProjectionEntity.class
 rs\njt\webapp\njtbioskopprojekat\model\ReviewDto.class
 rs\njt\webapp\njtbioskopprojekat\service\UserService.class

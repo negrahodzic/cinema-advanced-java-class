@@ -12,6 +12,9 @@
         <title>Footer</title>
     </head>
     <body>
-        <h1>Copyright 2020</h1>
+        <div class="container">
+            <h6>Copyright 2020, Negra Hodzic 221/16 & Marko Cvijovic 168/16</h6>  
+        </div>
+
     </body>
 </html>

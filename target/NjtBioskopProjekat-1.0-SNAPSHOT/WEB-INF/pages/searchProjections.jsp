@@ -26,30 +26,9 @@
                 <option>13.2.2021</option>
             </select>
             <p/>
-            <!--            <table border="0">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Technology</th>
-                                    <th>Subtitle</th>
-                                    <th>Reservation</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-            <c:forEach var="projection" items="${applicationScope.projections}">
-                <tr>
-                    <td>${projection.dateOfProjection}</td>
-                    <td>${projection.technology}</td>
-                    <td>${projection.subtitle}</td>
-                    <td><a href="/NJT/app/createReservation">Create reservation</a></td>
-                </tr>
-            </c:forEach>
-
-        </tbody>
-    </table>-->
 
             <div class="row">
-                <c:forEach var="projection" items="${applicationScope.projections}">
+                <c:forEach var="projection" items="${projections}" varStatus="loop">
                     <div class="col-md-12">
                         <div class="card" style="width: 100%;">
                             <div class="card-body">
@@ -59,10 +38,11 @@
                                     </div>
                                     <div class="col-md-10">
                                         <ul class="list-group list-group-horizontal justify-content-around align-items-center" >                                   
-                                            <li class="list-group-item" style="border: 0 none;">Movie title</li>
-                                            <li class="list-group-item" style="border: 0 none;">${projection.dateOfProjection}</li>
+                                            <li class="list-group-item" style="border: 0 none;">${projection.movie.title}</li>
+                                            <li class="list-group-item" style="border: 0 none;">${projection.dateTimeOfProjection}</li>
                                             <li class="list-group-item" style="border: 0 none;">${projection.technology}</li>
-                                            <li class="list-group-item" style="border: 0 none;">${projection.subtitle}</li>   
+                                            <li class="list-group-item" style="border: 0 none;">${projection.edited}</li>  
+                                            <li class="list-group-item" style="border: 0 none;">${projection.room.roomName}</li>  
                                             <li class="list-group-item" style="border: 0 none;"><a href="<c:url value="/searchProjections/createReservation"/>" class="btn btn-outline-primary">Create reservation</a></li>   
                                         </ul>
                                     </div>
@@ -72,7 +52,6 @@
                     </div>
                 </c:forEach>
             </div>
-
 
         </div>
 

@@ -26,7 +26,6 @@ C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\model\ProjectionDto.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\impl\ReviewServiceImpl.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\impl\ProjectionServiceImpl.java
-C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\impl\TestServiceImpl.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\entity\MovieEntity.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\controller\LandingController.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\repository\ProjectionRepository.java
@@ -40,8 +39,6 @@ C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\impl\UserServiceImpl.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\ReviewService.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\config\MyWebApplicationContextConfig.java
-C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\repository\TestRepository.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\ProjectionService.java
-C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\TestService.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\controller\ProjectionsController.java
 C:\Users\Negra\Documents\NetBeansProjects\NjtBioskopProjekat\NjtBioskopProjekat\src\main\java\rs\njt\webapp\njtbioskopprojekat\service\ReservationService.java

@@ -12,6 +12,9 @@
         <title>Header</title>
     </head>
     <body>
-        <h1>Welcome user:</h1>
+        <div class="container">
+            <h3>Hello, ${loggedUser.username}!</h3>
+        </div>
+
     </body>
 </html>

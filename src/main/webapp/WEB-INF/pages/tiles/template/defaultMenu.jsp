@@ -18,7 +18,7 @@
 
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <!-- Brand -->
-                <a class="navbar-brand" href="#">Menu</a>
+                <a class="navbar-brand" href="#">NJT CINEMA</a>
 
                 <!-- Links -->
                 <ul class="navbar-nav">
@@ -43,9 +43,6 @@
                     </li>
                 </ul>
             </nav>    
-
-            <!-- Login as:${sessionScope.loginUser.username} -->
-
         </div>
     </body>
 </html>

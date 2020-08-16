@@ -10,11 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
+import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
+import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
+import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
  *
@@ -24,14 +29,14 @@ import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 @RequestMapping(path = "/")
 public class LandingController {
 
-    private final MovieService movieServie;
-
-    //  private final UserService userService;
+    private final MovieService movieService;
+    private final UserService userService;
     private ModelAndView modelAndView = new ModelAndView();
 
     @Autowired
-    public LandingController(MovieService movieService) {
-        this.movieServie = movieService;
+    public LandingController(MovieService movieService, UserService userService) {
+        this.movieService = movieService;
+        this.userService = userService;
         System.out.println("+++++++++++++++++++++++++ LandingController(TestService testService, MovieService movieService) +++++++++++++++++++=");
         // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
     }
@@ -44,25 +49,25 @@ public class LandingController {
 
     @PostMapping(path = "login")
     public ModelAndView login(HttpServletRequest request) {
-//        String username = request.getParameter("username");
-//        String password = request.getParameter("password");
-//
-//        UserEntity user = userService.findByUsername(username);
-//
-//        if (user == null) { 
-//            modelAndView.setViewName("redirect:/");
-//        } else if (user.getPassword().equals(password)) {
-//            request.getSession(true).setAttribute("loggedUser", user);
-//            modelAndView.setViewName("searchMovies");
-//        }
-        modelAndView.setViewName("searchMovies"); // privrmeno, bez logovanja
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        UserDto user = userService.findByUsername(username);
+        
+        if (user == null || !user.getPassword().equals(password)) {
+            modelAndView.setViewName("redirect:/");
+        } else if (user.getPassword().equals(password)) {
+            request.getSession(true).setAttribute("loggedUser", user);
+            modelAndView.setViewName("searchMovies");
+        }
+        //   modelAndView.setViewName("searchMovies"); // privrmeno, bez logovanja
         return modelAndView;
     }
 
     @GetMapping(path = "register")
     public ModelAndView register() {
 
-        List<MovieDto> movies = movieServie.getAll();
+        List<MovieDto> movies = movieService.getAll();
 
         for (MovieDto m : movies) {
             System.out.println("---------------------------------------------");
@@ -91,6 +96,12 @@ public class LandingController {
     public String registerUser() {
         return "landing";
     }
+
+    @ModelAttribute(name = "movies")
+    private List<MovieDto> getMovies() {
+        return movieService.getAll();
+    }
+
 }
 
 //        GenreServiceImpl gs = new GenreServiceImpl();
