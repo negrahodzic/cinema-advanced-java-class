@@ -6,6 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -60,5 +61,45 @@ public class RoomEntity implements Serializable {
     public void setRoomName(String roomName) {
         this.roomName = roomName;
     }
+
+    @Override
+    public String toString() {
+        return "RoomEntity{" + "roomId=" + roomId + ", capacity=" + capacity + ", roomName=" + roomName + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.roomId);
+        hash = 37 * hash + this.capacity;
+        hash = 37 * hash + Objects.hashCode(this.roomName);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RoomEntity other = (RoomEntity) obj;
+        if (this.capacity != other.capacity) {
+            return false;
+        }
+        if (!Objects.equals(this.roomName, other.roomName)) {
+            return false;
+        }
+        if (!Objects.equals(this.roomId, other.roomId)) {
+            return false;
+        }
+        return true;
+    }
+
+    
 
 }

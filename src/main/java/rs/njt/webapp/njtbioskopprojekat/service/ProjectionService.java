@@ -5,15 +5,15 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.service;
 
-import rs.njt.webapp.njtbioskopprojekat.repository.*;
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
+import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 
 /**
  *
  * @author Negra
  */
-public interface ProjectionService {      
-    List<ProjectionEntity> getAll();
-    ProjectionEntity getById(Long id);
+public interface ProjectionService {
+
+    List<ProjectionDto> getAll();
+//    ProjectionEntity getById(Long id);
 }

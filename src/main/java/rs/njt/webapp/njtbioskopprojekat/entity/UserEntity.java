@@ -6,12 +6,16 @@
 package rs.njt.webapp.njtbioskopprojekat.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,26 +25,26 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "USER")
-public class UserEntity  implements Serializable{
-    
+public class UserEntity implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID")
     private Long userId;
     private String firstname;
     private String lastname;
     private String email;
     private String username;
     private String password;
-//    @OneToMany
-//    @JoinColumn(name = "userId")
-//    @OneToMany(mappedBy = "user")
-//    @OneToMany
-//    @JoinColumn(name = "USER_ID")
-//    @OneToMany(cascade = {CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.LAZY)
-//    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
-//    private List<ReservationEntity> reservations;
-    //private List<Review> reviews;
 
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
+    private List<ReviewEntity> reviews = new ArrayList<>();
+    
     public UserEntity() {
     }
 
@@ -51,9 +55,7 @@ public class UserEntity  implements Serializable{
         this.email = email;
         this.username = username;
         this.password = password;
-
     }
-
 
     public Long getUserId() {
         return userId;
@@ -101,7 +103,65 @@ public class UserEntity  implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
-    } 
-   
+    }
+
+    public List<ReviewEntity> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<ReviewEntity> reviews) {
+        this.reviews = reviews;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" + "userId=" + userId + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", username=" + username + ", password=" + password + ", reviews=" + reviews + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.userId);
+        hash = 23 * hash + Objects.hashCode(this.firstname);
+        hash = 23 * hash + Objects.hashCode(this.lastname);
+        hash = 23 * hash + Objects.hashCode(this.email);
+        hash = 23 * hash + Objects.hashCode(this.username);
+        hash = 23 * hash + Objects.hashCode(this.password);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UserEntity other = (UserEntity) obj;
+        if (!Objects.equals(this.firstname, other.firstname)) {
+            return false;
+        }
+        if (!Objects.equals(this.lastname, other.lastname)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.username, other.username)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.userId, other.userId)) {
+            return false;
+        }
+        return true;
+    }
+
     
 }

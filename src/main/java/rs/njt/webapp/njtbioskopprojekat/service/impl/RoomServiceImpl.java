@@ -5,10 +5,12 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
+import rs.njt.webapp.njtbioskopprojekat.model.RoomDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.RoomRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.RoomService;
 
@@ -23,12 +25,14 @@ public class RoomServiceImpl implements RoomService {
     private RoomRepository roomRepository;
 
     @Override
-    public List<RoomEntity> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<RoomDto> getAll() {
+        List<RoomEntity> rooms = roomRepository.findAll();
+        List<RoomDto> roomDtos = new ArrayList<>();
 
-    @Override
-    public RoomEntity getById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for ( RoomEntity room : rooms) {                        
+            roomDtos.add(new RoomDto(room.getRoomId(), room.getCapacity(), room.getRoomName()));
+        }
+
+        return roomDtos; 
     }
 }

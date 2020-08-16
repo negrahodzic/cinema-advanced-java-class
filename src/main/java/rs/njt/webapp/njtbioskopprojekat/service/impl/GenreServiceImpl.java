@@ -5,10 +5,12 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
+import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 
@@ -23,14 +25,15 @@ public class GenreServiceImpl implements GenreService {
     private GenreRepository genreRepository;
 
     @Override
-    public List<GenreEntity> getAll() {
-        //
-        return genreRepository.getAll();
-    }
+    public List<GenreDto> getAll() {
+        List<GenreEntity> genres = genreRepository.findAll();
+        List<GenreDto> genreDtos = new ArrayList<>();
 
-    @Override
-    public GenreEntity getById(Long id) {
-        return genreRepository.getById(id);
-    }
-    
+        for (GenreEntity genre : genres) {
+            genreDtos.add(new GenreDto(genre.getGenreId(), genre.getGenreName()));
+        }
+        
+        return genreDtos;
+    }      
+
 }

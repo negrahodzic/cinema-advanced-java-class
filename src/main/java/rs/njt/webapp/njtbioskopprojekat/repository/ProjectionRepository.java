@@ -5,14 +5,15 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 
 /**
  *
  * @author Negra
  */
-public interface ProjectionRepository {      
-    List<ProjectionEntity> getAll();
-    ProjectionEntity getById(Long id);
+@Repository
+public interface ProjectionRepository extends JpaRepository<ProjectionEntity, Long> {     
+
 }

@@ -5,16 +5,16 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
-import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 
 /**
  *
  * @author Negra
  */
-public interface GenreRepository {
+@Repository
+public interface GenreRepository extends JpaRepository<GenreEntity, Long> {
 
-    List<GenreEntity> getAll();
-
-    GenreEntity getById(Long id);
 }

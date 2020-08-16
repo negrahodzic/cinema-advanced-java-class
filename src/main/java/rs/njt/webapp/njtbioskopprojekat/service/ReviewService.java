@@ -7,7 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.service;
 
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
+import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
 
 /**
  *
@@ -15,8 +15,8 @@ import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
  */
 public interface ReviewService {
 
-    List<ReviewEntity> getAll();
+    List<ReviewDto> getAll();
 
-    ReviewEntity getById(Long id);
+//    ReviewEntity getById(Long id);
 
 }

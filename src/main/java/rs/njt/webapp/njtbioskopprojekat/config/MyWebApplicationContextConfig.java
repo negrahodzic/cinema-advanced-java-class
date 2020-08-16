@@ -5,16 +5,17 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
@@ -24,34 +25,31 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
  */
 @Configuration
 @Import(DatabaseConfiguration.class)
-@EnableWebMvc
 @ComponentScan(basePackages = {
-    "rs.njt.webapp.njtbioskopprojekat.controller",
-    "rs.njt.webapp.njtbioskopprojekat.repository",
-    "rs.njt.webapp.njtbioskopprojekat.service"
+    "rs.njt.webapp.njtbioskopprojekat"
 })
-
+@EnableJpaRepositories(basePackages = "rs.njt.webapp.njtbioskopprojekat.repository")
+@EnableWebMvc
+@EnableTransactionManagement
 public class MyWebApplicationContextConfig implements WebMvcConfigurer {
-    /*@Bean
-    public ViewResolver createViewResolver(){
-        InternalResourceViewResolver viewResolver= new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/pages/");
-        viewResolver.setSuffix(".jsp");
-        return  viewResolver;
-    }*/
-    
+
+    @Autowired
+    public MyWebApplicationContextConfig() {
+        
+    }
+
     @Bean
-    public ViewResolver tilesViewResolver(){
+    public ViewResolver tilesViewResolver() {
         TilesViewResolver tilesViewResolver = new TilesViewResolver();
         tilesViewResolver.setOrder(0);
         return tilesViewResolver;
     }
-    
+
     @Bean
-    public TilesConfigurer tilesConfigurer(){
+    public TilesConfigurer tilesConfigurer() {
         TilesConfigurer tilesConfigurer = new TilesConfigurer();
-        tilesConfigurer.setDefinitions( 
-                new String[] {"/WEB-INF/pages/tiles/tiles.xml"}
+        tilesConfigurer.setDefinitions(
+                new String[]{"/WEB-INF/pages/tiles/tiles.xml"}
         );
         return tilesConfigurer;
     }
@@ -61,5 +59,5 @@ public class MyWebApplicationContextConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/webjars/**").addResourceLocations("/webjars/");
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
- 
+
 }

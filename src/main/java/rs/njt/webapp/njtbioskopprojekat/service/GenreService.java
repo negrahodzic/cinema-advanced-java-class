@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
+import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
 
 /**
  *
@@ -14,8 +14,8 @@ import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
  */
 public interface GenreService {
 
-    List<GenreEntity> getAll();
+    List<GenreDto> getAll();
 
-    GenreEntity getById(Long id);
+//    GenreEntity getById(Long id);
 
 }

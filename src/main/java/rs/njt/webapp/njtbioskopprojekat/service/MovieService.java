@@ -6,13 +6,14 @@
 package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
+import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 
 /**
  *
  * @author Negra
  */
 public interface MovieService {
-    List<MovieEntity> getAll();
-    MovieEntity getById(Long id);
+
+    List<MovieDto> getAll();
+//    MovieEntity getById(Long id);
 }
