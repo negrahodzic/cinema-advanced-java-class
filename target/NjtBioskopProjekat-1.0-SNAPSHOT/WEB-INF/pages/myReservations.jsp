@@ -28,15 +28,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <%--<c:forEach var="" items="">--%>  
+                    <c:forEach var="reservation" items="${reservations}">  
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>${reservation.projection.movie.title}</td>
+                        <td>${reservation.projection.dateTimeOfProjection}</td>
+                        <td>${reservation.projection.room.roomName}</td>
+                        <td>${reservation.user.username}</td>
+                        <td><a href="<c:url value="/myReservations/${reservation.reservationId}/delete"/>" class="card-link">Delete</a></td>
                     </tr>
-                    <%--</c:forEach>--%>
+                    </c:forEach>
 
                 </tbody>
             </table>

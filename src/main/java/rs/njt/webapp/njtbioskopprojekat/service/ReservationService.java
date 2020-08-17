@@ -17,4 +17,6 @@ public interface ReservationService {
     List<ReservationDto> getAll();
 
 //    ReservationEntity getById(Long id);
+
+    public void delete(Long reservationId);
 }

@@ -61,4 +61,9 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationDtos; 
     }
 
+    @Override
+    public void delete(Long reservationId) {
+        reservationRepository.deleteById(reservationId);
+    }
+
 }
