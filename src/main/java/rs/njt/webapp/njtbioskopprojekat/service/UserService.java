@@ -16,7 +16,5 @@ public interface UserService {
 
     List<UserDto> getAll();
 
-//    UserEntity findByUsername(String username);
-
     public UserDto findByUsername(String username);
 }

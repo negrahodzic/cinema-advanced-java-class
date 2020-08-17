@@ -23,16 +23,16 @@ import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 @Controller
 @RequestMapping(path = "/searchMovies")
 public class MoviesController {
-    
-//    private final MovieService movieService;
+
+    private final MovieService movieService;
     private ModelAndView modelAndView = new ModelAndView();
 
-//    @Autowired
-//    public MoviesController(MovieService movieService) {
-//        this.movieService = movieService;
+    @Autowired
+    public MoviesController(MovieService movieService) {
+        this.movieService = movieService;
 //        System.out.println("+++++++++++++++++++++++++ LandingController(TestService testService, MovieService movieService) +++++++++++++++++++=");
-//        // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
-//    }
+        // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
+    }
     @GetMapping
     public ModelAndView searchMovies() {
         modelAndView.setViewName("searchMovies");
@@ -49,6 +49,11 @@ public class MoviesController {
     public ModelAndView seeProjections() { //TODO: dodati logiku, projections za izabran film
         modelAndView.setViewName("searchProjections");
         return modelAndView;
+    }
+
+    @ModelAttribute(name = "movies")
+    private List<MovieDto> getMovies() {
+        return movieService.getAll();
     }
 
 }

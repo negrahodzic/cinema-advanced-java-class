@@ -44,9 +44,6 @@ public class MovieEntity implements Serializable {
     @JoinColumn(name = "GENRE_ID", referencedColumnName = "GENRE_ID")
     private GenreEntity genre;
     
-//    @ManyToMany(mappedBy = "reviewedMovies", fetch = FetchType.EAGER)
-//    private Set<UserEntity> reviews = new HashSet<>();
-    
     @OneToMany(
         mappedBy = "movie",
         cascade = CascadeType.ALL,

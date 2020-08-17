@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
-import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
-import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
@@ -52,34 +50,25 @@ public class LandingController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        UserDto user = userService.findByUsername(username);
-        
-        if (user == null || !user.getPassword().equals(password)) {
+        if (username == null || "".equals(username)) {
             modelAndView.setViewName("redirect:/");
-        } else if (user.getPassword().equals(password)) {
-            request.getSession(true).setAttribute("loggedUser", user);
-            modelAndView.setViewName("searchMovies");
+        } else {
+            UserDto user = userService.findByUsername(username);
+
+            if (user == null || !user.getPassword().equals(password)) {
+                modelAndView.setViewName("redirect:/");
+            } else if (user.getPassword().equals(password)) {
+                request.getSession(true).setAttribute("loggedUser", user);
+                modelAndView.setViewName("searchMovies");
+            }
         }
+
         //   modelAndView.setViewName("searchMovies"); // privrmeno, bez logovanja
         return modelAndView;
     }
 
     @GetMapping(path = "register")
     public ModelAndView register() {
-
-        List<MovieDto> movies = movieService.getAll();
-
-        for (MovieDto m : movies) {
-            System.out.println("---------------------------------------------");
-            System.out.println("Movie title: " + m.getTitle());
-            System.out.println("Movie desciption: " + m.getDescription());
-            System.out.println("Movie genre: " + m.getGenre().getGenreName());
-            System.out.println("Movie review: " + m.getReviews().get(0).getGrade() + " - " + m.getReviews().get(0).getComment());
-            System.out.println("---------------------------------------------");
-        }
-
-        System.out.println("+++++++++++++++++++++++++ register() +++++++++++++++++++=");
-
         modelAndView.setViewName("register");
         return modelAndView;
     }
@@ -132,3 +121,15 @@ public class LandingController {
 //            System.out.println("===============================");
 //        }
 
+//        List<MovieDto> movies = movieService.getAll();
+//
+//        for (MovieDto m : movies) {
+//            System.out.println("---------------------------------------------");
+//            System.out.println("Movie title: " + m.getTitle());
+//            System.out.println("Movie desciption: " + m.getDescription());
+//            System.out.println("Movie genre: " + m.getGenre().getGenreName());
+//            System.out.println("Movie review: " + m.getReviews().get(0).getGrade() + " - " + m.getReviews().get(0).getComment());
+//            System.out.println("---------------------------------------------");
+//        }
+//
+//        System.out.println("+++++++++++++++++++++++++ register() +++++++++++++++++++=");
