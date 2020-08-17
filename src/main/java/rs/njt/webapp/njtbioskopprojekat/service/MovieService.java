@@ -16,4 +16,6 @@ public interface MovieService {
 
     List<MovieDto> getAll();
 //    MovieEntity getById(Long id);
+
+    public MovieDto getById(Long movieId);
 }

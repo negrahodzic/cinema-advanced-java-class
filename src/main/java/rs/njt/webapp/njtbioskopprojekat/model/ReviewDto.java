@@ -29,6 +29,13 @@ public class ReviewDto implements Serializable {
         this.comment = comment;
     }
 
+    public ReviewDto(Long reviewId, int grade, String comment, UserDto user) {
+        this.reviewId = reviewId;
+        this.grade = grade;
+        this.comment = comment;
+        this.user = user;
+    }
+
     
     public ReviewDto(int grade, String comment, MovieDto movie, UserDto user) {
         this.grade = grade;

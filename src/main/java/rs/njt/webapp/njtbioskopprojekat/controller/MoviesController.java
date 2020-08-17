@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
-import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 
 /**
@@ -39,21 +39,22 @@ public class MoviesController {
         return modelAndView;
     }
 
-    @GetMapping(path = "/seeReviews")
-    public ModelAndView reviews() { //TODO: dodati logiku, reviews za izabran film
-        modelAndView.setViewName("reviews");
-        return modelAndView;
-    }
-
     @GetMapping(path = "/seeProjections")
     public ModelAndView seeProjections() { //TODO: dodati logiku, projections za izabran film
         modelAndView.setViewName("searchProjections");
         return modelAndView;
     }
-
+    
+    @GetMapping(path = "/{movieId}/seeReviews")
+    public ModelAndView reviews(@PathVariable(name="movieId") Long movieId) { 
+        modelAndView.setViewName("reviews");
+        modelAndView.addObject("movieDto", movieService.getById(movieId));         
+        return modelAndView;
+    }
+  
     @ModelAttribute(name = "movies")
     private List<MovieDto> getMovies() {
         return movieService.getAll();
     }
-
+    
 }

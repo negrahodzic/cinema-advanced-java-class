@@ -29,6 +29,7 @@ public class LandingController {
 
     private final MovieService movieService;
     private final UserService userService;
+    private String message = "";
     private ModelAndView modelAndView = new ModelAndView();
 
     @Autowired
@@ -49,15 +50,21 @@ public class LandingController {
     public ModelAndView login(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
+        
         if (username == null || "".equals(username)) {
+            message = "You didn't enter all fields!";
             modelAndView.setViewName("redirect:/");
         } else {
             UserDto user = userService.findByUsername(username);
 
-            if (user == null || !user.getPassword().equals(password)) {
+            if (user == null) {
+                message = "There is no user with username " + username + "!";
                 modelAndView.setViewName("redirect:/");
-            } else if (user.getPassword().equals(password)) {
+            } else if (!user.getPassword().equals(password)) {
+                message = "You entered incorrect password!";
+                modelAndView.setViewName("redirect:/");
+            } else {
+                message = "";
                 request.getSession(true).setAttribute("loggedUser", user);
                 modelAndView.setViewName("searchMovies");
             }
@@ -91,6 +98,11 @@ public class LandingController {
         return movieService.getAll();
     }
 
+    @ModelAttribute(name = "message")
+    private String getMessage() {
+        return message;
+    }
+
 }
 
 //        GenreServiceImpl gs = new GenreServiceImpl();
@@ -120,7 +132,6 @@ public class LandingController {
 //            System.out.println("===============================");
 //            System.out.println("===============================");
 //        }
-
 //        List<MovieDto> movies = movieService.getAll();
 //
 //        for (MovieDto m : movies) {

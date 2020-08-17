@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-08-17T14:03:24")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-08-18T01:22:37")
 @StaticMetamodel(ProjectionEntity.class)
 public class ProjectionEntity_ { 
 

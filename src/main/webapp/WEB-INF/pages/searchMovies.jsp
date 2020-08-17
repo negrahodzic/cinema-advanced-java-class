@@ -29,15 +29,16 @@
 
             <div class="row">
                 <c:forEach var="movie" items="${movies}" varStatus="loop">
-                    <div class="col-md-3">
-                        <div class="card" style="width: 14rem;">
+                    <div class="col-md-4">
+                        <div class="card" style="width: 20rem;">
                             <img src="<c:url value="star.png"/>" class="card-img-top" alt="Here goes image" style="height: 8rem;">
                             <div class="card-body">
                                 <h5 class="card-title">${movie.title}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">${movie.duration} min, <span class="badge badge-dark">${movie.genre.genreName}</span></h6>
-                                <p class="card-text">${movie.description}
-                                    <a href="<c:url value="/searchMovies/seeReviews"/>" class="card-link">Reviews</a>
-                                </p>
+                                <h6 class="card-subtitle mb-2 text-muted">${movie.duration} min, 
+                                    &nbsp;<span class="badge badge-dark">${movie.genre.genreName}</span>
+                                    &nbsp;<a href="<c:url value="/searchMovies/${movie.movieId}/seeReviews"/>" class="card-link">Reviews</a>
+                                </h6>
+                                <p class="card-text">${movie.description}</p>
                                 <div class="text-center">
                                     <a href="<c:url value="/searchMovies/seeProjections"/>" class="btn btn-outline-primary">See projections</a>
                                 </div>

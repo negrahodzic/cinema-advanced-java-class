@@ -39,12 +39,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto findByUsername(String username) {
         UserEntity user = userRepository.findByUsername(username);
-        System.out.println("---------------------------------------------");
-        System.out.println("---------------------------------------------");
-        System.out.println("------------Service:" + user.getUsername() + " - " + user.getPassword() + "-----------");
-        System.out.println("---------------------------------------------");
-        System.out.println("---------------------------------------------");
+
+        if (user == null) {
+            return null;
+        }
+
         UserDto userDto = new UserDto(user.getUserId(), user.getFirstname(), user.getLastname(), user.getEmail(), user.getUsername(), user.getPassword());
+
         return userDto;
     }
 
