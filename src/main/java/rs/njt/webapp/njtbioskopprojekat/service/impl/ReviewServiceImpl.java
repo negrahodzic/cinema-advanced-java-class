@@ -39,4 +39,13 @@ public class ReviewServiceImpl implements ReviewService {
 
         return reviewDtos; 
     }
+
+    @Override
+    public void saveReview(Long movieId, String grade, String comment) {
+        //dovrsi logiku za save review
+        ReviewEntity reviewEntity = new ReviewEntity();
+        reviewRepository.save(reviewEntity);
+    }
+
+
 }

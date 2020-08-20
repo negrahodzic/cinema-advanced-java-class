@@ -17,6 +17,6 @@ public interface ReviewService {
 
     List<ReviewDto> getAll();
 
-//    ReviewEntity getById(Long id);
+
 
 }

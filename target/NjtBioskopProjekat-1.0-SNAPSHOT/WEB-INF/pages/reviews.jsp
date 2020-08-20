@@ -20,6 +20,9 @@
             <div class="jumbotron jumbotron-fluid">
                 <div class="container" style="padding-left: 60px; padding-right: 60px;">
                     <h1 class="display-4">Reviews: ${movieDto.title}  
+                        <div class="text-center">
+                            <a href="<c:url value="/reviews/${movieDto.movieId}/add"/>" class="btn btn-outline-primary">Add Review</a>
+                        </div>
                         <h6 class="card-subtitle mb-2 text-muted">${movieDto.duration} min, <span class="badge badge-dark">${movieDto.genre.genreName}</span></h6>
                     </h1>                    
                     <p class="lead">${movieDto.description}</p>

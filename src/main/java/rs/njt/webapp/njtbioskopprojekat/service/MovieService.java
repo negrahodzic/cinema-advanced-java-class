@@ -18,4 +18,5 @@ public interface MovieService {
 //    MovieEntity getById(Long id);
 
     public MovieDto getById(Long movieId);
+
 }

@@ -63,6 +63,11 @@ and open the template in the editor.
         <put-attribute name="body" value="/WEB-INF/pages/reviews.jsp"></put-attribute>
     </definition>
     
+    <definition name="reviews/add" extends="base-definition">
+        <put-attribute name="title" value="Add review page"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/pages/addReview.jsp"></put-attribute>
+    </definition>
+    
     <definition name="createReservation" extends="base-definition">
         <put-attribute name="title" value="Create reservation page"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/pages/createReservation.jsp"></put-attribute>
