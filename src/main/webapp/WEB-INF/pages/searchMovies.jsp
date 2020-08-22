@@ -40,7 +40,7 @@
                                 </h6>
                                 <p class="card-text">${movie.description}</p>
                                 <div class="text-center">
-                                    <a href="<c:url value="/searchMovies/seeProjections"/>" class="btn btn-outline-primary">See projections</a>
+                                    <a href="<c:url value="/searchMovies/${movie.movieId}/seeProjections"/>" class="btn btn-outline-primary">See projections</a>
                                 </div>
                             </div>
                         </div>

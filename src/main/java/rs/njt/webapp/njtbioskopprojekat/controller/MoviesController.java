@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
+import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
 /**
  *
@@ -26,12 +28,12 @@ public class MoviesController {
 
     private final MovieService movieService;
     private ModelAndView modelAndView = new ModelAndView();
+    private final ProjectionService projectionService;
 
     @Autowired
-    public MoviesController(MovieService movieService) {
+    public MoviesController(MovieService movieService, ProjectionService projectionService) {
         this.movieService = movieService;
-//        System.out.println("+++++++++++++++++++++++++ LandingController(TestService testService, MovieService movieService) +++++++++++++++++++=");
-        // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
+        this.projectionService=projectionService;
     }
     @GetMapping
     public ModelAndView searchMovies() {
@@ -42,6 +44,12 @@ public class MoviesController {
     @GetMapping(path = "/seeProjections")
     public ModelAndView seeProjections() { //TODO: dodati logiku, projections za izabran film
         modelAndView.setViewName("searchProjections");
+        return modelAndView;
+    }
+    @GetMapping(path = "/{movieId}/seeProjections")
+    public ModelAndView seeProjections(@PathVariable(name="movieId") Long movieId) { 
+        modelAndView.setViewName("searchProjections");
+        modelAndView.addObject("projections", projectionService.getByMovieId(movieId));         
         return modelAndView;
     }
     
@@ -56,5 +64,6 @@ public class MoviesController {
     private List<MovieDto> getMovies() {
         return movieService.getAll();
     }
+    
     
 }

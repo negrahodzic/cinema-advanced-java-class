@@ -5,7 +5,9 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 
@@ -15,5 +17,7 @@ import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
  */
 @Repository
 public interface ProjectionRepository extends JpaRepository<ProjectionEntity, Long> {     
+    @Query(value = "SELECT p FROM ProjectionEntity p WHERE p.movie.movieId = ?1")
+    public List<ProjectionEntity> findByMovieId(Long movieId);
 
 }

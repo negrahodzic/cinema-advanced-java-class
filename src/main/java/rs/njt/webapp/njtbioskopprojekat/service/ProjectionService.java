@@ -16,4 +16,6 @@ public interface ProjectionService {
 
     List<ProjectionDto> getAll();
 //    ProjectionEntity getById(Long id);
+
+    public List<ProjectionDto> getByMovieId(Long movieId);
 }

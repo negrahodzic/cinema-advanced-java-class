@@ -55,4 +55,38 @@ public class ProjectionServiceImpl implements ProjectionService {
         return projectionDtos; 
     }
 
+    @Override
+    public List<ProjectionDto> getByMovieId(Long movieId) {
+        
+        List<ProjectionEntity> projections = projectionRepository.findByMovieId(movieId);
+        System.out.println("==============================================");
+        System.out.println("==============================================");
+        System.out.println("==============================================");
+        System.out.println("projections: "+projections.get(0).getProjectionId());
+        System.out.println("==============================================");
+        List<ProjectionDto> projectionDtos = new ArrayList<>();
+
+        for (ProjectionEntity projection : projections) {   
+            
+            // TODO: ovo napraviti u metodi u review repo ili service 
+            List<ReviewEntity> reviews = projection.getMovie().getReviews();   
+            List<ReviewDto> reviewDtos = new ArrayList<>();
+            
+            for (ReviewEntity review : reviews) { 
+                reviewDtos.add(new ReviewDto(review.getReviewId(), review.getGrade(), review.getComment()));
+            }
+            
+            projectionDtos.add(new ProjectionDto(projection.getProjectionId(), projection.getDateTimeOfProjection(),
+                                    projection.getTechnology(), projection.getEdited(), 
+                                    new RoomDto(projection.getRoom().getRoomId(), projection.getRoom().getCapacity(), projection.getRoom().getRoomName()), 
+                                    new MovieDto(projection.getMovie().getMovieId(), projection.getMovie().getTitle(), projection.getMovie().getDescription(), projection.getMovie().getDuration(), 
+                                                 new GenreDto(projection.getMovie().getGenre().getGenreId(), projection.getMovie().getGenre().getGenreName()), 
+                                    reviewDtos)));
+        }
+
+        return projectionDtos;
+
+
+    }
+
 }
