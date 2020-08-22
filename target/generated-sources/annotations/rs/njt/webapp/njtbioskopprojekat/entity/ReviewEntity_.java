@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-08-18T01:22:37")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-08-22T21:22:45")
 @StaticMetamodel(ReviewEntity.class)
 public class ReviewEntity_ { 
 

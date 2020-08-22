@@ -16,27 +16,35 @@
     <body>
         
         <div class="container">
-            <h1>Edit profile</h1>
-        <form action="<c:url value="/editProfile/save"/>" method="post">
-            <p/>
-            First name:
-            <input type="text" name="firstname" value="" />
-            <p/>
-            Last name:
-            <input type="text" name="lastname" value="" />
-            <p/>
-            Email:
-            <input type="text" name="email" value="" />
-            <p/>
-            Username:
-            <input type="text" name="username" value="" />
-            <p/>
-            Password:
-            <input type="password" name="password" value="" />
-            <p/>
-            <input type="submit" value="Save changes" name="save" />
-        </form>
-
+        
+            <div class="row ">
+                <div class="col-md-3">
+                </div>
+            
+            <div class="col-md-6" style="padding: 20px;">
+                <form action="<c:url value="/editProfile/save"/>" method="post">
+                    <p/>
+                    First name:
+                    <input type="text" name="firstname" value="${loggedUser.firstname}" class="form-control" />
+                    <p/>
+                    Last name:
+                    <input type="text" name="lastname" value="${loggedUser.lastname}" class="form-control"/>
+                    <p/>
+                    Email:
+                    <input type="text" name="email" value="${loggedUser.email}" class="form-control"/>
+                    <p/>
+                    Username:
+                    <input type="text" name="username" value="${loggedUser.username}" class="form-control"/>
+                    <p/>
+                    Password:
+                    <input type="password" name="password" value="${loggedUser.password}" class="form-control"/>
+                    <p/>
+                    <input type="submit" value="Save changes" name="save" class="btn btn-outline-primary"/>
+                </form>
+            </div>
+            <div class="col-md-3">
+            </div>
+            </div>
         </div>
         
     </body>

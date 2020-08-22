@@ -13,13 +13,16 @@
         <title>Add review</title>
     </head>
     <body>
+        
         <div class="container">
+            <br>
             <div class="row ">
                 <div class="col-md-3">
                 </div>
 
-                <div class="col-md-6 border border-primary rounded" style="padding: 20px;">
-                    Add review: ${movieDto.title} <br> 
+                <div class="col-md-6" style="padding: 20px;">
+                    <h3>Add review: ${movieDto.title}</h3> 
+                    <br> 
                     <form action="<c:url value="/reviews/${movieDto.movieId}/save"/>" method="post">
                         <div class="form-group">
                             <label>Grade</label>
@@ -35,7 +38,7 @@
                         </div>
                         <p/>
                         <div class="text-center">
-                        <input type="submit" id="addReview" value="addReview" class="btn btn-outline-primary"/>
+                        <input type="submit" id="addReview" value="Add review" class="btn btn-outline-primary"/>
                         </div>
                         <p/>
                     </form>

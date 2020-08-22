@@ -39,7 +39,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         return reviewDtos; 
     }
-
+/*
     @Override
     public void saveReview(Long movieId, String grade, String comment) {
         //dovrsi logiku za save review
@@ -47,5 +47,5 @@ public class ReviewServiceImpl implements ReviewService {
         reviewRepository.save(reviewEntity);
     }
 
-
+*/
 }

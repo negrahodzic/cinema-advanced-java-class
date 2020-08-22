@@ -17,4 +17,6 @@ public interface UserService {
     List<UserDto> getAll();
 
     public UserDto findByUsername(String username);
+    
+    public void updateUser(UserDto user);
 }

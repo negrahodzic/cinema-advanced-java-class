@@ -53,7 +53,7 @@ public class ReviewsController {
         String comment = request.getParameter("comment");
         int gradeInt = Integer.getInteger(grade);
         
-        reviewService.saveReview(movieId, grade, comment);
+        //reviewService.saveReview(movieId, grade, comment);
         
         modelAndView.setViewName("reviews");
         modelAndView.addObject("movieDto", movieService.getById(movieId));

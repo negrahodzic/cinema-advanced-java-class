@@ -81,9 +81,14 @@ public class LandingController {
     }
 
     @GetMapping(path = "logout")
-    public ModelAndView logout() {
+    public ModelAndView logout(HttpServletRequest request) {
+        
+        
+            request.getSession(true).setAttribute("loggedUser", null);
+            modelAndView.setViewName("landing");
+        
         //TODO: izlogovati, obrisati session
-        modelAndView.setViewName("landing");
+        
         return modelAndView;
     }
 
