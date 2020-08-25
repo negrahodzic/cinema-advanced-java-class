@@ -7,8 +7,10 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
@@ -87,6 +89,33 @@ public class ProjectionServiceImpl implements ProjectionService {
         return projectionDtos;
 
 
+    }
+
+    @Override
+    public ProjectionDto getById(Long projectionId) {
+        Optional<ProjectionEntity> projection = projectionRepository.findById(projectionId);
+            
+        List<ProjectionDto> projectionDtos = new ArrayList<>();
+
+           
+            
+            // TODO: ovo napraviti u metodi u review repo ili service 
+            List<ReviewEntity> reviews = projection.get().getMovie().getReviews();   
+            List<ReviewDto> reviewDtos = new ArrayList<>();
+            
+            for (ReviewEntity review : reviews) { 
+                reviewDtos.add(new ReviewDto(review.getReviewId(), review.getGrade(), review.getComment()));
+            }
+            
+            projectionDtos.add(new ProjectionDto(projection.get().getProjectionId(), projection.get().getDateTimeOfProjection(),
+                                    projection.get().getTechnology(), projection.get().getEdited(), 
+                                    new RoomDto(projection.get().getRoom().getRoomId(), projection.get().getRoom().getCapacity(), projection.get().getRoom().getRoomName()), 
+                                    new MovieDto(projection.get().getMovie().getMovieId(), projection.get().getMovie().getTitle(), projection.get().getMovie().getDescription(), projection.get().getMovie().getDuration(), 
+                                                 new GenreDto(projection.get().getMovie().getGenre().getGenreId(), projection.get().getMovie().getGenre().getGenreName()), 
+                                    reviewDtos)));
+        
+
+        return projectionDtos.get(0);
     }
 
 }

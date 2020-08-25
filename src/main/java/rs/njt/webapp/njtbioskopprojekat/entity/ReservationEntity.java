@@ -43,7 +43,14 @@ public class ReservationEntity implements Serializable {
 
     public ReservationEntity() {
     }
-
+    
+    public ReservationEntity(Date dateTimeOfReservation, int ticketQuantity, ProjectionEntity projection, UserEntity user) {
+        this.dateTimeOfReservation = dateTimeOfReservation;
+        this.ticketQuantity = ticketQuantity;
+        this.projection = projection;
+        this.user = user;
+    }
+    
     public ReservationEntity(Long reservationId, Date dateTimeOfReservation, int ticketQuantity, ProjectionEntity projection, UserEntity user) {
         this.reservationId = reservationId;
         this.dateTimeOfReservation = dateTimeOfReservation;

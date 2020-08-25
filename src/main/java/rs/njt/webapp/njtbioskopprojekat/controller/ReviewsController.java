@@ -51,7 +51,7 @@ public class ReviewsController {
     public ModelAndView saveReview(@PathVariable(name="movieId") Long movieId, HttpServletRequest request) { 
         String grade = request.getParameter("grade");
         String comment = request.getParameter("comment");
-        int gradeInt = Integer.getInteger(grade);
+        int gradeInt = Integer.parseInt(grade);
         
         //reviewService.saveReview(movieId, grade, comment);
         

@@ -19,4 +19,6 @@ public interface ReservationService {
 //    ReservationEntity getById(Long id);
 
     public void delete(Long reservationId);
+
+    public void saveReservation(ReservationDto reservation);
 }

@@ -18,4 +18,6 @@ public interface ProjectionService {
 //    ProjectionEntity getById(Long id);
 
     public List<ProjectionDto> getByMovieId(Long movieId);
+
+    public ProjectionDto getById(Long projectionId);
 }

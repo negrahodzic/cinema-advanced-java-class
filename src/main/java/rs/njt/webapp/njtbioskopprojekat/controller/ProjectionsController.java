@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
@@ -50,4 +51,12 @@ public class ProjectionsController {
     private List<ProjectionDto> getProjections() {
         return projectionService.getAll();
     }
+    
+    @GetMapping(path = "/{projectionId}/createReservation")
+    public ModelAndView createReservation(@PathVariable(name="projectionId") Long projectionId) { 
+        modelAndView.setViewName("createReservation");
+        modelAndView.addObject("projectionDto", projectionService.getById(projectionId));         
+        return modelAndView;
+    }
 }
+
