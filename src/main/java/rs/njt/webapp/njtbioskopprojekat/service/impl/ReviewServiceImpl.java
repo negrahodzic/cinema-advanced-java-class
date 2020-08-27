@@ -9,10 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
+import rs.njt.webapp.njtbioskopprojekat.converter.ReviewConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
-import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.ReviewRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
@@ -34,7 +32,7 @@ public class ReviewServiceImpl implements ReviewService {
         List<ReviewDto> reviewDtos = new ArrayList<>();
 
         for (ReviewEntity review : reviews) {                        
-            reviewDtos.add(new ReviewDto(review.getReviewId(), review.getGrade(), review.getComment()));
+            reviewDtos.add(ReviewConverter.convertFromEntityToDto(review));
         }
 
         return reviewDtos; 

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.njt.webapp.njtbioskopprojekat.converter.MovieConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
@@ -35,18 +36,7 @@ public class MovieServiceImpl implements MovieService {
         List<MovieDto> movieDtos = new ArrayList<>();
 
         for (MovieEntity movie : movies) {
-
-            // TODO: ovo napraviti u metodi u review repo ili service 
-            List<ReviewEntity> reviews = movie.getReviews();
-            List<ReviewDto> reviewDtos = new ArrayList<>();
-
-            for (ReviewEntity review : reviews) {
-                reviewDtos.add(new ReviewDto(review.getReviewId(), review.getGrade(), review.getComment()));
-            }
-
-            movieDtos.add(new MovieDto(movie.getMovieId(), movie.getTitle(), movie.getDescription(),
-                    movie.getDuration(), new GenreDto(movie.getGenre().getGenreId(), movie.getGenre().getGenreName()),
-                    reviewDtos));
+            movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
         }
 
         return movieDtos;
@@ -56,17 +46,7 @@ public class MovieServiceImpl implements MovieService {
     public MovieDto getById(Long movieId) {
         Optional<MovieEntity> movie = movieRepository.findById(movieId);
 
-        List<ReviewEntity> reviews = movie.get().getReviews();
-        List<ReviewDto> reviewDtos = new ArrayList<>();
-
-        for (ReviewEntity review : reviews) {
-            reviewDtos.add(new ReviewDto(review.getReviewId(), review.getGrade(), review.getComment(), 
-                    new UserDto(review.getUser().getUsername())));
-        }
-
-        MovieDto movieDto = new MovieDto(movie.get().getMovieId(), movie.get().getTitle(), movie.get().getDescription(),
-                movie.get().getDuration(), new GenreDto(movie.get().getGenre().getGenreId(), movie.get().getGenre().getGenreName()),
-                reviewDtos);
+        MovieDto movieDto = MovieConverter.convertFromEntityToDto(movie.get());
         
         return movieDto;
     }

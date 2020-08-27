@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.njt.webapp.njtbioskopprojekat.converter.RoomConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.RoomDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.RoomRepository;
@@ -30,7 +31,7 @@ public class RoomServiceImpl implements RoomService {
         List<RoomDto> roomDtos = new ArrayList<>();
 
         for ( RoomEntity room : rooms) {                        
-            roomDtos.add(new RoomDto(room.getRoomId(), room.getCapacity(), room.getRoomName()));
+            roomDtos.add(RoomConverter.convertFromEntityToDto(room));
         }
 
         return roomDtos; 
