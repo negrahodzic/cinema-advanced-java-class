@@ -6,6 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,21 +27,21 @@ public class MovieDto implements Serializable {
         
     }
 
-    public MovieDto(String title, String description, int duration, GenreDto genre, List<ReviewDto> reviews) {
+    public MovieDto(String title, String description, int duration, GenreDto genre) {
         this.title = title;
         this.description = description;
         this.duration = duration;
         this.genre = genre;
-        this.reviews = reviews;
+        this.reviews = new ArrayList<>();
     }
 
-    public MovieDto(Long movieId, String title, String description, int duration, GenreDto genre, List<ReviewDto> reviews) {
+    public MovieDto(Long movieId, String title, String description, int duration, GenreDto genre) {
         this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.duration = duration;
         this.genre = genre;
-        this.reviews = reviews;
+        this.reviews = new ArrayList<>();
     }
 
     public Long getMovieId() {

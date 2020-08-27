@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 
@@ -50,10 +51,13 @@ public class ReviewsController {
     @PostMapping(path = "/{movieId}/save")
     public ModelAndView saveReview(@PathVariable(name="movieId") Long movieId, HttpServletRequest request) { 
         String grade = request.getParameter("grade");
-        String comment = request.getParameter("comment");
         int gradeInt = Integer.parseInt(grade);
         
-        //reviewService.saveReview(movieId, grade, comment);
+        String comment = request.getParameter("comment");   
+        
+        UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
+        
+        reviewService.saveReview(movieId, gradeInt, comment, user);
         
         modelAndView.setViewName("reviews");
         modelAndView.addObject("movieDto", movieService.getById(movieId));

@@ -10,8 +10,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.converter.ReviewConverter;
+import rs.njt.webapp.njtbioskopprojekat.converter.UserConverter;
+import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
+import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.repository.MovieRepository;
 import rs.njt.webapp.njtbioskopprojekat.repository.ReviewRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 
@@ -24,20 +28,22 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Autowired
     private ReviewRepository reviewRepository;
-
+    @Autowired
+    private MovieRepository movieRepository;
 
     @Override
     public List<ReviewDto> getAll() {
         List<ReviewEntity> reviews = reviewRepository.findAll();
         List<ReviewDto> reviewDtos = new ArrayList<>();
 
-        for (ReviewEntity review : reviews) {                        
+        for (ReviewEntity review : reviews) {
             reviewDtos.add(ReviewConverter.convertFromEntityToDto(review));
         }
 
-        return reviewDtos; 
+        return reviewDtos;
     }
-/*
+
+    /*
     @Override
     public void saveReview(Long movieId, String grade, String comment) {
         //dovrsi logiku za save review
@@ -45,5 +51,20 @@ public class ReviewServiceImpl implements ReviewService {
         reviewRepository.save(reviewEntity);
     }
 
-*/
+     */
+
+    @Override
+    public void saveReview(Long movieId, int gradeInt, String comment, UserDto user) {
+
+//        ReviewEntity review = new ReviewEntity(gradeInt, comment);
+        MovieEntity movie = movieRepository.findById(movieId).get();
+        ReviewEntity review = new ReviewEntity(movie, UserConverter.convertFromDtoToEntity(user));
+        review.setGrade(gradeInt);
+        review.setComment(comment);
+        movie.addReviewUser(UserConverter.convertFromDtoToEntity(user), review);
+        
+        // ne radi ako vec postoji review sa istim id (movieid i userid)
+        movieRepository.saveAndFlush(movie);
+        
+    }
 }

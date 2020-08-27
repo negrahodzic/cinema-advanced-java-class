@@ -8,6 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,10 +26,9 @@ import javax.persistence.Table;
 @Table(name = "REVIEW")
 public class ReviewEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "REVIEW_ID")
-    private Long reviewId;
+    @EmbeddedId
+    private ReviewId reviewId;
+
     private int grade;
     private String comment;
 
@@ -42,14 +42,19 @@ public class ReviewEntity implements Serializable {
 
     public ReviewEntity() {
     }
-    
-    public ReviewEntity( MovieEntity movie, UserEntity user) {
+
+    public ReviewEntity(MovieEntity movie, UserEntity user) {
         this.user = user;
         this.movie = movie;
-       // this.reviewId = new PostTagId(post.getId(), tag.getId());
+        this.reviewId = new ReviewId(movie.getMovieId(), user.getUserId());
     }
 
-    public ReviewEntity(Long reviewId, int grade, String comment, MovieEntity movie, UserEntity user) {
+    public ReviewEntity(int grade, String comment) {
+        this.grade = grade;
+        this.comment = comment;
+    }
+
+    public ReviewEntity(ReviewId reviewId, int grade, String comment, MovieEntity movie, UserEntity user) {
         this.reviewId = reviewId;
         this.grade = grade;
         this.comment = comment;
@@ -57,11 +62,25 @@ public class ReviewEntity implements Serializable {
         this.user = user;
     }
 
-    public Long getReviewId() {
+    public ReviewEntity(ReviewId reviewId, int grade, String comment) {
+        this.reviewId = reviewId;
+        this.grade = grade;
+        this.comment = comment;
+    }
+
+    public ReviewEntity(int grade, String comment, MovieEntity movie, UserEntity user) {
+        this.grade = grade;
+        this.comment = comment;
+        this.movie = movie;
+        this.user = user;
+    }
+
+    
+    public ReviewId getReviewId() {
         return reviewId;
     }
 
-    public void setReviewId(Long reviewId) {
+    public void setReviewId(ReviewId reviewId) {
         this.reviewId = reviewId;
     }
 
@@ -99,7 +118,7 @@ public class ReviewEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "ReviewEntity{" + "reviewId=" + reviewId + ", grade=" + grade + ", comment=" + comment + ", movie=" + movie + ", user=" + user + '}';
+        return "ReviewEntity{" + "reviewId=" + reviewId + ", grade=" + grade + ", comment=" + comment +  '}';
     }
 
     @Override
@@ -143,5 +162,4 @@ public class ReviewEntity implements Serializable {
         return true;
     }
 
-    
 }

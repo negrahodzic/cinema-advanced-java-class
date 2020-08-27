@@ -110,7 +110,7 @@ public class MovieEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "MovieEntity{" + "movieId=" + movieId + ", title=" + title + ", description=" + description + ", duration=" + duration + ", genre=" + genre + ", reviews=" + reviews + '}';
+        return "MovieEntity{" + "movieId=" + movieId + ", title=" + title + ", description=" + description + ", duration=" + duration +  '}';
     }
 
     @Override
@@ -154,8 +154,10 @@ public class MovieEntity implements Serializable {
         return true;
     }
     
-    public void addUser(UserEntity user) {
-        ReviewEntity review = new ReviewEntity(this, user);
+    public void addReviewUser(UserEntity user, ReviewEntity review) {
+//        ReviewEntity review = new ReviewEntity(this, user);
+        review.setMovie(this);
+        review.setUser(user);
         reviews.add(review);
         user.getReviews().add(review);
     }

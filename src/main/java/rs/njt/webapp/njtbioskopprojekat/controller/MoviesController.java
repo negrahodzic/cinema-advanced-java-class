@@ -35,6 +35,7 @@ public class MoviesController {
         this.movieService = movieService;
         this.projectionService=projectionService;
     }
+    
     @GetMapping
     public ModelAndView searchMovies() {
         modelAndView.setViewName("searchMovies");

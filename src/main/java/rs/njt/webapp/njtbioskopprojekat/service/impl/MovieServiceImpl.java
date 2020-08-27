@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.njt.webapp.njtbioskopprojekat.converter.GenreConverter;
 import rs.njt.webapp.njtbioskopprojekat.converter.MovieConverter;
+import rs.njt.webapp.njtbioskopprojekat.converter.ReviewConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
@@ -36,7 +38,8 @@ public class MovieServiceImpl implements MovieService {
         List<MovieDto> movieDtos = new ArrayList<>();
 
         for (MovieEntity movie : movies) {
-            movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
+            MovieDto movieDto = MovieConverter.convertFromEntityToDto(movie);
+            movieDtos.add(movieDto);
         }
 
         return movieDtos;
@@ -45,8 +48,18 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public MovieDto getById(Long movieId) {
         Optional<MovieEntity> movie = movieRepository.findById(movieId);
-
+        
+        // movieDto bez liste reviews
         MovieDto movieDto = MovieConverter.convertFromEntityToDto(movie.get());
+        
+        // Entity -> Dto reviews
+        List<ReviewDto> reviewDtos = new ArrayList<>();
+        for (ReviewEntity review : movie.get().getReviews()) {
+            reviewDtos.add(ReviewConverter.convertFromEntityToDto(review));
+        }
+        
+        // movieDto sa listom reviews
+        movieDto.setReviews(reviewDtos);
         
         return movieDto;
     }

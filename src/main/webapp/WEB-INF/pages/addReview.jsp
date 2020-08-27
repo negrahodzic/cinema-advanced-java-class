@@ -27,13 +27,13 @@
                         <div class="form-group">
                             <label>Grade</label>
                             <div> 
-                                <input type="number" id="grade" name="grade" class="form-control"/> 
+                                <input type="number" id="grade" name="grade" value = "" class="form-control"/> 
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Comment</label>
                             <div> 
-                                <input type="text" id="comment" name="comment" class="form-control"/> 
+                                <input type="text" id="comment" name="comment" value = "" class="form-control"/> 
                             </div>
                         </div>
                         <p/>
