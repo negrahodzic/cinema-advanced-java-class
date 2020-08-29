@@ -5,12 +5,8 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
-import java.util.ArrayList;
-import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
-import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
-import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
 
 /**
  *
@@ -19,13 +15,14 @@ import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
 public class MovieConverter {
 
     public static MovieDto convertFromEntityToDto(MovieEntity movie) { 
-        MovieDto movieDto = new MovieDto(movie.getMovieId(), movie.getTitle(), movie.getDescription(), movie.getDuration(),
+        MovieDto movieDto = new MovieDto(movie.getMovieId(), movie.getTitle(), movie.getDescription(), movie.getDuration(), movie.getImage(),
                                 GenreConverter.convertFromEntityToDto(movie.getGenre()));
         return movieDto;
+
     }
 
     public static MovieEntity convertFromDtoToEntity(MovieDto movieDto) {        
-        MovieEntity movie = new MovieEntity(movieDto.getMovieId(), movieDto.getTitle(), movieDto.getDescription(), movieDto.getDuration(),
+        MovieEntity movie = new MovieEntity(movieDto.getMovieId(), movieDto.getTitle(), movieDto.getDescription(), movieDto.getDuration(), movieDto.getImage(),
                                 GenreConverter.convertFromDtoToEntity(movieDto.getGenre()));
         return movie;
     }

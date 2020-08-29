@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-2 text-center align-items-center">
-                                        <img src="../star.png" class="card-img-top" alt="Here goes image" style="height: 5rem; width: 5rem;">
+                                        <img src="resources/images/${projection.movie.image}.png" class="card-img-top" alt="Here goes image" style="height: 5rem; width: 5rem;">
                                     </div>
                                     <div class="col-md-10">
                                         <ul class="list-group list-group-horizontal justify-content-around align-items-center" >                                   
@@ -49,6 +49,7 @@
                                 </div>
                             </div>
                         </div>
+                                        <br>
                     </div>
                 </c:forEach>
             </div>

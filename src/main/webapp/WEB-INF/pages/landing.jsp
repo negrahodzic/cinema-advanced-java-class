@@ -56,7 +56,6 @@
         </style>
     </head>
     <body>
-
         <div class="container" style="height: 100px; text-align: center; margin-top:  50px;">
             <h3>Welcome to our cinema page! Please login to continue.</h3>
         </div>
@@ -106,5 +105,6 @@
             <c:set var = "message" value = "" scope="session"/>
         </c:if>
 
+            <!-- <a href="https://lovepik.com/images/ellipse.html">Png vectors created by 30000006446 - lovepik.com</a> -->
     </body>
 </html>

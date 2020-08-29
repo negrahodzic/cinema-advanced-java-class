@@ -5,8 +5,6 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
-import java.util.ArrayList;
-import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
@@ -19,7 +17,7 @@ import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 public class ReviewConverter {
 
     public static ReviewDto convertFromEntityToDto(ReviewEntity review) {
-        MovieDto movieDto = new MovieDto(review.getMovie().getMovieId(), review.getMovie().getTitle(), review.getMovie().getDescription(), review.getMovie().getDuration(),
+        MovieDto movieDto = new MovieDto(review.getMovie().getMovieId(), review.getMovie().getTitle(), review.getMovie().getDescription(), review.getMovie().getDuration(), review.getMovie().getImage(),
                 GenreConverter.convertFromEntityToDto(review.getMovie().getGenre()));
         UserDto userDto = UserConverter.convertFromEntityToDto(review.getUser());
         ReviewDto reviewDto = new ReviewDto(review.getGrade(), review.getComment(),

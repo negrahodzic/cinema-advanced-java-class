@@ -32,7 +32,7 @@
                 <c:forEach var="movie" items="${movies}" varStatus="loop">
                     <div class="col-md-4">
                         <div class="card" style="width: 20rem;">
-                            <img src="<c:url value="star.png"/>" class="card-img-top" alt="Here goes image" style="height: 8rem;">
+                            <img src="<c:url value="resources/images/${movie.image}.png"/>" class="card-img-top" alt="Here goes image" style="height: 12rem;">
                             <div class="card-body">
                                 <h5 class="card-title">${movie.title}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">${movie.duration} min, 

@@ -20,6 +20,7 @@ public class MovieDto implements Serializable {
     private String title;
     private String description;
     private int duration;
+    private String image;
     private GenreDto genre;
     private List<ReviewDto> reviews;
 
@@ -27,19 +28,21 @@ public class MovieDto implements Serializable {
         
     }
 
-    public MovieDto(String title, String description, int duration, GenreDto genre) {
+    public MovieDto(String title, String description, int duration, String image, GenreDto genre) {
         this.title = title;
         this.description = description;
         this.duration = duration;
+        this.image = image;
         this.genre = genre;
         this.reviews = new ArrayList<>();
     }
 
-    public MovieDto(Long movieId, String title, String description, int duration, GenreDto genre) {
+    public MovieDto(Long movieId, String title, String description, int duration, String image, GenreDto genre) {
         this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.duration = duration;
+        this.image = image;
         this.genre = genre;
         this.reviews = new ArrayList<>();
     }
@@ -92,19 +95,22 @@ public class MovieDto implements Serializable {
         this.reviews = reviews;
     }
 
-    @Override
-    public String toString() {
-        return "MovieDto{" + "movieId=" + movieId + ", title=" + title + ", description=" + description + ", duration=" + duration + ", genre=" + genre + ", reviews=" + reviews + '}';
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.movieId);
-        hash = 47 * hash + Objects.hashCode(this.title);
-        hash = 47 * hash + Objects.hashCode(this.description);
-        hash = 47 * hash + this.duration;
-        hash = 47 * hash + Objects.hashCode(this.genre);
+        hash = 83 * hash + Objects.hashCode(this.movieId);
+        hash = 83 * hash + Objects.hashCode(this.title);
+        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 83 * hash + this.duration;
+        hash = 83 * hash + Objects.hashCode(this.image);
         return hash;
     }
 
@@ -129,13 +135,18 @@ public class MovieDto implements Serializable {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.image, other.image)) {
+            return false;
+        }
         if (!Objects.equals(this.movieId, other.movieId)) {
             return false;
         }
-        if (!Objects.equals(this.genre, other.genre)) {
-            return false;
-        }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieDto{" + "movieId=" + movieId + ", title=" + title + ", description=" + description + ", duration=" + duration + ", image=" + image + '}';
     }
 
 

@@ -36,6 +36,7 @@ public class MovieEntity implements Serializable {
     private String title;
     private String description;
     private int duration;
+    private String image;
     
     @ManyToOne(fetch = FetchType.EAGER) // Note: U nasem slucaju, film ima samo jedan zanr 
     @JoinColumn(name = "GENRE_ID", referencedColumnName = "GENRE_ID")
@@ -52,11 +53,12 @@ public class MovieEntity implements Serializable {
     public MovieEntity() {
     }
 
-    public MovieEntity(Long movieId, String title, String description, int duration, GenreEntity genre) {
+    public MovieEntity(Long movieId, String title, String description, int duration, String image, GenreEntity genre) {
         this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.duration = duration;
+        this.image = image;
         this.genre = genre;
     }
 
@@ -107,52 +109,6 @@ public class MovieEntity implements Serializable {
     public void setReviews(List<ReviewEntity> reviews) {
         this.reviews = reviews;
     }
-
-    @Override
-    public String toString() {
-        return "MovieEntity{" + "movieId=" + movieId + ", title=" + title + ", description=" + description + ", duration=" + duration +  '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.movieId);
-        hash = 53 * hash + Objects.hashCode(this.title);
-        hash = 53 * hash + Objects.hashCode(this.description);
-        hash = 53 * hash + this.duration;
-        hash = 53 * hash + Objects.hashCode(this.genre);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final MovieEntity other = (MovieEntity) obj;
-        if (this.duration != other.duration) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.movieId, other.movieId)) {
-            return false;
-        }
-        if (!Objects.equals(this.genre, other.genre)) {
-            return false;
-        }
-        return true;
-    }
     
     public void addReviewUser(UserEntity user, ReviewEntity review) {
 //        ReviewEntity review = new ReviewEntity(this, user);
@@ -183,5 +139,61 @@ public class MovieEntity implements Serializable {
 //            }
 //        }
 //    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.movieId);
+        hash = 83 * hash + Objects.hashCode(this.title);
+        hash = 83 * hash + Objects.hashCode(this.description);
+        hash = 83 * hash + this.duration;
+        hash = 83 * hash + Objects.hashCode(this.image);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MovieEntity other = (MovieEntity) obj;
+        if (this.duration != other.duration) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.image, other.image)) {
+            return false;
+        }
+        if (!Objects.equals(this.movieId, other.movieId)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieEntity{" + "movieId=" + movieId + ", title=" + title + ", description=" + description + ", duration=" + duration + ", image=" + image + '}';
+    }
  
+    
+    
 }

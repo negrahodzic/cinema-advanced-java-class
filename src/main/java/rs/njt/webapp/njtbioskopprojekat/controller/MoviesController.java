@@ -41,11 +41,6 @@ public class MoviesController {
         return modelAndView;
     }
 
-    @GetMapping(path = "/seeProjections")
-    public ModelAndView seeProjections() { //TODO: dodati logiku, projections za izabran film
-        modelAndView.setViewName("searchProjections");
-        return modelAndView;
-    }
     @GetMapping(path = "/{movieId}/seeProjections")
     public ModelAndView seeProjections(@PathVariable(name="movieId") Long movieId) { 
         modelAndView.setViewName("searchProjections");
