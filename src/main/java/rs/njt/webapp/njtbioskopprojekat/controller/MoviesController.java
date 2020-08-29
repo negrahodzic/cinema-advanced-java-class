@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
@@ -42,7 +43,7 @@ public class MoviesController {
     }
 
     @GetMapping(path = "/{movieId}/seeProjections")
-    public ModelAndView seeProjections(@PathVariable(name="movieId") Long movieId) { 
+    public ModelAndView seeProjections(@PathVariable(name="movieId") Long movieId) {      
         modelAndView.setViewName("searchProjections");
         modelAndView.addObject("projections", projectionService.getByMovieId(movieId));         
         return modelAndView;
@@ -59,6 +60,5 @@ public class MoviesController {
     private List<MovieDto> getMovies() {
         return movieService.getAll();
     }
-    
-    
+
 }

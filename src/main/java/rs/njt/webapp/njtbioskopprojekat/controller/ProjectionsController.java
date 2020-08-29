@@ -29,10 +29,7 @@ public class ProjectionsController {
 
     @Autowired
     public ProjectionsController(ProjectionService projectionService) {
-
         this.projectionService = projectionService;
-        System.out.println("+++++++++++++++++++++++++ ProjectionsController(ProjectionService projectionService) +++++++++++++++++++=");
-        // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
     }
 
     @GetMapping

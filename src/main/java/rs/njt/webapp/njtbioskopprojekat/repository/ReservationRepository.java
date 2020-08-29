@@ -5,7 +5,9 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 
@@ -16,5 +18,8 @@ import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {    
+    
+    @Query(value = "SELECT r FROM ReservationEntity r WHERE r.user.userId = ?1")
+    public List<ReservationEntity> findByUserId(Long userId);
 
 }

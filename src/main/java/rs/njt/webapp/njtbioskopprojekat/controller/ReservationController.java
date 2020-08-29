@@ -45,14 +45,16 @@ public class ReservationController {
     }
 
     @GetMapping
-    public ModelAndView myReservations() {
+    public ModelAndView myReservations(HttpServletRequest request) {
         modelAndView.setViewName("myReservations");
         return modelAndView;
     }
 
     @ModelAttribute(name = "reservations")
-    private List<ReservationDto> getReservations() {
-        return reservationService.getAll();
+    private List<ReservationDto> getReservations(HttpServletRequest request) {
+        UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
+//        return reservationService.getAll();
+        return reservationService.getByUserId(user);
     }
 
     //TODO: dodati /details

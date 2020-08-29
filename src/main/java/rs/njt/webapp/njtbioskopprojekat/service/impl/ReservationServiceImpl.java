@@ -6,12 +6,15 @@
 package rs.njt.webapp.njtbioskopprojekat.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.converter.ReservationConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.ReservationDto;
+import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.ReservationRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ReservationService;
 
@@ -30,11 +33,11 @@ public class ReservationServiceImpl implements ReservationService {
         List<ReservationEntity> reservations = reservationRepository.findAll();
         List<ReservationDto> reservationDtos = new ArrayList<>();
 
-        for (ReservationEntity reservation : reservations) {  
+        for (ReservationEntity reservation : reservations) {
             reservationDtos.add(ReservationConverter.convertFromEntityToDto(reservation));
         }
 
-        return reservationDtos; 
+        return reservationDtos;
     }
 
     @Override
@@ -44,8 +47,20 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void saveReservation(ReservationDto reservation) {
-        ReservationEntity reservationEntity = ReservationConverter.convertFromDtoToEntity(reservation) ;
+        ReservationEntity reservationEntity = ReservationConverter.convertFromDtoToEntity(reservation);
         reservationRepository.saveAndFlush(reservationEntity);
+    }
+
+    @Override
+    public List<ReservationDto> getByUserId(UserDto user) {
+        List<ReservationEntity> reservations = reservationRepository.findByUserId(user.getUserId());
+        List<ReservationDto> reservationDtos = new ArrayList<>();
+
+        for (ReservationEntity reservation : reservations) {
+            reservationDtos.add(ReservationConverter.convertFromEntityToDto(reservation));
+        }
+        
+        return reservationDtos;
     }
 
 }
