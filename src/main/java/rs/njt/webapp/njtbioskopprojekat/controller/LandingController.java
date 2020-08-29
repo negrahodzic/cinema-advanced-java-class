@@ -52,19 +52,19 @@ public class LandingController {
         String password = request.getParameter("password");
         
         if (username == null || "".equals(username)) {
-            message = "You didn't enter all fields!";
+            request.getSession(true).setAttribute("message", "You didn't enter all fields!");
             modelAndView.setViewName("redirect:/");
         } else {
             UserDto user = userService.findByUsername(username);
 
             if (user == null) {
-                message = "There is no user with username " + username + "!";
+                request.getSession(true).setAttribute("message",  "There is no user with username " + username + "!");
                 modelAndView.setViewName("redirect:/");
             } else if (!user.getPassword().equals(password)) {
-                message = "You entered incorrect password!";
+                request.getSession(true).setAttribute("message", "You entered incorrect password!");
                 modelAndView.setViewName("redirect:/");
             } else {
-                message = "";
+//                message = "";
                 request.getSession(true).setAttribute("loggedUser", user);
                 modelAndView.setViewName("searchMovies");
             }
@@ -76,26 +76,46 @@ public class LandingController {
 
     @GetMapping(path = "register")
     public ModelAndView register() {
+//        if(!message.equals(""))message = "";
         modelAndView.setViewName("register");
+        
         return modelAndView;
     }
 
     @GetMapping(path = "logout")
     public ModelAndView logout(HttpServletRequest request) {
-        
-        
-            request.getSession(true).setAttribute("loggedUser", null);
-            modelAndView.setViewName("landing");
-        
-        //TODO: izlogovati, obrisati session
+        request.getSession(true).setAttribute("loggedUser", null);
+        request.getSession(true).setAttribute("message", "You succesfully logged out!");
+//        request.getSession(true).invalidate();
+        modelAndView.setViewName("landing");
         
         return modelAndView;
     }
 
-    //TODO: promeni u model and view + dodaj logiku
     @PostMapping(path = "/register/save")
-    public String registerUser() {
-        return "landing";
+    public ModelAndView registerUser(HttpServletRequest request) {        
+        UserDto user = new UserDto();
+        
+        user.setFirstname(request.getParameter("firstname"));
+        user.setLastname(request.getParameter("lastname"));
+        user.setEmail(request.getParameter("email"));
+        user.setUsername(request.getParameter("username"));
+        user.setPassword(request.getParameter("password"));
+        
+        if ("".equals(user.getFirstname()) || "".equals(user.getLastname()) || "".equals(user.getEmail())
+                || "".equals(user.getUsername()) || "".equals(user.getPassword())) {
+            request.getSession(true).setAttribute("message", "You didnt enter all fields!");
+            modelAndView.setViewName("redirect:/register");
+        } else if(userService.findByUsername(user.getUsername())!=null){
+            request.getSession(true).setAttribute("message", "User with that username already exists!");
+            modelAndView.setViewName("redirect:/register");
+        } else{
+            userService.updateUser(user);
+            request.getSession(true).setAttribute("message", "You successfully registered!");
+            modelAndView.setViewName("redirect:/");       
+        }
+        
+        return modelAndView;
     }
 
     @ModelAttribute(name = "movies")
@@ -109,43 +129,3 @@ public class LandingController {
     }
 
 }
-
-//        GenreServiceImpl gs = new GenreServiceImpl();
-//        List<Genre> gList = gs.getAll();
-//        List<Genre> genreList = genreRepository.getAll();
-//    GenreDto genreDto = new GenreDto("crime");
-//        User user = userService.findByUsername("marko");
-//        for (Genre genre : genreList) {
-//            System.out.println("===============================");
-//            System.out.println("===============================");
-//            System.out.println("**************** Genre: " + genre.getGenreName());
-//            System.out.println("**************** User: " + user.getEmail());
-//            System.out.println("===============================");
-//            System.out.println("===============================");
-//        }
-//
-//        UserServiceImpl us = new UserServiceImpl();
-//        List<User> gList = us.getAll();
-//        int i = 0;
-//         for (User user : gList) {
-//            System.out.println("===============================");
-//            System.out.println("===============================");
-//            System.out.println("**************** User email: " + user.getEmail());
-//            System.out.println("**************** User first name: " + user.getFirstname());
-//            System.out.println("**************** User List: " + user.getReservations().get(i));
-//            i++;
-//            System.out.println("===============================");
-//            System.out.println("===============================");
-//        }
-//        List<MovieDto> movies = movieService.getAll();
-//
-//        for (MovieDto m : movies) {
-//            System.out.println("---------------------------------------------");
-//            System.out.println("Movie title: " + m.getTitle());
-//            System.out.println("Movie desciption: " + m.getDescription());
-//            System.out.println("Movie genre: " + m.getGenre().getGenreName());
-//            System.out.println("Movie review: " + m.getReviews().get(0).getGrade() + " - " + m.getReviews().get(0).getComment());
-//            System.out.println("---------------------------------------------");
-//        }
-//
-//        System.out.println("+++++++++++++++++++++++++ register() +++++++++++++++++++=");

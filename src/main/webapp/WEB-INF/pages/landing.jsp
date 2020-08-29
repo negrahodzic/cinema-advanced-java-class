@@ -93,9 +93,9 @@
             </div>                             
         </div> 
 
-        <div id="snackbar">${message}</div>
+        <div id="snackbar">${sessionScope.message}</div>
 
-        <c:if test="${not empty message}">
+        <c:if test="${not empty sessionScope.message}">
             <script>
                 var x = document.getElementById("snackbar");
                 x.className = "show";
@@ -103,6 +103,7 @@
                     x.className = x.className.replace("show", "");
                 }, 3000);
             </script>
+            <c:set var = "message" value = "" scope="session"/>
         </c:if>
 
 
