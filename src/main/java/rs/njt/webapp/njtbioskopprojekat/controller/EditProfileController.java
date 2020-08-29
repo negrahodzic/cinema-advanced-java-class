@@ -57,10 +57,9 @@ public class EditProfileController {
         user.setUsername(username);
         user.setPassword(password);
         
-        userService.updateUser(user);
-        
-        System.out.println("===========================");
-        System.out.println("user: "+ user.getUsername());
+        userService.updateUser(user);      
+
+        request.getSession(true).setAttribute("message", "Saved changes!");
         modelAndView.setViewName("redirect:/editProfile");
         return modelAndView;
     }

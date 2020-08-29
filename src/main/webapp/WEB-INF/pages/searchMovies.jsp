@@ -16,7 +16,7 @@
     <body>
 
         <div class="container">
-            <h1>Search movies</h1>
+            <br>
             Search movie title:
             <input type="text" name="searchMovieTitle" value="" />
             Movie genre:
@@ -26,7 +26,8 @@
                 <option>Thriller</option>
             </select>
             <p/>
-
+            
+            <br>
             <div class="row">
                 <c:forEach var="movie" items="${movies}" varStatus="loop">
                     <div class="col-md-4">

@@ -14,26 +14,26 @@
         <meta charset="ISO-8859-1">
         <title>
             <tiles:getAsString name="title"></tiles:getAsString>
-        </title>
+            </title>
             <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
     </head>
     <body>
         <header id="header">
             <tiles:insertAttribute name="header"/>
         </header>
-        
+
         <section id="menu">
             <tiles:insertAttribute name="menu"/>
         </section>
-        
+
         <section id="site-content">
             <tiles:insertAttribute name="body"/>
         </section>
-        
+
         <footer id="footer">
             <tiles:insertAttribute name="footer"/>
         </footer>
-        
+
         <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </body>

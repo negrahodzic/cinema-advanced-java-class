@@ -16,7 +16,7 @@
     <body>
        
         <div class="container">
-            <h1>search projections</h1>
+            <br>
             Search movie title:
             <input type="text" name="searchMovieTitle" value="" />
             Date:
@@ -26,7 +26,7 @@
                 <option>13.2.2021</option>
             </select>
             <p/>
-
+            <br>
             <div class="row">
                 <c:forEach var="projection" items="${projections}" varStatus="loop">
                     <div class="col-md-12">
