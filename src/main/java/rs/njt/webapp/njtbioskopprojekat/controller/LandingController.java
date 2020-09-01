@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
 import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
@@ -29,15 +31,15 @@ public class LandingController {
 
     private final MovieService movieService;
     private final UserService userService;
+    private final GenreService genreService;
     private String message = "";
     private ModelAndView modelAndView = new ModelAndView();
 
     @Autowired
-    public LandingController(MovieService movieService, UserService userService) {
+    public LandingController(MovieService movieService, UserService userService, GenreService genreService) {
         this.movieService = movieService;
         this.userService = userService;
-        System.out.println("+++++++++++++++++++++++++ LandingController(TestService testService, MovieService movieService) +++++++++++++++++++=");
-        // this.modelAndView = new ModelAndView(); // Da li ovako da radimo?
+        this.genreService=genreService;
     }
 
     @GetMapping
@@ -121,6 +123,11 @@ public class LandingController {
     @ModelAttribute(name = "movies")
     private List<MovieDto> getMovies() {
         return movieService.getAll();
+    }
+    
+    @ModelAttribute(name = "genres")
+    private List<GenreDto> getGenres() {
+        return genreService.getAll();
     }
 
     @ModelAttribute(name = "message")

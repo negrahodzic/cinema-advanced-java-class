@@ -19,4 +19,6 @@ public interface MovieService {
 
     public MovieDto getById(Long movieId);
 
+    public List<MovieDto> searchByTitleAndGenre(String titleFilter, String genreFilter);
+
 }

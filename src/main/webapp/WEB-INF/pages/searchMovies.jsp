@@ -16,17 +16,22 @@
     <body>
 
         <div class="container">
-            <br>
-            Search movie title:
-            <input type="text" name="searchMovieTitle" value="" />
-            Movie genre:
-            <select name="movieGenre">
-                <option>Comedy</option>
-                <option>Crime</option>
-                <option>Thriller</option>
-            </select>
-            <p/>
-            
+            <form action="<c:url value="/searchMovies/search"/>" method="post">
+                <br>
+                Search movie title:
+                <input type="text" name="searchMovieTitle" value="" />
+                Movie genre:
+                <select name="selectedGenre">
+                    <option>--</option>
+                    <c:forEach var="genre" items="${genres}" >
+                        <option>${genre.genreName}</option>
+                    </c:forEach>
+                                        
+                </select>
+                <input type="submit" id="Search" value="Search" class="btn btn-outline-primary" onclick="myFunction()"/>
+
+                <p/>
+            </form>
             <br>
             <div class="row">
                 <c:forEach var="movie" items="${movies}" varStatus="loop">

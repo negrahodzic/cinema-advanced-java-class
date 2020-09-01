@@ -64,4 +64,27 @@ public class MovieServiceImpl implements MovieService {
         return movieDto;
     }
 
+    @Override
+    public List<MovieDto> searchByTitleAndGenre(String titleFilter, String genreFilter) {
+        List<MovieEntity> movies = movieRepository.findAll();
+        List<MovieDto> movieDtos = new ArrayList<>();
+        
+        for(MovieEntity movie: movies){
+            if(genreFilter.equals("--")){
+                if(movie.getTitle().toLowerCase().startsWith(titleFilter)){
+                    movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
+                }
+            }else if(movie.getGenre().getGenreName().equals(genreFilter)){
+                if(titleFilter.equals("")){
+                    movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
+                }else if(movie.getTitle().toLowerCase().startsWith(titleFilter)){
+                    movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
+                }
+            }
+            
+            
+        }
+        return movieDtos;
+    }
+
 }

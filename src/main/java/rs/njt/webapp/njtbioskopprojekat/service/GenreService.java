@@ -16,6 +16,8 @@ public interface GenreService {
 
     List<GenreDto> getAll();
 
-//    GenreEntity getById(Long id);
+
+
+    
 
 }
