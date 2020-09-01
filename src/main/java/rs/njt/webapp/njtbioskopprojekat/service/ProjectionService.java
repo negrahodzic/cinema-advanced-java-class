@@ -20,4 +20,8 @@ public interface ProjectionService {
     public List<ProjectionDto> getByMovieId(Long movieId);
 
     public ProjectionDto getById(Long projectionId);
+
+    public List<ProjectionDto> searchByTitleAndDate(String toLowerCase, String dateFilter);
+
+    public List<String> getDates();
 }

@@ -6,13 +6,16 @@
 package rs.njt.webapp.njtbioskopprojekat.controller;
 
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
@@ -48,6 +51,10 @@ public class ProjectionsController {
     private List<ProjectionDto> getProjections() {
         return projectionService.getAll();
     }
+    @ModelAttribute(name = "dates")
+    private List<String> getDates() {
+        return projectionService.getDates();
+    }
     
     @GetMapping(path = "/{projectionId}/createReservation")
     public ModelAndView createReservation(@PathVariable(name="projectionId") Long projectionId) { 
@@ -55,5 +62,21 @@ public class ProjectionsController {
         modelAndView.addObject("projectionDto", projectionService.getById(projectionId));         
         return modelAndView;
     }
+    
+    @PostMapping(path = "/search")
+    public ModelAndView search(HttpServletRequest request) {      
+        
+        String titleFilter = request.getParameter("searchMovieTitle");
+        String dateFilter = request.getParameter("selectedDate");
+        
+        List<ProjectionDto> projections =  projectionService.searchByTitleAndDate(titleFilter.toLowerCase(), dateFilter);
+        
+        modelAndView.addObject("projections", projections);
+        
+        modelAndView.setViewName("searchProjections");
+                 
+        return modelAndView;
+    }
+    
 }
 

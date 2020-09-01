@@ -16,17 +16,25 @@
     <body>
        
         <div class="container">
+            <form action="<c:url value="/searchProjections/search"/>" method="post">
+                <br>
+                Search movie title:
+                <input type="text" name="searchMovieTitle" value="" />
+                Movie date:
+                <select name="selectedDate">
+                    <option>--</option>
+                    <c:forEach var="date" items="${dates}" >
+                        <option>${date}</option>
+                    </c:forEach>
+                                        
+                </select>
+                <input type="submit" id="Search" value="Search" class="btn btn-outline-primary" onclick="myFunction()"/>
+
+                <p/>
+            </form>
+            
             <br>
-            Search movie title:
-            <input type="text" name="searchMovieTitle" value="" />
-            Date:
-            <select name="dateProjection">
-                <option>10.10.2020</option>
-                <option>12.10.2020</option>
-                <option>13.2.2021</option>
-            </select>
-            <p/>
-            <br>
+            
             <div class="row">
                 <c:forEach var="projection" items="${projections}" varStatus="loop">
                     <div class="col-md-12">
