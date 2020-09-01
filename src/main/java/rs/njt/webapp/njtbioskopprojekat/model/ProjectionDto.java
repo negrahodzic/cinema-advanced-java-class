@@ -16,7 +16,7 @@ import java.util.Objects;
 public class ProjectionDto implements Serializable {
 
     private Long projectionId;
-    private Date dateTimeOfProjection;
+    private String dateTimeOfProjection;
     private String technology;
     private String edited; // Titlovano, Sihronizovano
     private RoomDto room;
@@ -25,7 +25,7 @@ public class ProjectionDto implements Serializable {
     public ProjectionDto() {
     }
 
-    public ProjectionDto(Date dateTimeOfProjection, String technology, String edited, RoomDto room, MovieDto movie) {
+    public ProjectionDto(String dateTimeOfProjection, String technology, String edited, RoomDto room, MovieDto movie) {
         this.dateTimeOfProjection = dateTimeOfProjection;
         this.technology = technology;
         this.edited = edited;
@@ -33,7 +33,7 @@ public class ProjectionDto implements Serializable {
         this.movie = movie;
     }
 
-    public ProjectionDto(Long projectionId, Date dateTimeOfProjection, String technology, String edited, RoomDto room, MovieDto movie) {
+    public ProjectionDto(Long projectionId, String dateTimeOfProjection, String technology, String edited, RoomDto room, MovieDto movie) {
         this.projectionId = projectionId;
         this.dateTimeOfProjection = dateTimeOfProjection;
         this.technology = technology;
@@ -50,11 +50,11 @@ public class ProjectionDto implements Serializable {
         this.projectionId = projectionId;
     }
 
-    public Date getDateTimeOfProjection() {
+    public String getDateTimeOfProjection() {
         return dateTimeOfProjection;
     }
 
-    public void setDateTimeOfProjection(Date dateTimeOfProjection) {
+    public void setDateTimeOfProjection(String dateTimeOfProjection) {
         this.dateTimeOfProjection = dateTimeOfProjection;
     }
 

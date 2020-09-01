@@ -5,6 +5,7 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
+import java.text.ParseException;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.ReservationDto;
 
@@ -21,7 +22,7 @@ public class ReservationConverter {
         return reservationDto;
     }
 
-    public static ReservationEntity convertFromDtoToEntity(ReservationDto reservationDto) {
+    public static ReservationEntity convertFromDtoToEntity(ReservationDto reservationDto) throws ParseException {
         ReservationEntity reservation = new ReservationEntity(reservationDto.getReservationId(), reservationDto.getDateTimeOfReservation(), reservationDto.getTicketQuantity(), 
                                             ProjectionConverter.convertFromDtoToEntity(reservationDto.getProjection()),
                                             UserConverter.convertFromDtoToEntity(reservationDto.getUser()));

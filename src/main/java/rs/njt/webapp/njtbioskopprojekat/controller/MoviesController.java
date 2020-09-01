@@ -50,7 +50,7 @@ public class MoviesController {
 
     @GetMapping(path = "/{movieId}/seeProjections")
     public ModelAndView seeProjections(@PathVariable(name="movieId") Long movieId) {      
-        modelAndView.setViewName("searchProjections");
+        modelAndView.setViewName("redirect:/searchProjections");
         modelAndView.addObject("projections", projectionService.getByMovieId(movieId));         
         return modelAndView;
     }
@@ -61,7 +61,7 @@ public class MoviesController {
         modelAndView.addObject("movieDto", movieService.getById(movieId));         
         return modelAndView;
     }
-  /*
+  
     @ModelAttribute(name = "movies")
     private List<MovieDto> getMovies() {
         return movieService.getAll();
@@ -70,7 +70,12 @@ public class MoviesController {
     @ModelAttribute(name = "genres")
     private List<GenreDto> getGenres() {
         return genreService.getAll();
-    }*/
+    }
+    
+    @ModelAttribute(name = "dates")
+    private List<String> getDates() {
+        return projectionService.getDates();
+    }
     
     @PostMapping(path = "/search")
     public ModelAndView search(HttpServletRequest request) {      

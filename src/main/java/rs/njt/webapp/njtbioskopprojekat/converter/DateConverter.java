@@ -6,8 +6,11 @@
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,5 +28,14 @@ public class DateConverter {
         DateFormat formater = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         String converted = formater.format(date);
         return converted;
+    }
+    
+    public static Date convertStringToDate(String string) throws ParseException{
+        DateFormat formater = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Date date;
+
+        date = formater.parse(string);
+                    
+        return date;
     }
 }
