@@ -16,7 +16,7 @@
 
         <div class="container">
 
-            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top d-flex justify-content-center">
                 <!-- Brand -->
                 <a class="navbar-brand" href="#">NJT CINEMA</a>
 
@@ -28,7 +28,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value="/searchProjections"/>">Search projections</a>
                     </li>
-      
+
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value="/myReservations"/>">My reservations</a>
                     </li>
@@ -41,8 +41,9 @@
                             <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
                         </div>
                     </li>
-                </ul>
-            </nav>    
+                </ul>  
+                <div class="text-light">&nbsp;&nbsp;&nbsp; Hello, ${loggedUser.username}! </div><br> 
+            </nav>                  
         </div>
     </body>
 </html>

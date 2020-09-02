@@ -32,14 +32,15 @@ public class LandingController {
     private final MovieService movieService;
     private final UserService userService;
     private final GenreService genreService;
-    private String message = "";
-    private ModelAndView modelAndView = new ModelAndView();
+    private final String message = "";
+    private final ModelAndView modelAndView;
 
     @Autowired
     public LandingController(MovieService movieService, UserService userService, GenreService genreService) {
         this.movieService = movieService;
         this.userService = userService;
-        this.genreService=genreService;
+        this.genreService = genreService;
+        this.modelAndView = new ModelAndView();
     }
 
     @GetMapping
@@ -52,7 +53,7 @@ public class LandingController {
     public ModelAndView login(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
+
         if (username == null || "".equals(username)) {
             request.getSession(true).setAttribute("message", "You didn't enter all fields!");
             modelAndView.setViewName("redirect:/");
@@ -60,27 +61,24 @@ public class LandingController {
             UserDto user = userService.findByUsername(username);
 
             if (user == null) {
-                request.getSession(true).setAttribute("message",  "There is no user with username " + username + "!");
+                request.getSession(true).setAttribute("message", "There is no user with username " + username + "!");
                 modelAndView.setViewName("redirect:/");
             } else if (!user.getPassword().equals(password)) {
                 request.getSession(true).setAttribute("message", "You entered incorrect password!");
                 modelAndView.setViewName("redirect:/");
             } else {
-//                message = "";
                 request.getSession(true).setAttribute("loggedUser", user);
-                modelAndView.setViewName("searchMovies");
+                modelAndView.setViewName("redirect:/searchMovies");
+//                modelAndView.addObject("movies", movieService.getAll());
             }
         }
 
-        //   modelAndView.setViewName("searchMovies"); // privrmeno, bez logovanja
         return modelAndView;
     }
 
     @GetMapping(path = "register")
     public ModelAndView register() {
-//        if(!message.equals(""))message = "";
         modelAndView.setViewName("register");
-        
         return modelAndView;
     }
 
@@ -90,49 +88,38 @@ public class LandingController {
         request.getSession(true).setAttribute("message", "You succesfully logged out!");
 //        request.getSession(true).invalidate();
         modelAndView.setViewName("landing");
-        
         return modelAndView;
     }
 
     @PostMapping(path = "/register/save")
-    public ModelAndView registerUser(HttpServletRequest request) {        
+    public ModelAndView registerUser(HttpServletRequest request) {
         UserDto user = new UserDto();
-        
+
         user.setFirstname(request.getParameter("firstname"));
         user.setLastname(request.getParameter("lastname"));
         user.setEmail(request.getParameter("email"));
         user.setUsername(request.getParameter("username"));
         user.setPassword(request.getParameter("password"));
-        
+
         if ("".equals(user.getFirstname()) || "".equals(user.getLastname()) || "".equals(user.getEmail())
                 || "".equals(user.getUsername()) || "".equals(user.getPassword())) {
             request.getSession(true).setAttribute("message", "You didnt enter all fields!");
             modelAndView.setViewName("redirect:/register");
-        } else if(userService.findByUsername(user.getUsername())!=null){
+        } else if (userService.findByUsername(user.getUsername()) != null) {
             request.getSession(true).setAttribute("message", "User with that username already exists!");
             modelAndView.setViewName("redirect:/register");
-        } else{
+        } else {
             userService.updateUser(user);
             request.getSession(true).setAttribute("message", "You successfully registered!");
-            modelAndView.setViewName("redirect:/");       
+            modelAndView.setViewName("redirect:/");
         }
-        
+
         return modelAndView;
     }
 
-    @ModelAttribute(name = "movies")
-    private List<MovieDto> getMovies() {
-        return movieService.getAll();
-    }
-    
-    @ModelAttribute(name = "genres")
-    private List<GenreDto> getGenres() {
-        return genreService.getAll();
-    }
-
-    @ModelAttribute(name = "message")
-    private String getMessage() {
-        return message;
-    }
+//    @ModelAttribute(name = "message")
+//    private String getMessage() {
+//        return message;
+//    }
 
 }

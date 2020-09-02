@@ -15,14 +15,14 @@ import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
  */
 public class ProjectionConverter {
         public static ProjectionDto convertFromEntityToDto(ProjectionEntity projection) {
-        ProjectionDto projectionDto = new ProjectionDto(projection.getProjectionId(), DateConverter.convertToDateTime(projection.getDateTimeOfProjection()), projection.getTechnology(), projection.getEdited(),
+        ProjectionDto projectionDto = new ProjectionDto(projection.getProjectionId(), DateConverter.convertToDateTime(projection.getDateTimeOfProjection()), projection.getTechnology(), projection.getEdited(), projection.getFreeSeats(),
                                         RoomConverter.convertFromEntityToDto(projection.getRoom()),
                                         MovieConverter.convertFromEntityToDto(projection.getMovie()));
         return projectionDto;
     }
 
     public static ProjectionEntity convertFromDtoToEntity(ProjectionDto projectionDto) throws ParseException {
-        ProjectionEntity projection = new ProjectionEntity( projectionDto.getProjectionId(), DateConverter.convertStringToDate(projectionDto.getDateTimeOfProjection()), projectionDto.getTechnology(), projectionDto.getEdited(),
+        ProjectionEntity projection = new ProjectionEntity( projectionDto.getProjectionId(), DateConverter.convertStringToDate(projectionDto.getDateTimeOfProjection()), projectionDto.getTechnology(), projectionDto.getEdited(), projectionDto.getFreeSeats(),
                                         RoomConverter.convertFromDtoToEntity(projectionDto.getRoom()),
                                         MovieConverter.convertFromDtoToEntity(projectionDto.getMovie()));
         return projection;

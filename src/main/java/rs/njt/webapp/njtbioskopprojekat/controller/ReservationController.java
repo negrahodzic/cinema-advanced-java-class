@@ -61,6 +61,23 @@ public class ReservationController {
     @GetMapping(path = "/{reservationId}/delete")
     public ModelAndView deleteReservation(@PathVariable(name = "reservationId") Long reservationId, HttpServletRequest request) {
         reservationService.delete(reservationId);
+
+//        System.out.println(request.getParameter("projectionIdHidden"));
+//        System.out.println(request.getParameter("projectionIdHidden"));
+//        System.out.println(request.getParameter("projectionIdHidden"));
+//        System.out.println(request.getParameter("projectionIdHidden"));
+//        
+//        long projectionIDint = Long.parseLong(request.getParameter("projectionIdHidden"));
+//        int ticketsInt = Integer.parseInt(request.getParameter("tickets"));
+//
+//        ProjectionDto projection = projectionService.getById(projectionIDint);
+//
+//        int freeSeats = projection.getFreeSeats();
+//        projection.setFreeSeats(freeSeats + ticketsInt);
+//        
+        
+//        projectionService.saveProjection(projection);
+//        
         request.getSession(true).setAttribute("message", "Successfully deleted reservation!");
         modelAndView.setViewName("redirect:/myReservations");
         return modelAndView;
@@ -85,18 +102,26 @@ public class ReservationController {
                 request.getSession(true).setAttribute("message", "You can reserve up to 6 tickets!");
                 modelAndView.setViewName("redirect:/searchProjections/" + projectionIDint + "/createReservation");
             } else {
-                Date dateTimeOfReservation = new Date(System.currentTimeMillis());
-                UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
                 ProjectionDto projection = projectionService.getById(projectionIDint);
+                int freeSeats = projection.getFreeSeats();
 
-                ReservationDto reservation = new ReservationDto(dateTimeOfReservation, ticketsInt, projection, user);
+                if (freeSeats - ticketsInt >= 0) {
+                    Date dateTimeOfReservation = new Date(System.currentTimeMillis());
+                    UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
+                    ReservationDto reservation = new ReservationDto(dateTimeOfReservation, ticketsInt, projection, user);
 
-                reservationService.saveReservation(reservation);
+                    //Rezervisi i smanji broj slobodnih sedista u projekciji
+                    reservationService.saveReservation(reservation);
+                    projection.setFreeSeats(freeSeats - ticketsInt);
+                    projectionService.saveProjection(projection);
 
-                request.getSession(true).setAttribute("message", "Successfully created reservation!");
-                modelAndView.setViewName("redirect:/myReservations");
+                    request.getSession(true).setAttribute("message", "Successfully created reservation!");
+                    modelAndView.setViewName("redirect:/myReservations");
+                } else {
+                    request.getSession(true).setAttribute("message", "There are only " + projection.getFreeSeats() + " seats available!");
+                    modelAndView.setViewName("redirect:/searchProjections/" + projectionIDint + "/createReservation");
+                }
             }
-
         }
 
         //modelAndView.addObject("movieDto", movieService.getById(movieId));

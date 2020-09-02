@@ -5,16 +5,21 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.service.impl;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.converter.ReservationConverter;
+import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 import rs.njt.webapp.njtbioskopprojekat.model.ReservationDto;
 import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.repository.ProjectionRepository;
 import rs.njt.webapp.njtbioskopprojekat.repository.ReservationRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ReservationService;
 
@@ -28,7 +33,12 @@ public class ReservationServiceImpl implements ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
+    @Autowired
+    private ProjectionRepository projectionRepository;
+
+
     @Override
+
     public List<ReservationDto> getAll() {
         List<ReservationEntity> reservations = reservationRepository.findAll();
         List<ReservationDto> reservationDtos = new ArrayList<>();
@@ -42,13 +52,25 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public void delete(Long reservationId) {
+        Optional<ReservationEntity> reservation = reservationRepository.findById(reservationId);   
+        ProjectionEntity projection = reservation.get().getProjection();
+     
+        int freeSeats = projection.getFreeSeats() + reservation.get().getTicketQuantity();
+        projection.setFreeSeats(freeSeats);
+        
+        projectionRepository.saveAndFlush(projection);
         reservationRepository.deleteById(reservationId);
     }
 
     @Override
     public void saveReservation(ReservationDto reservation) {
-        ReservationEntity reservationEntity = ReservationConverter.convertFromDtoToEntity(reservation);
-        reservationRepository.saveAndFlush(reservationEntity);
+        try {
+            ReservationEntity reservationEntity = ReservationConverter.convertFromDtoToEntity(reservation);
+            reservationRepository.saveAndFlush(reservationEntity);
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservationServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
@@ -59,7 +81,7 @@ public class ReservationServiceImpl implements ReservationService {
         for (ReservationEntity reservation : reservations) {
             reservationDtos.add(ReservationConverter.convertFromEntityToDto(reservation));
         }
-        
+
         return reservationDtos;
     }
 

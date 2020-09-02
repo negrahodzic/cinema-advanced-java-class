@@ -33,6 +33,7 @@ public class ProjectionEntity implements Serializable {
     private Date dateTimeOfProjection;
     private String technology;
     private String edited; // Titlovano, Sihronizovano
+    private int freeSeats;
     
     @ManyToOne(fetch = FetchType.EAGER) // Note: U nasem slucaju, projekcija ima samo jednu salu
     @JoinColumn(name = "ROOM_ID", referencedColumnName = "ROOM_ID")
@@ -46,11 +47,12 @@ public class ProjectionEntity implements Serializable {
 
     }
 
-    public ProjectionEntity(Long projectionId, Date dateTimeOfProjection, String technology, String edited, RoomEntity room, MovieEntity movie) {
+    public ProjectionEntity(Long projectionId, Date dateTimeOfProjection, String technology, String edited, int freeSeats,RoomEntity room, MovieEntity movie) {
         this.projectionId = projectionId;
         this.dateTimeOfProjection = dateTimeOfProjection;
         this.technology = technology;
         this.edited = edited;
+        this.freeSeats = freeSeats;
         this.room = room;
         this.movie = movie;
     }
@@ -86,7 +88,15 @@ public class ProjectionEntity implements Serializable {
     public void setEdited(String edited) {
         this.edited = edited;
     }
+    
+    public int getFreeSeats() {
+        return freeSeats;
+    }
 
+    public void setFreeSeats(int freeSeats) {
+        this.freeSeats = freeSeats;
+    }
+    
     public RoomEntity getRoom() {
         return room;
     }
@@ -104,19 +114,13 @@ public class ProjectionEntity implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "ProjectionEntity{" + "projectionId=" + projectionId + ", dateTimeOfProjection=" + dateTimeOfProjection + ", technology=" + technology + ", edited=" + edited + ", room=" + room + ", movie=" + movie + '}';
-    }
-
-    @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.projectionId);
-        hash = 47 * hash + Objects.hashCode(this.dateTimeOfProjection);
-        hash = 47 * hash + Objects.hashCode(this.technology);
-        hash = 47 * hash + Objects.hashCode(this.edited);
-        hash = 47 * hash + Objects.hashCode(this.room);
-        hash = 47 * hash + Objects.hashCode(this.movie);
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.projectionId);
+        hash = 83 * hash + Objects.hashCode(this.dateTimeOfProjection);
+        hash = 83 * hash + Objects.hashCode(this.technology);
+        hash = 83 * hash + Objects.hashCode(this.edited);
+        hash = 83 * hash + this.freeSeats;
         return hash;
     }
 
@@ -132,6 +136,9 @@ public class ProjectionEntity implements Serializable {
             return false;
         }
         final ProjectionEntity other = (ProjectionEntity) obj;
+        if (this.freeSeats != other.freeSeats) {
+            return false;
+        }
         if (!Objects.equals(this.technology, other.technology)) {
             return false;
         }
@@ -144,14 +151,12 @@ public class ProjectionEntity implements Serializable {
         if (!Objects.equals(this.dateTimeOfProjection, other.dateTimeOfProjection)) {
             return false;
         }
-        if (!Objects.equals(this.room, other.room)) {
-            return false;
-        }
-        if (!Objects.equals(this.movie, other.movie)) {
-            return false;
-        }
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "ProjectionEntity{" + "projectionId=" + projectionId + ", dateTimeOfProjection=" + dateTimeOfProjection + ", technology=" + technology + ", edited=" + edited + ", freeSeats=" + freeSeats + '}';
+    }
 
 }

@@ -24,4 +24,6 @@ public interface ProjectionService {
     public List<ProjectionDto> searchByTitleAndDate(String toLowerCase, String dateFilter);
 
     public List<String> getDates();
+
+    public void saveProjection(ProjectionDto projection);
 }

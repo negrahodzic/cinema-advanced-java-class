@@ -28,55 +28,48 @@ import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 public class ProjectionsController {
 
     private final ProjectionService projectionService;
-    private ModelAndView modelAndView = new ModelAndView();
+    private final ModelAndView modelAndView;
 
     @Autowired
     public ProjectionsController(ProjectionService projectionService) {
         this.projectionService = projectionService;
+        this.modelAndView = new ModelAndView();
+        modelAndView.addObject("dates", projectionService.getDates());
     }
 
     @GetMapping
     public ModelAndView searchProjections() {
         modelAndView.setViewName("searchProjections");
+        modelAndView.addObject("projections", projectionService.getAll());
         return modelAndView;
     }
 
-    @GetMapping(path = "/createReservation")
-    public ModelAndView createReservation() {
+    @GetMapping(path = "/{projectionId}/createReservation")
+    public ModelAndView createReservation(@PathVariable(name = "projectionId") Long projectionId) {
         modelAndView.setViewName("createReservation");
+        modelAndView.addObject("projectionDto", projectionService.getById(projectionId));
         return modelAndView;
     }
 
+    @PostMapping(path = "/search")
+    public ModelAndView search(HttpServletRequest request) {
+        String titleFilter = request.getParameter("searchMovieTitle");
+        String dateFilter = request.getParameter("selectedDate");
+
+        modelAndView.setViewName("searchProjections");
+        modelAndView.addObject("projections", projectionService.searchByTitleAndDate(titleFilter.toLowerCase(), dateFilter));
+        
+        return modelAndView;
+    }
+
+    // Model Attributes
     @ModelAttribute(name = "projections")
     private List<ProjectionDto> getProjections() {
         return projectionService.getAll();
     }
+
     @ModelAttribute(name = "dates")
     private List<String> getDates() {
         return projectionService.getDates();
     }
-    
-    @GetMapping(path = "/{projectionId}/createReservation")
-    public ModelAndView createReservation(@PathVariable(name="projectionId") Long projectionId) { 
-        modelAndView.setViewName("createReservation");
-        modelAndView.addObject("projectionDto", projectionService.getById(projectionId));         
-        return modelAndView;
-    }
-    
-    @PostMapping(path = "/search")
-    public ModelAndView search(HttpServletRequest request) {      
-        
-        String titleFilter = request.getParameter("searchMovieTitle");
-        String dateFilter = request.getParameter("selectedDate");
-        
-        List<ProjectionDto> projections =  projectionService.searchByTitleAndDate(titleFilter.toLowerCase(), dateFilter);
-        
-        modelAndView.addObject("projections", projections);
-        
-        modelAndView.setViewName("searchProjections");
-                 
-        return modelAndView;
-    }
-    
 }
-

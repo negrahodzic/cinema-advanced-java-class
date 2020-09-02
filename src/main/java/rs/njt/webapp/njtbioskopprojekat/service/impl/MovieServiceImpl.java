@@ -70,7 +70,7 @@ public class MovieServiceImpl implements MovieService {
         List<MovieDto> movieDtos = new ArrayList<>();
         
         for(MovieEntity movie: movies){
-            if(genreFilter.equals("--")){
+            if(genreFilter.equals("- Choose genre -")){
                 if(movie.getTitle().toLowerCase().startsWith(titleFilter)){
                     movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
                 }

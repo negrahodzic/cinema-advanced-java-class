@@ -19,25 +19,28 @@ public class ProjectionDto implements Serializable {
     private String dateTimeOfProjection;
     private String technology;
     private String edited; // Titlovano, Sihronizovano
+    private int freeSeats;
     private RoomDto room;
     private MovieDto movie;
 
     public ProjectionDto() {
     }
 
-    public ProjectionDto(String dateTimeOfProjection, String technology, String edited, RoomDto room, MovieDto movie) {
+    public ProjectionDto(String dateTimeOfProjection, String technology, String edited, int freeSeats, RoomDto room, MovieDto movie) {
         this.dateTimeOfProjection = dateTimeOfProjection;
         this.technology = technology;
         this.edited = edited;
+        this.freeSeats = freeSeats;
         this.room = room;
         this.movie = movie;
     }
 
-    public ProjectionDto(Long projectionId, String dateTimeOfProjection, String technology, String edited, RoomDto room, MovieDto movie) {
+    public ProjectionDto(Long projectionId, String dateTimeOfProjection, String technology, String edited, int freeSeats, RoomDto room, MovieDto movie) {
         this.projectionId = projectionId;
         this.dateTimeOfProjection = dateTimeOfProjection;
         this.technology = technology;
         this.edited = edited;
+        this.freeSeats = freeSeats;
         this.room = room;
         this.movie = movie;
     }
@@ -90,20 +93,22 @@ public class ProjectionDto implements Serializable {
         this.movie = movie;
     }
 
-    @Override
-    public String toString() {
-        return "ProjectionDto{" + "projectionId=" + projectionId + ", dateTimeOfProjection=" + dateTimeOfProjection + ", technology=" + technology + ", edited=" + edited + ", room=" + room + ", movie=" + movie + '}';
+    public int getFreeSeats() {
+        return freeSeats;
+    }
+
+    public void setFreeSeats(int freeSeats) {
+        this.freeSeats = freeSeats;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.projectionId);
-        hash = 41 * hash + Objects.hashCode(this.dateTimeOfProjection);
-        hash = 41 * hash + Objects.hashCode(this.technology);
-        hash = 41 * hash + Objects.hashCode(this.edited);
-        hash = 41 * hash + Objects.hashCode(this.room);
-        hash = 41 * hash + Objects.hashCode(this.movie);
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.projectionId);
+        hash = 23 * hash + Objects.hashCode(this.dateTimeOfProjection);
+        hash = 23 * hash + Objects.hashCode(this.technology);
+        hash = 23 * hash + Objects.hashCode(this.edited);
+        hash = 23 * hash + this.freeSeats;
         return hash;
     }
 
@@ -119,6 +124,12 @@ public class ProjectionDto implements Serializable {
             return false;
         }
         final ProjectionDto other = (ProjectionDto) obj;
+        if (this.freeSeats != other.freeSeats) {
+            return false;
+        }
+        if (!Objects.equals(this.dateTimeOfProjection, other.dateTimeOfProjection)) {
+            return false;
+        }
         if (!Objects.equals(this.technology, other.technology)) {
             return false;
         }
@@ -128,16 +139,12 @@ public class ProjectionDto implements Serializable {
         if (!Objects.equals(this.projectionId, other.projectionId)) {
             return false;
         }
-        if (!Objects.equals(this.dateTimeOfProjection, other.dateTimeOfProjection)) {
-            return false;
-        }
-        if (!Objects.equals(this.room, other.room)) {
-            return false;
-        }
-        if (!Objects.equals(this.movie, other.movie)) {
-            return false;
-        }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectionDto{" + "projectionId=" + projectionId + ", dateTimeOfProjection=" + dateTimeOfProjection + ", technology=" + technology + ", edited=" + edited + ", freeSeats=" + freeSeats + '}';
     }
 
   
