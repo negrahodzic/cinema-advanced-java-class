@@ -12,7 +12,7 @@ import javax.persistence.Embeddable;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Embeddable
 public class ReviewId implements Serializable {

@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public class UserDto implements Serializable {
 

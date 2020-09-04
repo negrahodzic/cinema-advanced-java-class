@@ -6,17 +6,22 @@
 package rs.njt.webapp.njtbioskopprojekat.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import rs.njt.webapp.njtbioskopprojekat.converter.DateConverter;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
-public class ReservationDto implements Serializable {
+public class ReservationDto implements Serializable, Comparable<ReservationDto> {
 
     private Long reservationId;
     private Date dateTimeOfReservation;
+    private String status;
     private int ticketQuantity;
     private ProjectionDto projection;
     private UserDto user;
@@ -24,17 +29,19 @@ public class ReservationDto implements Serializable {
     public ReservationDto() {
     }
 
-    public ReservationDto(Date dateTimeOfReservation, int ticketQuantity, ProjectionDto projection, UserDto user) {
+    public ReservationDto(Date dateTimeOfReservation, int ticketQuantity, String status, ProjectionDto projection, UserDto user) {
         this.dateTimeOfReservation = dateTimeOfReservation;
         this.ticketQuantity = ticketQuantity;
+        this.status = status;
         this.projection = projection;
         this.user = user;
     }
 
-    public ReservationDto(Long reservationId, Date dateTimeOfReservation, int ticketQuantity, ProjectionDto projection, UserDto user) {
+    public ReservationDto(Long reservationId, Date dateTimeOfReservation, int ticketQuantity, String status, ProjectionDto projection, UserDto user) {
         this.reservationId = reservationId;
         this.dateTimeOfReservation = dateTimeOfReservation;
         this.ticketQuantity = ticketQuantity;
+        this.status = status;
         this.projection = projection;
         this.user = user;
     }
@@ -79,19 +86,26 @@ public class ReservationDto implements Serializable {
         this.user = user;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "ReservationDto{" + "reservationId=" + reservationId + ", dateTimeOfReservation=" + dateTimeOfReservation + ", ticketQuantity=" + ticketQuantity + ", projection=" + projection + ", user=" + user + '}';
+        return "ReservationDto{" + "reservationId=" + reservationId + ", dateTimeOfReservation=" + dateTimeOfReservation + ", status=" + status + ", ticketQuantity=" + ticketQuantity + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.reservationId);
-        hash = 97 * hash + Objects.hashCode(this.dateTimeOfReservation);
-        hash = 97 * hash + this.ticketQuantity;
-        hash = 97 * hash + Objects.hashCode(this.projection);
-        hash = 97 * hash + Objects.hashCode(this.user);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.reservationId);
+        hash = 41 * hash + Objects.hashCode(this.dateTimeOfReservation);
+        hash = 41 * hash + Objects.hashCode(this.status);
+        hash = 41 * hash + this.ticketQuantity;
         return hash;
     }
 
@@ -110,20 +124,30 @@ public class ReservationDto implements Serializable {
         if (this.ticketQuantity != other.ticketQuantity) {
             return false;
         }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
         if (!Objects.equals(this.reservationId, other.reservationId)) {
             return false;
         }
         if (!Objects.equals(this.dateTimeOfReservation, other.dateTimeOfReservation)) {
             return false;
         }
-        if (!Objects.equals(this.projection, other.projection)) {
-            return false;
-        }
-        if (!Objects.equals(this.user, other.user)) {
-            return false;
-        }
         return true;
     }
 
 
+
+    @Override
+    public int compareTo(ReservationDto o){
+        try {
+            return DateConverter.convertStringToDate(o.getProjection().getDateTimeOfProjection()).compareTo(DateConverter.convertStringToDate(projection.getDateTimeOfProjection()));
+
+        } catch (ParseException ex) {
+            Logger.getLogger(ReservationDto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return 0;
+
+    }
 }

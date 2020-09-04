@@ -6,12 +6,11 @@
 package rs.njt.webapp.njtbioskopprojekat.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public class ProjectionDto implements Serializable {
 

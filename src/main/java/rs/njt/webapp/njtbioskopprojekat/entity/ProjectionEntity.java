@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Entity
 @Table(name = "PROJECTION")

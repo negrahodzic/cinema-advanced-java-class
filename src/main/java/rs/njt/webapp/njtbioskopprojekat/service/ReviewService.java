@@ -12,7 +12,7 @@ import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public interface ReviewService {
 

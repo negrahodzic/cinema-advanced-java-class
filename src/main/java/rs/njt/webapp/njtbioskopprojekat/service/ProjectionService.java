@@ -10,12 +10,11 @@ import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public interface ProjectionService {
 
     List<ProjectionDto> getAll();
-//    ProjectionEntity getById(Long id);
 
     public List<ProjectionDto> getByMovieId(Long movieId);
 

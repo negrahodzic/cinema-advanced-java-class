@@ -8,6 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service.impl;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -25,7 +26,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.ReservationService;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -46,7 +47,7 @@ public class ReservationServiceImpl implements ReservationService {
         for (ReservationEntity reservation : reservations) {
             reservationDtos.add(ReservationConverter.convertFromEntityToDto(reservation));
         }
-
+        Collections.sort(reservationDtos);
         return reservationDtos;
     }
 
@@ -81,7 +82,7 @@ public class ReservationServiceImpl implements ReservationService {
         for (ReservationEntity reservation : reservations) {
             reservationDtos.add(ReservationConverter.convertFromEntityToDto(reservation));
         }
-
+        Collections.sort(reservationDtos);
         return reservationDtos;
     }
 

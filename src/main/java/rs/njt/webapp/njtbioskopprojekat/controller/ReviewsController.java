@@ -19,7 +19,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Controller
 @RequestMapping(path = "/reviews")

@@ -11,7 +11,7 @@ import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Repository
 public interface ReviewRepository extends JpaRepository<ReviewEntity, Long> {    

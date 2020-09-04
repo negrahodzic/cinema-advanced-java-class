@@ -21,7 +21,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Service
 public class ReviewServiceImpl implements ReviewService {

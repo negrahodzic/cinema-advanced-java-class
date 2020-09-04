@@ -17,7 +17,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.RoomService;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Service
 public class RoomServiceImpl implements RoomService {

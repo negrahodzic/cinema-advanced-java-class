@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Controller
 @RequestMapping(path = "/searchProjections")

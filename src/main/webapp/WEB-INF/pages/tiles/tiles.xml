@@ -11,7 +11,6 @@ and open the template in the editor.
 <tiles-definitions>
     <definition name="base-definition" template="/WEB-INF/pages/tiles/layout/defaultLayout.jsp">
         <put-attribute name="title" value=""></put-attribute>
-        <put-attribute name="header" value="/WEB-INF/pages/tiles/template/defaultHeader.jsp"></put-attribute>
         <put-attribute name="footer" value="/WEB-INF/pages/tiles/template/defaultFooter.jsp"></put-attribute>
         <put-attribute name="menu" value="/WEB-INF/pages/tiles/template/defaultMenu.jsp"></put-attribute>
         <put-attribute name="body" value=""></put-attribute>
@@ -20,7 +19,6 @@ and open the template in the editor.
     <definition name="landing" extends="base-definition">
         <put-attribute name="title" value="Welcome page"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/pages/landing.jsp"></put-attribute>
-        <put-attribute name="header" value=""></put-attribute>
         <put-attribute name="footer" value=""></put-attribute>
         <put-attribute name="menu" value=""></put-attribute>
     </definition>
@@ -72,7 +70,5 @@ and open the template in the editor.
         <put-attribute name="title" value="Create reservation page"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/pages/createReservation.jsp"></put-attribute>
     </definition>
-    
-    
-    
+  
 </tiles-definitions>

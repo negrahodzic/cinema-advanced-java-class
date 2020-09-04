@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public class GenreDto implements Serializable {
 

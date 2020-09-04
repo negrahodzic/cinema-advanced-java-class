@@ -17,7 +17,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Controller
 @RequestMapping(path="/editProfile")

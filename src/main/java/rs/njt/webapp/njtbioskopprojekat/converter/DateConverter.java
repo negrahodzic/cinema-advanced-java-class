@@ -9,12 +9,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public class DateConverter {
     
@@ -33,7 +31,6 @@ public class DateConverter {
     public static Date convertStringToDate(String string) throws ParseException{
         DateFormat formater = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Date date;
-
         date = formater.parse(string);
                     
         return date;

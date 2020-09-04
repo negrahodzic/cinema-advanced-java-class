@@ -11,13 +11,11 @@ import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public interface ReservationService {
 
     List<ReservationDto> getAll();
-
-//    ReservationEntity getById(Long id);
 
     public void delete(Long reservationId);
 

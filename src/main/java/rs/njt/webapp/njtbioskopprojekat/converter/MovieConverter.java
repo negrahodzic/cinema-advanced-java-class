@@ -10,7 +10,7 @@ import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public class MovieConverter {
 

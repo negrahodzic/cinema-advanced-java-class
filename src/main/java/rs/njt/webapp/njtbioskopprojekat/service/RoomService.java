@@ -10,11 +10,10 @@ import rs.njt.webapp.njtbioskopprojekat.model.RoomDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public interface RoomService {
 
     List<RoomDto> getAll();
 
-//    RoomEntity getById(Long id);
 }

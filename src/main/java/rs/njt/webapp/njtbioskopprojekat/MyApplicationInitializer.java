@@ -16,7 +16,8 @@ import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
+ * 
  */
 public class MyApplicationInitializer implements WebApplicationInitializer {
 
@@ -26,10 +27,7 @@ public class MyApplicationInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
         webApplicationContext.register(MyWebApplicationContextConfig.class);
         webApplicationContext.setServletContext(sc);
-        
-//        FilterRegistration.Dynamic hiddenHttpMethodFilter = sc.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter());
-//        hiddenHttpMethodFilter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
-        
+              
         //konfigurisati DispatcherServlet
         ServletRegistration.Dynamic dispatcherServlet = sc.addServlet("myDispatcherServlet", new DispatcherServlet(webApplicationContext));
         dispatcherServlet.addMapping("/");

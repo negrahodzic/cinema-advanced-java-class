@@ -15,10 +15,6 @@
         <jstl.version>1.2</jstl.version>
         <spring.version>5.2.4.RELEASE</spring.version>
         <apachetiles.version>3.0.8</apachetiles.version>
-        <!-- <maven.compiler.source>1.8</maven.compiler.source>
-         <maven.compiler.target>1.8</maven.compiler.target>
-        -->
- 
     </properties>
     
     <dependencies>
@@ -41,42 +37,50 @@
             <version>5.1.5.RELEASE</version>
             <type>jar</type>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.core</artifactId>
             <version>2.5.2</version>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.asm</artifactId>
             <version>2.5.2</version>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.antlr</artifactId>
             <version>2.5.2</version>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa</artifactId>
             <version>2.5.2</version>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa.jpql</artifactId>
             <version>2.5.2</version>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
             <version>2.1.0</version>
         </dependency>
+        
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
             <version>2.5.2</version>
             <scope>provided</scope>
         </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -133,12 +137,6 @@
             <version>1.4.200</version>
         </dependency>
 
-        <!--        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
-        </dependency>-->
-        <!-- Apache tiles -->
         <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-core</artifactId>

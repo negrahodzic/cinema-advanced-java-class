@@ -25,7 +25,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Controller
 @RequestMapping(path = "/myReservations")
@@ -53,7 +53,6 @@ public class ReservationController {
     @ModelAttribute(name = "reservations")
     private List<ReservationDto> getReservations(HttpServletRequest request) {
         UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
-//        return reservationService.getAll();
         return reservationService.getByUserId(user);
     }
 
@@ -61,23 +60,6 @@ public class ReservationController {
     @GetMapping(path = "/{reservationId}/delete")
     public ModelAndView deleteReservation(@PathVariable(name = "reservationId") Long reservationId, HttpServletRequest request) {
         reservationService.delete(reservationId);
-
-//        System.out.println(request.getParameter("projectionIdHidden"));
-//        System.out.println(request.getParameter("projectionIdHidden"));
-//        System.out.println(request.getParameter("projectionIdHidden"));
-//        System.out.println(request.getParameter("projectionIdHidden"));
-//        
-//        long projectionIDint = Long.parseLong(request.getParameter("projectionIdHidden"));
-//        int ticketsInt = Integer.parseInt(request.getParameter("tickets"));
-//
-//        ProjectionDto projection = projectionService.getById(projectionIDint);
-//
-//        int freeSeats = projection.getFreeSeats();
-//        projection.setFreeSeats(freeSeats + ticketsInt);
-//        
-        
-//        projectionService.saveProjection(projection);
-//        
         request.getSession(true).setAttribute("message", "Successfully deleted reservation!");
         modelAndView.setViewName("redirect:/myReservations");
         return modelAndView;
@@ -108,7 +90,7 @@ public class ReservationController {
                 if (freeSeats - ticketsInt >= 0) {
                     Date dateTimeOfReservation = new Date(System.currentTimeMillis());
                     UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
-                    ReservationDto reservation = new ReservationDto(dateTimeOfReservation, ticketsInt, projection, user);
+                    ReservationDto reservation = new ReservationDto(dateTimeOfReservation, ticketsInt, "active", projection, user);
 
                     //Rezervisi i smanji broj slobodnih sedista u projekciji
                     reservationService.saveReservation(reservation);

@@ -5,17 +5,13 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.controller;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
-import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
@@ -23,7 +19,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Controller
 @RequestMapping(path = "/")

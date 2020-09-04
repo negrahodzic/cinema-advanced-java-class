@@ -11,7 +11,7 @@ import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public class ProjectionConverter {
         public static ProjectionDto convertFromEntityToDto(ProjectionEntity projection) {

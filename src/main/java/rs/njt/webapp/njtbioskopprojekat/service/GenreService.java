@@ -10,14 +10,10 @@ import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public interface GenreService {
 
     List<GenreDto> getAll();
-
-
-
-    
 
 }

@@ -56,9 +56,8 @@
         </style>
     </head>
     <body>
-
         <div class="container">
-            <br>
+            <br> <br>
             <table class="table table-hover text-center">
                 <thead>
                     <tr>
@@ -67,19 +66,31 @@
                         <th scope="col">Projection date</th>
                         <th scope="col">Room</th>
                         <th scope="col">Tickets</th>
-                        <th scope="col">Cancel reservation</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="reservation" items="${reservations}" varStatus="loop">  
                         <tr>
+
                             <th scope="row">${loop.index+1}</th>
                             <td >${reservation.projection.movie.title}</td>
                             <td>${reservation.projection.dateTimeOfProjection}</td>
                             <td>${reservation.projection.room.roomName}</td>
                             <td>${reservation.ticketQuantity}</td>
-                            <td><a href="#" class="btn btn-outline-danger btn-block"  data-toggle="modal" data-target="#exampleModalCenter" >Delete</a></td>
-                    </tr>
+                            <td> 
+                                <c:choose>
+                                    <c:when test="${'active' eq reservation.status}">
+                                        <a href="#" class="btn btn-outline-danger btn-block"  data-toggle="modal" data-target="#exampleModalCenter" data-bookid="@book.Id" >Delete</a>
+                                    </c:when>    
+                                    <c:otherwise>
+                                        Expired
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+
+
+                        </tr>
 
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -90,8 +101,8 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    Do you want to delete your reservation for
+                                <div class="modal-body text-center">
+                                    Do you want to delete your reservation for <br>
                                     ${reservation.projection.movie.title} at ${reservation.projection.dateTimeOfProjection} ?
                                 </div>
                                 <div class="modal-footer">
@@ -100,13 +111,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>   
-
+                    </div>
                 </c:forEach>
 
                 </tbody>
             </table>
         </div>
+
         <div id="snackbar">${sessionScope.message}</div>
 
         <c:if test="${not empty sessionScope.message}">
@@ -118,8 +129,6 @@
                 }, 3000);
             </script>
             <c:set var = "message" value = "" scope="session"/>
-        </c:if>
-
-
+        </c:if>   
     </body>
 </html>

@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 /**
  *
- * @author remmi
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Configuration
 @Import(DatabaseConfiguration.class)

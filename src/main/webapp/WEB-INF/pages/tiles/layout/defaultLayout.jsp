@@ -18,10 +18,7 @@
             <link rel="stylesheet" href="${pageContext.request.contextPath}/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
     </head>
     <body>
-        <header id="header">
-            <tiles:insertAttribute name="header"/>
-        </header>
-
+        <br> <br> 
         <section id="menu">
             <tiles:insertAttribute name="menu"/>
         </section>

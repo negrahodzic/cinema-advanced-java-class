@@ -10,12 +10,11 @@ import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
 
 /**
  *
- * @author Negra
+ * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public interface MovieService {
 
     List<MovieDto> getAll();
-//    MovieEntity getById(Long id);
 
     public MovieDto getById(Long movieId);
 
