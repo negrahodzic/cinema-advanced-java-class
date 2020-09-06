@@ -36,6 +36,7 @@ public class MyWebFilter implements Filter{
             req.getSession().setAttribute("message", "You must login first!");
             req.getRequestDispatcher("/").forward(request, response);
         } else {
+            req.getSession().setAttribute("message", "");
             chain.doFilter(request, response);
         }
     }
