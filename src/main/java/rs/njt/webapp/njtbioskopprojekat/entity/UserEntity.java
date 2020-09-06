@@ -45,7 +45,12 @@ public class UserEntity implements Serializable {
     )
     private List<ReviewEntity> reviews = new ArrayList<>();
     
+    @Column(name = "enabled")
+    private boolean enabled;
+
     public UserEntity() {
+        super();
+        this.enabled = false;
     }
 
     public UserEntity(Long userId, String firstname, String lastname, String email, String username, String password) {
@@ -115,7 +120,7 @@ public class UserEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "UserEntity{" + "userId=" + userId + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", username=" + username + ", password=" + password +  '}';
+        return "UserEntity{" + "userId=" + userId + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", username=" + username + ", password=" + password + '}';
     }
 
     @Override
@@ -163,5 +168,14 @@ public class UserEntity implements Serializable {
         return true;
     }
 
-    
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
+
 }

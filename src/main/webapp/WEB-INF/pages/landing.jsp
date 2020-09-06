@@ -92,7 +92,7 @@
             </div>                             
         </div> 
 
-    <div id="snackbar">${sessionScope.message}</div>
+    <div id="snackbar">${sessionScope.message} </div>
 
         <c:if test="${not empty sessionScope.message}">
             <script>

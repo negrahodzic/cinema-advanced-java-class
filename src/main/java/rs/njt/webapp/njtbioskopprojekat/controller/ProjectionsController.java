@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
 /**

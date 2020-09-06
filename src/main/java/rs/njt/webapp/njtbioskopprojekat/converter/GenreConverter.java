@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
 import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.GenreDto;
 
 /**
  *

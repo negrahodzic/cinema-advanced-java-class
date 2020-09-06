@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.converter.RoomConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.RoomDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.RoomDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.RoomRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.RoomService;
 

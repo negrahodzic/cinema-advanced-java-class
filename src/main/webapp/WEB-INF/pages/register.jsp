@@ -65,7 +65,8 @@
                 </div>
 
                 <div class="col-md-6 border border-primary rounded" style="padding: 20px;">
-                    <form action="<c:url value="/register/save"/>" method="post">
+<!--                    <form action="<c:url value="/register/save"/>" method="post">-->
+                    <form action="<c:url value="/registration"/>" method="post">
                         <div class="form-group">
                             <label>First name</label>
                             <div> 

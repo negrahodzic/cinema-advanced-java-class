@@ -6,9 +6,9 @@
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
-import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
-import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ReviewDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 
 /**
  *

@@ -6,8 +6,8 @@
 package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.model.ReservationDto;
-import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ReservationDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 
 /**
  *

@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
-import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ProjectionDto;
 
 /**
  *

@@ -8,7 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.converter;
 import java.text.ParseException;
 import java.util.Date;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.ReservationDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ReservationDto;
 
 /**
  *

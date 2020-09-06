@@ -7,7 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.converter;
 
 import java.text.ParseException;
 import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ProjectionDto;
 
 /**
  *

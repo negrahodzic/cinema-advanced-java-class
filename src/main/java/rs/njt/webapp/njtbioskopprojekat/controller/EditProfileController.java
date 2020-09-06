@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**

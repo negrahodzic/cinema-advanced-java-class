@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.converter.DateConverter;
 import rs.njt.webapp.njtbioskopprojekat.converter.ProjectionConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.ProjectionDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.ProjectionRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 

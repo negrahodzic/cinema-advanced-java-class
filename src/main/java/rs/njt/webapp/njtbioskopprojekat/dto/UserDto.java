@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.njt.webapp.njtbioskopprojekat.model;
+package rs.njt.webapp.njtbioskopprojekat.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -145,6 +145,10 @@ public class UserDto implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public void setEnabled(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

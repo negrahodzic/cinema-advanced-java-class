@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.njt.webapp.njtbioskopprojekat.model;
+package rs.njt.webapp.njtbioskopprojekat.dto;
 
 import java.io.Serializable;
 import java.text.ParseException;

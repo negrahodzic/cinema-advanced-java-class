@@ -14,8 +14,8 @@ import rs.njt.webapp.njtbioskopprojekat.converter.MovieConverter;
 import rs.njt.webapp.njtbioskopprojekat.converter.ReviewConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
-import rs.njt.webapp.njtbioskopprojekat.model.ReviewDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ReviewDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.MovieRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 

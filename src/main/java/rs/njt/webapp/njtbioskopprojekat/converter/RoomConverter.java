@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
 import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.RoomDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.RoomDto;
 
 /**
  *

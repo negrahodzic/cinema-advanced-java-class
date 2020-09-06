@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
 import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.MovieDto;
 
 /**
  *

@@ -6,7 +6,7 @@
 package rs.njt.webapp.njtbioskopprojekat.converter;
 
 import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 
 /**
  *

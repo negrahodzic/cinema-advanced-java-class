@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.njt.webapp.njtbioskopprojekat.converter.GenreConverter;
 import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
-import rs.njt.webapp.njtbioskopprojekat.model.GenreDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.GenreDto;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 
