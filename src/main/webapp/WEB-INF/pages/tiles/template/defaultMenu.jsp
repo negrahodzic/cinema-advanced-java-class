@@ -28,21 +28,35 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value="/searchProjections"/>">Search projections</a>
                     </li>
+                    <c:choose>
+                        <c:when test="${not empty loggedUser}">
+                            <li class="nav-item">
+                                <a class="nav-link" href="<c:url value="/myReservations"/>">My reservations</a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="<c:url value="/myReservations"/>">My reservations</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                            My profile
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<c:url value="/editProfile"/>">Edit profile</a>
-                            <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
-                        </div>
-                    </li>
-                </ul>  
-                <div class="text-light">&nbsp;&nbsp;&nbsp; Hello, ${loggedUser.username}! </div><br> 
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                    My profile
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="<c:url value="/editProfile"/>">Edit profile</a>
+                                    <a class="dropdown-item" href="<c:url value="/logout"/>">Logout</a>
+                                </div>
+                            </li>
+                        </ul>  
+                        <div class="text-light">&nbsp;&nbsp;&nbsp; Hello, ${loggedUser.username}! </div><br> 
+
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item text-light">
+                            <a class="nav-link text-light" href="<c:url value="/register"/>">Register</a>
+                        </li>
+                        <li class="nav-item text-light">
+                            <a class="nav-link text-light" href="<c:url value="/landing"/>">Login</a>
+                        </li>
+                        </ul>  
+                    </c:otherwise>
+                </c:choose>
             </nav>                  
         </div>
     </body>

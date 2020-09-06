@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Component
-@WebFilter( urlPatterns = {"/searchMovies/*", "/searchProjections/*", "/myReservations/*",
+@WebFilter( urlPatterns = {"/myReservations/*",
                             "/editProfile/*", "/logout/*"})
 public class MyWebFilter implements Filter{
 

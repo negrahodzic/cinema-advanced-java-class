@@ -30,7 +30,7 @@
         <footer id="footer">
             <tiles:insertAttribute name="footer"/>
         </footer>
-
+        
         <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/jquery/3.5.1/jquery.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </body>

@@ -41,6 +41,13 @@ public class LandingController {
 
     @GetMapping
     public ModelAndView landing() {
+        modelAndView.setViewName("searchMovies");
+        modelAndView.addObject("movies", movieService.getAll());
+        return modelAndView;
+    }
+
+    @GetMapping(path = "landing")
+    public ModelAndView landingLogin() {
         modelAndView.setViewName("landing");
         return modelAndView;
     }
@@ -82,7 +89,7 @@ public class LandingController {
     public ModelAndView logout(HttpServletRequest request) {
         request.getSession(true).setAttribute("loggedUser", null);
         request.getSession(true).setAttribute("message", "You succesfully logged out!");
-//        request.getSession(true).invalidate();
+        request.getSession(true).invalidate();
         modelAndView.setViewName("landing");
         return modelAndView;
     }
@@ -117,5 +124,4 @@ public class LandingController {
 //    private String getMessage() {
 //        return message;
 //    }
-
 }

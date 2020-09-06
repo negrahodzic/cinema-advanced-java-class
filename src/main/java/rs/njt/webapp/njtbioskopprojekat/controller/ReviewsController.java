@@ -27,24 +27,18 @@ public class ReviewsController {
 
     private final MovieService movieService;
     private final ReviewService reviewService;
-    private ModelAndView modelAndView = new ModelAndView();
+    private final ModelAndView modelAndView;
 
     @Autowired
     public ReviewsController(MovieService movieService, ReviewService reviewService) {
         this.movieService = movieService;
         this.reviewService = reviewService;
+        this.modelAndView = new ModelAndView();
     }
 
     @GetMapping
     public ModelAndView reviews() {
         modelAndView.setViewName("reviews");
-        return modelAndView;
-    }
-
-    @GetMapping(path = "/{movieId}/add")
-    public ModelAndView addReview(@PathVariable(name="movieId") Long movieId) { 
-        modelAndView.setViewName("reviews/add");
-        modelAndView.addObject("movieDto", movieService.getById(movieId));
         return modelAndView;
     }
 
@@ -61,9 +55,8 @@ public class ReviewsController {
         
         modelAndView.setViewName("reviews");
         modelAndView.addObject("movieDto", movieService.getById(movieId));
+        request.getSession(true).setAttribute("message", "Review successfully saved!");
         return modelAndView;
     }
 
-    //TODO: dodati /createReview, /editReview, /save, /delete
-    //TODO: negde dodati opciju za davanje ocene tj review
 }

@@ -23,18 +23,18 @@
                         <input class="form-control" type="text" placeholder="Search movie title" name="searchMovieTitle">
                     </div>
                     <div class="col-md-3">
-                            <select name="selectedGenre" class="browser-default custom-select">
-                                <option>- Choose genre -</option>
-                                <c:forEach var="genre" items="${genres}">
-                                    <option>${genre.genreName}</option>
-                                </c:forEach>
-                            </select></div>
+                        <select name="selectedGenre" class="browser-default custom-select">
+                            <option>- Choose genre -</option>
+                            <c:forEach var="genre" items="${genres}">
+                                <option>${genre.genreName}</option>
+                            </c:forEach>
+                        </select></div>
                     <div class="col-md-5">
-                            <input type="submit" id="Search" value="Search" class="btn btn-outline-primary" onclick="myFunction()"/>
+                        <input type="submit" id="Search" value="Search" class="btn btn-outline-primary" onclick="myFunction()"/>
                     </div>
                 </div>
                 <p/>
-                    
+
             </form>
             <br>
             <div class="row">
@@ -59,7 +59,7 @@
                 </c:forEach>
             </div>
         </div>
-                <br>
-                <br>
+        <br>
+        <br>
     </body>
 </html>
