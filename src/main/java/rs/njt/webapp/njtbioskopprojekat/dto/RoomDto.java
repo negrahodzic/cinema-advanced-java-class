@@ -9,49 +9,110 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
+ * Class represents projection room with attributes:
+ * <ul>
+ * <li>id</li>
+ * <li>capacity</li>
+ * <li>name</li>
+ * </ul>
+ * 
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 public class RoomDto implements Serializable {
 
+    /**
+     * room id
+     */
     private Long roomId;
+    /**
+     * room capacity
+     */
     private int capacity;
+    /**
+     * room name
+     */
     private String roomName;
 
+    /**
+     * Constructor without parameters
+     */
     public RoomDto() {
     }
 
+    /**
+     * Constructor with parameters
+     *
+     * @param capacity room capacity
+     * @param roomName room name
+     */
     public RoomDto(int capacity, String roomName) {
         this.capacity = capacity;
         this.roomName = roomName;
     }
     
+    /**
+     * Constructor with parameters
+     *
+     * @param roomId room id
+     * @param capacity room capacity
+     * @param roomName room name
+     */
     public RoomDto(Long roomId, int capacity, String roomName) {
         this.roomId = roomId;
         this.capacity = capacity;
         this.roomName = roomName;
     }
 
+    /**
+     * Returns id of room.
+     *
+     * @return room id
+     */
     public Long getRoomId() {
         return roomId;
     }
 
+    /**
+     * Sets id of room.
+     *
+     * @param roomId New value of room id
+     */
     public void setRoomId(Long roomId) {
         this.roomId = roomId;
     }
 
+    /**
+     * Returns capacity of room.
+     *
+     * @return room capacity
+     */
     public int getCapacity() {
         return capacity;
     }
 
+    /**
+     * Sets capacity of room.
+     *
+     * @param capacity New value of room capacity
+     */
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
+    /**
+     * Returns name of room.
+     *
+     * @return room name
+     */
     public String getRoomName() {
         return roomName;
     }
 
+    /**
+     * Sets name of room.
+     *
+     * @param roomName New value of room name
+     */
     public void setRoomName(String roomName) {
         this.roomName = roomName;
     }
