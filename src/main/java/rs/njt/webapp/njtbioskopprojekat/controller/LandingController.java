@@ -28,6 +28,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
+ * Class represents controller for requests coming from root path "/".
  *
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
@@ -35,15 +36,40 @@ import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 @RequestMapping(path = "/")
 public class LandingController {
 
+    /**
+     * movie service
+     */
     private final MovieService movieService;
+    /**
+     * user service
+     */
     private final UserService userService;
+    /**
+     * genre service
+     */
     private final GenreService genreService;
+    /**
+     * toast message
+     */
     private final String message = "";
+    /**
+     * model and view
+     */
     private final ModelAndView modelAndView;
 
+    /**
+     * event publisher
+     */
     @Autowired
     ApplicationEventPublisher eventPublisher;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param movieService movie service
+     * @param userService user service
+     * @param genreService genre service
+     */
     @Autowired
     public LandingController(MovieService movieService, UserService userService, GenreService genreService) {
         this.movieService = movieService;
@@ -52,6 +78,11 @@ public class LandingController {
         this.modelAndView = new ModelAndView();
     }
 
+    /**
+     * Returns model and view of GET request with path "/".
+     *
+     * @return modelAndView
+     */
     @GetMapping
     public ModelAndView landing() {
         modelAndView.setViewName("searchMovies");
@@ -59,12 +90,23 @@ public class LandingController {
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of GET request with path "landing".
+     *
+     * @return modelAndView
+     */
     @GetMapping(path = "landing")
     public ModelAndView landingLogin() {
         modelAndView.setViewName("landing");
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of POST request with path "login".
+     *
+     * @param request http servlet request
+     * @return modelAndView
+     */
     @PostMapping(path = "login")
     public ModelAndView login(HttpServletRequest request) {
         String username = request.getParameter("username");
@@ -91,12 +133,23 @@ public class LandingController {
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of GET request with path "register".
+     *
+     * @return modelAndView
+     */
     @GetMapping(path = "register")
     public ModelAndView register() {
         modelAndView.setViewName("register");
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of GET request with path "logout".
+     *
+     * @param request http servlet request
+     * @return modelAndView
+     */
     @GetMapping(path = "logout")
     public ModelAndView logout(HttpServletRequest request) {
         request.getSession(true).setAttribute("loggedUser", null);
@@ -106,32 +159,12 @@ public class LandingController {
         return modelAndView;
     }
 
-//    @PostMapping(path = "/register/save")
-//    public ModelAndView registerUser(HttpServletRequest request) {
-//        UserDto user = new UserDto();
-//
-//        user.setFirstname(request.getParameter("firstname"));
-//        user.setLastname(request.getParameter("lastname"));
-//        user.setEmail(request.getParameter("email"));
-//        user.setUsername(request.getParameter("username"));
-//        user.setPassword(request.getParameter("password"));
-//
-//        if ("".equals(user.getFirstname()) || "".equals(user.getLastname()) || "".equals(user.getEmail())
-//                || "".equals(user.getUsername()) || "".equals(user.getPassword())) {
-//            request.getSession(true).setAttribute("message", "You didnt enter all fields!");
-//            modelAndView.setViewName("redirect:/register");
-//        } else if (userService.findByUsername(user.getUsername()) != null) {
-//            request.getSession(true).setAttribute("message", "User with that username already exists!");
-//            modelAndView.setViewName("redirect:/register");
-//        } else {
-//            userService.updateUser(user);
-//            request.getSession(true).setAttribute("message", "You successfully registered!");
-//            modelAndView.setViewName("redirect:/");
-//        }
-//
-//        return modelAndView;
-//    }
-    // verification
+    /**
+     * Returns model and view of POST request with path "registration".
+     *
+     * @param request http servlet request
+     * @return modelAndView
+     */
     @PostMapping("/registration")
     public ModelAndView registerUserAccount(HttpServletRequest request) {
         UserDto user = new UserDto();
@@ -161,6 +194,13 @@ public class LandingController {
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of GET request with path "registrationConfirm".
+     *
+     * @param request web request
+     * @param token token parameter from web request
+     * @return modelAndView
+     */
     @GetMapping("/regitrationConfirm")
     public ModelAndView confirmRegistration(WebRequest request, @RequestParam("token") String token) {
 
@@ -186,6 +226,11 @@ public class LandingController {
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of GET request with path "error".
+     *
+     * @return modelAndView
+     */
     @GetMapping(path = "/error")
     public ModelAndView error() {
         modelAndView.setViewName("error");
