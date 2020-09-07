@@ -18,6 +18,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 
 /**
+ * Class represents controller for requests coming from root path "/reviews".
  *
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
@@ -25,10 +26,25 @@ import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 @RequestMapping(path = "/reviews")
 public class ReviewsController {
 
+    /**
+     * movie service
+     */
     private final MovieService movieService;
+    /**
+     * review service
+     */
     private final ReviewService reviewService;
+    /**
+     * model and view
+     */
     private final ModelAndView modelAndView;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param movieService movie service
+     * @param reviewService review service
+     */
     @Autowired
     public ReviewsController(MovieService movieService, ReviewService reviewService) {
         this.movieService = movieService;
@@ -36,23 +52,35 @@ public class ReviewsController {
         this.modelAndView = new ModelAndView();
     }
 
+    /**
+     * Returns model and view of GET request with path "/reviews".
+     *
+     * @return modelAndView
+     */
     @GetMapping
     public ModelAndView reviews() {
         modelAndView.setViewName("reviews");
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of GET request with path
+     * "/reviews/{movieId}/save".
+     *
+     * @param movieId id of movie extracted from request path
+     * @return modelAndView
+     */
     @PostMapping(path = "/{movieId}/save")
-    public ModelAndView saveReview(@PathVariable(name="movieId") Long movieId, HttpServletRequest request) { 
+    public ModelAndView saveReview(@PathVariable(name = "movieId") Long movieId, HttpServletRequest request) {
         String grade = request.getParameter("grade");
         int gradeInt = Integer.parseInt(grade);
-        
-        String comment = request.getParameter("comment");   
-        
+
+        String comment = request.getParameter("comment");
+
         UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
-        
+
         reviewService.saveReview(movieId, gradeInt, comment, user);
-        
+
         modelAndView.setViewName("reviews");
         modelAndView.addObject("movieDto", movieService.getById(movieId));
         request.getSession(true).setAttribute("message", "Review successfully saved!");

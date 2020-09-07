@@ -21,9 +21,10 @@ import rs.njt.webapp.njtbioskopprojekat.dto.ReservationDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 import rs.njt.webapp.njtbioskopprojekat.service.ReservationService;
-import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
+ * Class represents controller for requests coming from root path
+ * "/myReservations".
  *
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
@@ -31,32 +32,50 @@ import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 @RequestMapping(path = "/myReservations")
 public class ReservationController {
 
-    private ModelAndView modelAndView = new ModelAndView();
-
+    /**
+     * reservation service
+     */
     private final ReservationService reservationService;
+    /**
+     * projection service
+     */
     private final ProjectionService projectionService;
-    private final UserService userService;
+    /**
+     * model and view
+     */
+    private final ModelAndView modelAndView;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param reservationService reservation service
+     * @param projectionService projection service
+     */
     @Autowired
-    public ReservationController(ReservationService reservationService, UserService userService, ProjectionService projectionService) {
+    public ReservationController(ReservationService reservationService, ProjectionService projectionService) {
         this.reservationService = reservationService;
-        this.userService = userService;
         this.projectionService = projectionService;
+        this.modelAndView = new ModelAndView();
     }
 
+    /**
+     * Returns model and view of GET request with path "/myReservations".
+     *
+     * @return modelAndView
+     */
     @GetMapping
-    public ModelAndView myReservations(HttpServletRequest request) {
+    public ModelAndView myReservations() {
         modelAndView.setViewName("myReservations");
         return modelAndView;
     }
 
-    @ModelAttribute(name = "reservations")
-    private List<ReservationDto> getReservations(HttpServletRequest request) {
-        UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
-        return reservationService.getByUserId(user);
-    }
-
-    //TODO: dodati /details
+    /**
+     * Returns model and view of GET request with path
+     * "/myReservations/{reservationId}/delete".
+     *
+     * @param reservationId id of reservation extracted from request path
+     * @return modelAndView
+     */
     @GetMapping(path = "/{reservationId}/delete")
     public ModelAndView deleteReservation(@PathVariable(name = "reservationId") Long reservationId, HttpServletRequest request) {
         reservationService.delete(reservationId);
@@ -65,6 +84,13 @@ public class ReservationController {
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of POST request with path
+     * "/myReservations/save".
+     *
+     * @param request http servlet request
+     * @return modelAndView
+     */
     @PostMapping(path = "/save")
     public ModelAndView saveReservation(HttpServletRequest request) {
         String projectionID = request.getParameter("projectionId");
@@ -105,8 +131,18 @@ public class ReservationController {
                 }
             }
         }
-
-        //modelAndView.addObject("movieDto", movieService.getById(movieId));
         return modelAndView;
+    }
+    
+    /**
+     * Returns list of all reservations and binds them to model as attribute
+     * "reservations".
+     *
+     * @return list of all ReservationDtos
+     */
+    @ModelAttribute(name = "reservations")
+    private List<ReservationDto> getReservations(HttpServletRequest request) {
+        UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
+        return reservationService.getByUserId(user);
     }
 }

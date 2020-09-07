@@ -16,48 +16,70 @@ import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
+ * Class represents controller for requests coming from root path
+ * "/editProfile".
  *
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
 @Controller
-@RequestMapping(path="/editProfile")
+@RequestMapping(path = "/editProfile")
 public class EditProfileController {
-    
-    private ModelAndView modelAndView = new ModelAndView();
+
+    /**
+     * user service
+     */
     private final UserService userService;
-    
-    @GetMapping
-    public ModelAndView editProfile(){
-         modelAndView.setViewName("editProfile");
-        return modelAndView;
-    }
-    
+    /**
+     * model and view
+     */
+    private final ModelAndView modelAndView;
+
+    /**
+     * Constructor with parameters
+     *
+     * @param userService user service
+     */
     @Autowired
     public EditProfileController(UserService userService) {
-        
         this.userService = userService;
-        
+        this.modelAndView = new ModelAndView();
     }
-    
-    
-    @PostMapping(path="/save")
-    public ModelAndView saveChanges(HttpServletRequest request){
-        
+
+    /**
+     * Returns model and view of GET request with path "/editProfile".
+     *
+     * @return modelAndView
+     */
+    @GetMapping
+    public ModelAndView editProfile() {
+        modelAndView.setViewName("editProfile");
+        return modelAndView;
+    }
+
+    /**
+     * Returns model and view of POST request with path "/editProfile/save".
+     *
+     * @param request http servlet request
+     * @return modelAndView
+     */
+    @PostMapping(path = "/save")
+    public ModelAndView saveChanges(HttpServletRequest request) {
+
         UserDto user = (UserDto) request.getSession(true).getAttribute("loggedUser");
-        
+
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
+
         user.setFirstname(firstName);
         user.setLastname(lastName);
         user.setEmail(email);
         user.setUsername(username);
         user.setPassword(password);
-        
-        userService.updateUser(user);      
+
+        userService.updateUser(user);
 
         request.getSession(true).setAttribute("message", "Saved changes!");
         modelAndView.setViewName("redirect:/editProfile");

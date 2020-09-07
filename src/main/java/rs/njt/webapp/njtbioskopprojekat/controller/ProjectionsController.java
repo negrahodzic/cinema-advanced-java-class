@@ -19,6 +19,8 @@ import rs.njt.webapp.njtbioskopprojekat.dto.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
 /**
+ * Class represents controller for requests coming from root path
+ * "/searchProjections".
  *
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
  */
@@ -26,9 +28,20 @@ import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 @RequestMapping(path = "/searchProjections")
 public class ProjectionsController {
 
+    /**
+     * projection service
+     */
     private final ProjectionService projectionService;
+    /**
+     * model and view
+     */
     private final ModelAndView modelAndView;
 
+    /**
+     * Constructor with parameters
+     *
+     * @param projectionService projection service
+     */
     @Autowired
     public ProjectionsController(ProjectionService projectionService) {
         this.projectionService = projectionService;
@@ -36,6 +49,11 @@ public class ProjectionsController {
         modelAndView.addObject("dates", projectionService.getDates());
     }
 
+    /**
+     * Returns model and view of GET request with path "/searchProjections".
+     *
+     * @return modelAndView
+     */
     @GetMapping
     public ModelAndView searchProjections() {
         modelAndView.setViewName("searchProjections");
@@ -43,6 +61,13 @@ public class ProjectionsController {
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of GET request with path
+     * "/searchProjections/{projectionId}/createReservation".
+     *
+     * @param projectionId id of projection extracted from request path
+     * @return modelAndView
+     */
     @GetMapping(path = "/{projectionId}/createReservation")
     public ModelAndView createReservation(@PathVariable(name = "projectionId") Long projectionId) {
         modelAndView.setViewName("createReservation");
@@ -50,6 +75,13 @@ public class ProjectionsController {
         return modelAndView;
     }
 
+    /**
+     * Returns model and view of POST request with path
+     * "/searchProjections/search".
+     *
+     * @param request http servlet request
+     * @return modelAndView
+     */
     @PostMapping(path = "/search")
     public ModelAndView search(HttpServletRequest request) {
         String titleFilter = request.getParameter("searchMovieTitle");
@@ -57,16 +89,27 @@ public class ProjectionsController {
 
         modelAndView.setViewName("searchProjections");
         modelAndView.addObject("projections", projectionService.searchByTitleAndDate(titleFilter.toLowerCase(), dateFilter));
-        
+
         return modelAndView;
     }
 
-    // Model Attributes
+    /**
+     * Returns list of all projections and binds them to model as attribute
+     * "projections".
+     *
+     * @return list of all ProjectionDtos
+     */
     @ModelAttribute(name = "projections")
     private List<ProjectionDto> getProjections() {
         return projectionService.getAll();
     }
 
+    /**
+     * Returns list of all dates and binds them to model as attribute
+     * "dates".
+     *
+     * @return list of all dates 
+     */
     @ModelAttribute(name = "dates")
     private List<String> getDates() {
         return projectionService.getDates();
