@@ -36,6 +36,10 @@ public class GenreEntity implements Serializable {
         this.genreName = genreName;
     }
 
+    public GenreEntity(String genreName) {
+        this.genreName = genreName;
+    }
+
     public Long getGenreId() {
         return genreId;
     }
@@ -85,8 +89,5 @@ public class GenreEntity implements Serializable {
         }
         return true;
     }
-
-    
-    
 
 }

@@ -265,16 +265,4 @@ public class UserDto implements Serializable {
         }
         return true;
     }
-
-    /**
-     * Enables and disables user.
-     *
-     * @param b is user enabled
-     */
-    public void setEnabled(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-
 }
