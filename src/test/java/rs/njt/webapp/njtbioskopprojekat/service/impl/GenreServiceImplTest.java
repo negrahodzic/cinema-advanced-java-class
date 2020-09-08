@@ -5,6 +5,8 @@
  */
 package rs.njt.webapp.njtbioskopprojekat.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,7 +23,11 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.context.web.WebAppConfiguration;
 import rs.njt.webapp.njtbioskopprojekat.config.DatabaseConfiguration;
+import rs.njt.webapp.njtbioskopprojekat.config.TestBeanConfig;
+import rs.njt.webapp.njtbioskopprojekat.converter.GenreConverter;
+import rs.njt.webapp.njtbioskopprojekat.dto.GenreDto;
 import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.GenreRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
@@ -30,17 +36,22 @@ import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
  *
  * @author Negra
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DatabaseConfiguration.class}, loader = AnnotationConfigContextLoader.class)
 @Transactional
 @DirtiesContext
+
+@WebAppConfiguration
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {TestBeanConfig.class})
 public class GenreServiceImplTest {
 
     @PersistenceContext
     private EntityManager entityManager;
-    
+
     @Autowired
-    private GenreService fooService;
+    private GenreService genreService;
+
+    @Autowired
+    private GenreRepository genreRepository;
 
     public GenreServiceImplTest() {
     }
@@ -66,13 +77,21 @@ public class GenreServiceImplTest {
      */
     @Test
     public void testGetAll() {
-        System.out.println("rs.njt.webapp.njtbioskopprojekat.service.impl.GenreServiceImplTest.testGetAll()");
-//        GenreEntity student = new GenreEntity(1L, "Fantazy");
-//        genreRepository.save(student);
-//
-//        GenreEntity student2 = genreRepository.findById(1L).get();
-//        assertEquals("name incorrect", student.getGenreName(), student2.getGenreName());
-
+        System.out.println("testGetAll()");
+        
+        GenreEntity g1 = new GenreEntity(1L, "Fantazy");
+        GenreEntity g2 = new GenreEntity(2L, "Comedy");
+        GenreEntity g3 = new GenreEntity(3L, "Crime");
+        genreRepository.saveAndFlush(g1);
+        genreRepository.saveAndFlush(g2);
+        genreRepository.saveAndFlush(g3);
+        
+        List<GenreDto> genres = new ArrayList<>();
+        genres.add(GenreConverter.convertFromEntityToDto(g1));
+        genres.add(GenreConverter.convertFromEntityToDto(g2));
+        genres.add(GenreConverter.convertFromEntityToDto(g3));
+        
+        assertEquals(genreService.getAll().size(), genres.size());
     }
 
 }

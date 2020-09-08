@@ -82,7 +82,7 @@ public class EditProfileController {
         userService.updateUser(user);
 
         request.getSession(true).setAttribute("message", "Saved changes!");
-        modelAndView.setViewName("redirect:/editProfile");
+        modelAndView.setViewName("editProfile");
         return modelAndView;
     }
 }
