@@ -8,6 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.service;
 import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.dto.ReservationDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 
 /**
  *
@@ -22,4 +23,6 @@ public interface ReservationService {
     public void saveReservation(ReservationDto reservation);
 
     public List<ReservationDto> getByUserId(UserDto user);
+
+    public void saveAll(List<ReservationEntity> reservations);
 }

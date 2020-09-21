@@ -82,5 +82,11 @@ public class UserServiceImpl implements UserService {
     public void saveRegisteredUser(UserEntity user) {
         userRepository.save(user);
     }
+
+    @Override
+    public void saveAll(List<UserEntity> users) {
+        userRepository.saveAll(users);
+        userRepository.flush();
+    }
     
 }

@@ -98,7 +98,6 @@ public class ProjectionServiceImpl implements ProjectionService {
             }
 
         }
-
         return dates;
     }
 
@@ -110,6 +109,13 @@ public class ProjectionServiceImpl implements ProjectionService {
         } catch (ParseException ex) {
             Logger.getLogger(ReservationServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void saveAll(List<ProjectionEntity> projections) {
+               projectionRepository.saveAll(projections);
+               projectionRepository.flush();
+
     }
 
 }

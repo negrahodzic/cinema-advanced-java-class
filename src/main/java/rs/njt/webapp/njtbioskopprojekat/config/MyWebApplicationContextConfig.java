@@ -21,6 +21,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import rs.njt.webapp.njtbioskopprojekat.json.JsonToEntity;
+import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
+import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
+import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
 /**
  *
@@ -36,10 +40,8 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @EnableTransactionManagement
 public class MyWebApplicationContextConfig implements WebMvcConfigurer {
 
-
     @Autowired
     public MyWebApplicationContextConfig() {
-
     }
 
     @Bean

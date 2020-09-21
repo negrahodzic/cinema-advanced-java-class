@@ -8,17 +8,15 @@ package rs.njt.webapp.njtbioskopprojekat;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
 
-
 /**
  *
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
- * 
+ *
  */
 public class MyApplicationInitializer implements WebApplicationInitializer {
 
@@ -28,14 +26,11 @@ public class MyApplicationInitializer implements WebApplicationInitializer {
         AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
         webApplicationContext.register(MyWebApplicationContextConfig.class);
         webApplicationContext.setServletContext(sc);
-              
+
         //konfigurisati DispatcherServlet
         ServletRegistration.Dynamic dispatcherServlet = sc.addServlet("myDispatcherServlet", new DispatcherServlet(webApplicationContext));
         dispatcherServlet.addMapping("/");
         dispatcherServlet.setLoadOnStartup(1);
-
-
-
     }
 
 }

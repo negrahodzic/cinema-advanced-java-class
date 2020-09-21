@@ -86,4 +86,10 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationDtos;
     }
 
+    @Override
+    public void saveAll(List<ReservationEntity> reservations) {
+        reservationRepository.saveAll(reservations);
+        reservationRepository.flush();
+    }
+
 }

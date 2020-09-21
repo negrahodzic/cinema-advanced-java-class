@@ -1,0 +1,338 @@
+[
+  {
+    "projectionId": 1,
+    "dateTimeOfProjection": "10-09-2020 18:00",
+    "technology": "3D",
+    "edited": "Subtitle",
+    "freeSeats": 5,
+    "room": {
+      "roomId": 1,
+      "capacity": 10,
+      "roomName": "VIP "
+    },
+    "movie": {
+      "movieId": 1,
+      "title": "The Seven Samurai",
+      "description": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.",
+      "duration": 90,
+      "image": "book",
+      "genre": {
+        "genreId": 1,
+        "genreName": "Fantazy"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 2,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "2D",
+    "edited": "Animated",
+    "freeSeats": 10,
+    "room": {
+      "roomId": 1,
+      "capacity": 10,
+      "roomName": "VIP "
+    },
+    "movie": {
+      "movieId": 1,
+      "title": "The Seven Samurai",
+      "description": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.",
+      "duration": 90,
+      "image": "book",
+      "genre": {
+        "genreId": 1,
+        "genreName": "Fantazy"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 3,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "6D",
+    "edited": "/",
+    "freeSeats": 20,
+    "room": {
+      "roomId": 2,
+      "capacity": 20,
+      "roomName": "Telenor"
+    },
+    "movie": {
+      "movieId": 1,
+      "title": "The Seven Samurai",
+      "description": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.",
+      "duration": 90,
+      "image": "book",
+      "genre": {
+        "genreId": 1,
+        "genreName": "Fantazy"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 4,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "2D",
+    "edited": "Subtitle",
+    "freeSeats": 20,
+    "room": {
+      "roomId": 2,
+      "capacity": 20,
+      "roomName": "Telenor"
+    },
+    "movie": {
+      "movieId": 2,
+      "title": "Bonnie and Clyde",
+      "description": "He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.",
+      "duration": 95,
+      "image": "car",
+      "genre": {
+        "genreId": 1,
+        "genreName": "Fantazy"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 5,
+    "dateTimeOfProjection": "11-09-2020 20:20",
+    "technology": "2D",
+    "edited": "Animated",
+    "freeSeats": 30,
+    "room": {
+      "roomId": 3,
+      "capacity": 30,
+      "roomName": "Max4K"
+    },
+    "movie": {
+      "movieId": 3,
+      "title": "Reservoir Dogs",
+      "description": "His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What\u0027s happened to me? \" he thought. It wasn\u0027t a dream.",
+      "duration": 100,
+      "image": "cartoon",
+      "genre": {
+        "genreId": 2,
+        "genreName": "Crime"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 6,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "6D",
+    "edited": "Animated",
+    "freeSeats": 30,
+    "room": {
+      "roomId": 3,
+      "capacity": 30,
+      "roomName": "Max4K"
+    },
+    "movie": {
+      "movieId": 4,
+      "title": "Airplane!",
+      "description": "A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.",
+      "duration": 105,
+      "image": "children",
+      "genre": {
+        "genreId": 2,
+        "genreName": "Crime"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 7,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "3D",
+    "edited": "Subtitle",
+    "freeSeats": 10,
+    "room": {
+      "roomId": 1,
+      "capacity": 10,
+      "roomName": "VIP "
+    },
+    "movie": {
+      "movieId": 4,
+      "title": "Airplane!",
+      "description": "A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.",
+      "duration": 105,
+      "image": "children",
+      "genre": {
+        "genreId": 2,
+        "genreName": "Crime"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 8,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "6D",
+    "edited": "/",
+    "freeSeats": 20,
+    "room": {
+      "roomId": 2,
+      "capacity": 20,
+      "roomName": "Telenor"
+    },
+    "movie": {
+      "movieId": 5,
+      "title": "Pan\u0027s Labyrinth",
+      "description": "It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hittin",
+      "duration": 110,
+      "image": "couple",
+      "genre": {
+        "genreId": 3,
+        "genreName": "Comedy"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 9,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "3D",
+    "edited": "/",
+    "freeSeats": 30,
+    "room": {
+      "roomId": 3,
+      "capacity": 30,
+      "roomName": "Max4K"
+    },
+    "movie": {
+      "movieId": 6,
+      "title": "Doctor Zhivago",
+      "description": "\"How about if I sleep a little bit longer and forget all this nonsense\", he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn\u0027t get into that position.",
+      "duration": 115,
+      "image": "ellipse",
+      "genre": {
+        "genreId": 3,
+        "genreName": "Comedy"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 10,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "3D",
+    "edited": "Subtitle",
+    "freeSeats": 10,
+    "room": {
+      "roomId": 1,
+      "capacity": 10,
+      "roomName": "VIP "
+    },
+    "movie": {
+      "movieId": 2,
+      "title": "Bonnie and Clyde",
+      "description": "He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.",
+      "duration": 95,
+      "image": "car",
+      "genre": {
+        "genreId": 1,
+        "genreName": "Fantazy"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 11,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "6D",
+    "edited": "Animated",
+    "freeSeats": 20,
+    "room": {
+      "roomId": 2,
+      "capacity": 20,
+      "roomName": "Telenor"
+    },
+    "movie": {
+      "movieId": 3,
+      "title": "Reservoir Dogs",
+      "description": "His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What\u0027s happened to me? \" he thought. It wasn\u0027t a dream.",
+      "duration": 100,
+      "image": "cartoon",
+      "genre": {
+        "genreId": 2,
+        "genreName": "Crime"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 12,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "3D",
+    "edited": "Subtitle",
+    "freeSeats": 30,
+    "room": {
+      "roomId": 3,
+      "capacity": 30,
+      "roomName": "Max4K"
+    },
+    "movie": {
+      "movieId": 9,
+      "title": "Inception",
+      "description": "What should he do now? The next train went at seven; if he were to catch that he would have to rush like mad and the collection of samples was still not packed, and he did not at all feel particularly fresh and lively.",
+      "duration": 130,
+      "image": "monster",
+      "genre": {
+        "genreId": 5,
+        "genreName": "Horror"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 13,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "2D",
+    "edited": "Animated",
+    "freeSeats": 10,
+    "room": {
+      "roomId": 1,
+      "capacity": 10,
+      "roomName": "VIP "
+    },
+    "movie": {
+      "movieId": 7,
+      "title": "The Deer Hunter",
+      "description": "He must have tried it a hundred times, shut his eyes so that he wouldn\u0027t have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.",
+      "duration": 120,
+      "image": "hand",
+      "genre": {
+        "genreId": 4,
+        "genreName": "Adventure"
+      },
+      "reviews": []
+    }
+  },
+  {
+    "projectionId": 14,
+    "dateTimeOfProjection": "10-09-2020 20:20",
+    "technology": "2D",
+    "edited": "/",
+    "freeSeats": 20,
+    "room": {
+      "roomId": 2,
+      "capacity": 20,
+      "roomName": "Telenor"
+    },
+    "movie": {
+      "movieId": 10,
+      "title": "Amadeus",
+      "description": "What about if he reported sick? But that would be extremely strained and suspicious as in fifteen years of service Gregor had never once yet been ill.",
+      "duration": 135,
+      "image": "pc",
+      "genre": {
+        "genreId": 5,
+        "genreName": "Horror"
+      },
+      "reviews": []
+    }
+  }
+]

@@ -29,4 +29,6 @@ public interface UserService {
     public VerificationToken getVerificationToken(String token);
 
     public void saveRegisteredUser(UserEntity user);
+
+    public void saveAll(List<UserEntity> users);
 }

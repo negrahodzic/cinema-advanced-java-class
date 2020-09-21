@@ -8,6 +8,7 @@ package rs.njt.webapp.njtbioskopprojekat.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,11 +36,11 @@ public class ProjectionEntity implements Serializable {
     private String edited; // Titlovano, Sihronizovano
     private int freeSeats;
     
-    @ManyToOne(fetch = FetchType.EAGER) // Note: U nasem slucaju, projekcija ima samo jednu salu
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH) // Note: U nasem slucaju, projekcija ima samo jednu salu
     @JoinColumn(name = "ROOM_ID", referencedColumnName = "ROOM_ID")
     private RoomEntity room;
     
-    @ManyToOne(fetch = FetchType.EAGER) // Note: U nasem slucaju, projekcija ima samo jedan film
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH) // Note: U nasem slucaju, projekcija ima samo jedan film
     @JoinColumn(name = "MOVIE_ID", referencedColumnName = "MOVIE_ID")
     private MovieEntity movie;
     

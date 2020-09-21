@@ -16,6 +16,7 @@ import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
 import rs.njt.webapp.njtbioskopprojekat.dto.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.ReviewDto;
+import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 import rs.njt.webapp.njtbioskopprojekat.repository.MovieRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 
@@ -45,16 +46,16 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public MovieDto getById(Long movieId) {
         Optional<MovieEntity> movie = movieRepository.findById(movieId);
-        
+
         MovieDto movieDto = MovieConverter.convertFromEntityToDto(movie.get());
-        
+
         List<ReviewDto> reviewDtos = new ArrayList<>();
         for (ReviewEntity review : movie.get().getReviews()) {
             reviewDtos.add(ReviewConverter.convertFromEntityToDto(review));
         }
 
         movieDto.setReviews(reviewDtos);
-        
+
         return movieDto;
     }
 
@@ -62,23 +63,28 @@ public class MovieServiceImpl implements MovieService {
     public List<MovieDto> searchByTitleAndGenre(String titleFilter, String genreFilter) {
         List<MovieEntity> movies = movieRepository.findAll();
         List<MovieDto> movieDtos = new ArrayList<>();
-        
-        for(MovieEntity movie: movies){
-            if(genreFilter.equals("- Choose genre -")){
-                if(movie.getTitle().toLowerCase().startsWith(titleFilter)){
+
+        for (MovieEntity movie : movies) {
+            if (genreFilter.equals("- Choose genre -")) {
+                if (movie.getTitle().toLowerCase().startsWith(titleFilter)) {
                     movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
                 }
-            }else if(movie.getGenre().getGenreName().equals(genreFilter)){
-                if(titleFilter.equals("")){
+            } else if (movie.getGenre().getGenreName().equals(genreFilter)) {
+                if (titleFilter.equals("")) {
                     movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
-                }else if(movie.getTitle().toLowerCase().startsWith(titleFilter)){
+                } else if (movie.getTitle().toLowerCase().startsWith(titleFilter)) {
                     movieDtos.add(MovieConverter.convertFromEntityToDto(movie));
                 }
             }
-            
-            
+
         }
         return movieDtos;
+    }
+
+    @Override
+    public void saveAll(List<MovieEntity> movies) {
+            movieRepository.saveAll(movies);
+            movieRepository.flush();       
     }
 
 }

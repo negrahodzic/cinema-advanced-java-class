@@ -36,4 +36,10 @@ public class RoomServiceImpl implements RoomService {
 
         return roomDtos; 
     }
+
+    @Override
+    public void saveAll(List<RoomEntity> rooms) {
+       roomRepository.saveAll(rooms);
+       roomRepository.flush();
+    }
 }

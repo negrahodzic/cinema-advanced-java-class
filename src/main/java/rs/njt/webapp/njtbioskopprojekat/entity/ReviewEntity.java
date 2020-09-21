@@ -30,7 +30,7 @@ public class ReviewEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("MOVIE_ID")
-    private MovieEntity movie;
+    private MovieEntity movie; 
 
     @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("USER_ID")

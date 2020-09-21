@@ -7,21 +7,29 @@ package rs.njt.webapp.njtbioskopprojekat.controller;
 
 import rs.njt.webapp.njtbioskopprojekat.event.OnRegistrationCompleteEvent;
 import java.util.Calendar;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import rs.njt.webapp.njtbioskopprojekat.dto.GenreDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.VerificationToken;
 import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
+import rs.njt.webapp.njtbioskopprojekat.json.JsonToEntity;
 import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
+import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
+import rs.njt.webapp.njtbioskopprojekat.service.ReservationService;
+import rs.njt.webapp.njtbioskopprojekat.service.RoomService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
 /**
@@ -60,6 +68,10 @@ public class LandingController {
     @Autowired
     ApplicationEventPublisher eventPublisher;
 
+    private final ProjectionService projectionService;
+    private final RoomService roomService;
+    private final ReservationService reservationService;
+
     /**
      * Constructor with parameters
      *
@@ -68,11 +80,22 @@ public class LandingController {
      * @param genreService genre service
      */
     @Autowired
-    public LandingController(MovieService movieService, UserService userService, GenreService genreService) {
+    public LandingController(MovieService movieService, UserService userService, GenreService genreService, ProjectionService projectionService, RoomService roomService, ReservationService reservationService) {
         this.movieService = movieService;
         this.userService = userService;
         this.genreService = genreService;
         this.modelAndView = new ModelAndView();
+        this.projectionService = projectionService;
+        this.roomService = roomService;
+        this.reservationService = reservationService;
+        
+//        roomService.saveAll(JsonToEntity.jsonToRoom());
+//        userService.saveAll(JsonToEntity.jsonToUser());
+//        genreService.saveAll(JsonToEntity.jsonToGenre());
+//        movieService.saveAll(JsonToEntity.jsonToMovie());
+//        projectionService.saveAll(JsonToEntity.jsonToProjection());
+//        reservationService.saveAll(JsonToEntity.jsonToReservation());
+
     }
 
     /**
@@ -233,4 +256,15 @@ public class LandingController {
         modelAndView.setViewName("error");
         return modelAndView;
     }
+
+    /**
+     * Returns list of all genres and binds them to model as attribute "genres".
+     *
+     * @return list of all GenreDtos
+     */
+    @ModelAttribute(name = "genres")
+    private List<GenreDto> getGenres() {
+        return genreService.getAll();
+    }
+
 }

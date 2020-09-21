@@ -7,6 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.dto.ProjectionDto;
+import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 
 /**
  *
@@ -25,4 +26,6 @@ public interface ProjectionService {
     public List<String> getDates();
 
     public void saveProjection(ProjectionDto projection);
+
+    public void saveAll(List<ProjectionEntity> projections);
 }

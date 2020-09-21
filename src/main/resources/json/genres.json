@@ -1,0 +1,26 @@
+[
+  {
+    "genreId": 1,
+    "genreName": "Fantazy"
+  },
+  {
+    "genreId": 2,
+    "genreName": "Crime"
+  },
+  {
+    "genreId": 3,
+    "genreName": "Comedy"
+  },
+  {
+    "genreId": 4,
+    "genreName": "Adventure"
+  },
+  {
+    "genreId": 5,
+    "genreName": "Horror"
+  },
+  {
+    "genreId": 6,
+    "genreName": "Action"
+  }
+]

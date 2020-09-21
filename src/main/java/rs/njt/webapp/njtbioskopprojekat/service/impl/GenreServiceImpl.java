@@ -39,6 +39,17 @@ public class GenreServiceImpl implements GenreService {
         return genreDtos;
     }      
 
+    @Override
+    public void saveAll(List<GenreEntity> genres) {
+         genreRepository.saveAll(genres);
+         genreRepository.flush();
+    }
+
+    @Override
+    public GenreDto findById(Long id) {
+        return GenreConverter.convertFromEntityToDto(genreRepository.findById(id).get());
+    }
+
     
 
 }

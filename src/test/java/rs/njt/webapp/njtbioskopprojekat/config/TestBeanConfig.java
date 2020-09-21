@@ -6,12 +6,15 @@
 package rs.njt.webapp.njtbioskopprojekat.config;
 
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  *
  * @author Negra
  */
 @ComponentScan(basePackages = "rs.njt.webapp.njtbioskopprojekat")
+@PropertySource("classpath:/prop/persistance-njt-test.properties")
 public class TestBeanConfig {
+    
 
 }

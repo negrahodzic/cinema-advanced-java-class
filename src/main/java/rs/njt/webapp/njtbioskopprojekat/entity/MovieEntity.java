@@ -38,7 +38,7 @@ public class MovieEntity implements Serializable {
     private int duration;
     private String image;
     
-    @ManyToOne(fetch = FetchType.EAGER) // Note: U nasem slucaju, film ima samo jedan zanr 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH) // Note: U nasem slucaju, film ima samo jedan zanr 
     @JoinColumn(name = "GENRE_ID", referencedColumnName = "GENRE_ID")
     private GenreEntity genre;
     

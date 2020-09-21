@@ -7,6 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.dto.GenreDto;
+import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
 
 /**
  *
@@ -15,5 +16,9 @@ import rs.njt.webapp.njtbioskopprojekat.dto.GenreDto;
 public interface GenreService {
 
     List<GenreDto> getAll();
+
+    public void saveAll(List<GenreEntity> genres);
+    
+    public GenreDto findById(Long id);
 
 }

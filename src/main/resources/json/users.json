@@ -1,0 +1,42 @@
+[
+  {
+    "userId": 1,
+    "firstname": "Negra",
+    "lastname": "Hodzic",
+    "email": "negra.hodzicgmail.com",
+    "username": "negra",
+    "password": "n",
+    "reviews": [],
+    "enabled": false
+  },
+  {
+    "userId": 2,
+    "firstname": "Marko",
+    "lastname": "Cvijovic",
+    "email": "marko.cvijovic@gmail.com",
+    "username": "marko",
+    "password": "m",
+    "reviews": [],
+    "enabled": false
+  },
+  {
+    "userId": 3,
+    "firstname": "NJT",
+    "lastname": "Njt",
+    "email": "njt@gmail.com",
+    "username": "njt",
+    "password": "njt",
+    "reviews": [],
+    "enabled": true
+  },
+  {
+    "userId": 4,
+    "firstname": "ja",
+    "lastname": "ja",
+    "email": "negra.hodzic@gmil.com",
+    "username": "w",
+    "password": "w",
+    "reviews": [],
+    "enabled": false
+  }
+]

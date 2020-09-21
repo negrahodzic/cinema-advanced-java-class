@@ -7,6 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.dto.RoomDto;
+import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
 
 /**
  *
@@ -15,5 +16,7 @@ import rs.njt.webapp.njtbioskopprojekat.dto.RoomDto;
 public interface RoomService {
 
     List<RoomDto> getAll();
+
+    public void saveAll(List<RoomEntity> rooms);
 
 }

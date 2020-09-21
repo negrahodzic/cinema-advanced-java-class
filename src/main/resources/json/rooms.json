@@ -1,0 +1,17 @@
+[
+  {
+    "roomId": 1,
+    "capacity": 10,
+    "roomName": "VIP "
+  },
+  {
+    "roomId": 2,
+    "capacity": 20,
+    "roomName": "Telenor"
+  },
+  {
+    "roomId": 3,
+    "capacity": 30,
+    "roomName": "Max4K"
+  }
+]

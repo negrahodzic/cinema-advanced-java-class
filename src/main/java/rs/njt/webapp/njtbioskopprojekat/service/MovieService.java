@@ -7,6 +7,7 @@ package rs.njt.webapp.njtbioskopprojekat.service;
 
 import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.dto.MovieDto;
+import rs.njt.webapp.njtbioskopprojekat.entity.MovieEntity;
 
 /**
  *
@@ -19,5 +20,7 @@ public interface MovieService {
     public MovieDto getById(Long movieId);
 
     public List<MovieDto> searchByTitleAndGenre(String titleFilter, String genreFilter);
+
+    public void saveAll(List<MovieEntity> movies);
 
 }

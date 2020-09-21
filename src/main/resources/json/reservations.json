@@ -1,0 +1,41 @@
+[
+  {
+    "reservationId": 1,
+    "dateTimeOfReservation": "Sep 10, 2020, 12:08:59 AM",
+    "ticketQuantity": 5,
+    "projection": {
+      "projectionId": 1,
+      "dateTimeOfProjection": "10-09-2020 18:00",
+      "technology": "3D",
+      "edited": "Subtitle",
+      "freeSeats": 5,
+      "room": {
+        "roomId": 1,
+        "capacity": 10,
+        "roomName": "VIP "
+      },
+      "movie": {
+        "movieId": 1,
+        "title": "The Seven Samurai",
+        "description": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.",
+        "duration": 90,
+        "image": "book",
+        "genre": {
+          "genreId": 1,
+          "genreName": "Fantazy"
+        },
+        "reviews": []
+      }
+    },
+    "user": {
+      "userId": 4,
+      "firstname": "ja",
+      "lastname": "ja",
+      "email": "negra.hodzic@gmil.com",
+      "username": "w",
+      "password": "w",
+      "reviews": [],
+      "enabled": false
+    }
+  }
+]

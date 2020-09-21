@@ -1,0 +1,109 @@
+[   {
+        "movieId": 1,
+        "title": "The Seven Samurai",
+        "description": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.",
+        "duration": 90,
+        "image": "book",
+        "genreId": 1,
+        "reviews": []
+    },
+    {
+        "movieId": 2,
+        "title": "Bonnie and Clyde",
+        "description": "He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.",
+        "duration": 95,
+        "image": "car",
+            "genreId": 1,
+        "reviews": []
+    },
+    {
+        "movieId": 3,
+        "title": "Reservoir Dogs",
+        "description": "His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. \"What\u0027s happened to me? \" he thought. It wasn\u0027t a dream.",
+        "duration": 100,
+        "image": "cartoon",
+            "genreId": 2,
+        "reviews": []
+    },
+    {
+        "movieId": 4,
+        "title": "Airplane!",
+        "description": "A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.",
+        "duration": 105,
+        "image": "children",
+            "genreId": 2,
+        "reviews": []
+    },
+    {
+        "movieId": 5,
+        "title": "Pan\u0027s Labyrinth",
+        "description": "It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hittin",
+        "duration": 110,
+        "image": "couple",
+            "genreId": 3,
+        "reviews": []
+    },
+    {
+        "movieId": 6,
+        "title": "Doctor Zhivago",
+        "description": "\"How about if I sleep a little bit longer and forget all this nonsense\", he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn\u0027t get into that position.",
+        "duration": 115,
+        "image": "ellipse",
+            "genreId": 3,
+        "reviews": []
+    },
+    {
+        "movieId": 7,
+        "title": "The Deer Hunter",
+        "description": "He must have tried it a hundred times, shut his eyes so that he wouldn\u0027t have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.",
+        "duration": 120,
+        "image": "hand",
+            "genreId": 4,
+        "reviews": []
+    },
+    {
+        "movieId": 8,
+        "title": "Rocky",
+        "description": "And even if he did catch the train he would not avoid his boss\u0027s anger as the office assistant would have been there to see the five o\u0027clock train go, he would have put in his report about Gregor\u0027s not being there a long time ago.",
+        "duration": 125,
+        "image": "math",
+            "genreId": 4,
+        "reviews": []
+    },
+    {
+        "movieId": 9,
+        "title": "Inception",
+        "description": "What should he do now? The next train went at seven; if he were to catch that he would have to rush like mad and the collection of samples was still not packed, and he did not at all feel particularly fresh and lively.",
+        "duration": 130,
+        "image": "monster",
+            "genreId": 5,
+        "reviews": []
+    },
+    {
+        "movieId": 10,
+        "title": "Amadeus",
+        "description": "What about if he reported sick? But that would be extremely strained and suspicious as in fifteen years of service Gregor had never once yet been ill.",
+        "duration": 135,
+        "image": "pc",
+            "genreId": 5,
+        "reviews": []
+    },
+    {
+        "movieId": 11,
+        "title": "On the Waterfront",
+        "description": "His boss would certainly come round with the doctor from the medical insurance company, accuse his parents of having a lazy son, and accept the doctor\u0027s recommendation not to make any claim as the doctor believed that no-one was ever ill but that many wer",
+        "duration": 140,
+        "image": "red",
+            "genreId": 6,
+        "reviews": []
+    },
+    {
+        "movieId": 12,
+        "title": "Wall-E",
+        "description": "Gregor did in fact, apart from excessive sleepiness after sleeping for so long, feel completely well and even felt much hungrier than usual. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible ",
+        "duration": 145,
+        "image": "star",
+        "genreId": 6,
+        "reviews": []
+    }
+ ]
