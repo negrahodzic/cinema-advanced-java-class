@@ -65,5 +65,4 @@ public class RoomServiceImplTest {
     public void saveAllNull() {
         roomService.saveAll(null);
     }
-    
 }
