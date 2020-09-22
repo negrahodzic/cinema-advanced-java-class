@@ -19,6 +19,4 @@ public interface GenreService {
 
     public void saveAll(List<GenreEntity> genres);
     
-    public GenreDto findById(Long id);
-
 }

@@ -29,6 +29,7 @@ import rs.njt.webapp.njtbioskopprojekat.service.GenreService;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 import rs.njt.webapp.njtbioskopprojekat.service.ReservationService;
+import rs.njt.webapp.njtbioskopprojekat.service.ReviewService;
 import rs.njt.webapp.njtbioskopprojekat.service.RoomService;
 import rs.njt.webapp.njtbioskopprojekat.service.UserService;
 
@@ -71,6 +72,7 @@ public class LandingController {
     private final ProjectionService projectionService;
     private final RoomService roomService;
     private final ReservationService reservationService;
+    private final ReviewService reviewService;
 
     /**
      * Constructor with parameters
@@ -80,7 +82,7 @@ public class LandingController {
      * @param genreService genre service
      */
     @Autowired
-    public LandingController(MovieService movieService, UserService userService, GenreService genreService, ProjectionService projectionService, RoomService roomService, ReservationService reservationService) {
+    public LandingController(MovieService movieService, UserService userService, GenreService genreService, ProjectionService projectionService, RoomService roomService, ReservationService reservationService,ReviewService reviewService) {
         this.movieService = movieService;
         this.userService = userService;
         this.genreService = genreService;
@@ -88,13 +90,15 @@ public class LandingController {
         this.projectionService = projectionService;
         this.roomService = roomService;
         this.reservationService = reservationService;
-        
-//        roomService.saveAll(JsonToEntity.jsonToRoom());
-//        userService.saveAll(JsonToEntity.jsonToUser());
-//        genreService.saveAll(JsonToEntity.jsonToGenre());
-//        movieService.saveAll(JsonToEntity.jsonToMovie());
-//        projectionService.saveAll(JsonToEntity.jsonToProjection());
-//        reservationService.saveAll(JsonToEntity.jsonToReservation());
+        this.reviewService = reviewService;
+
+        roomService.saveAll(JsonToEntity.jsonToRoom());
+        userService.saveAll(JsonToEntity.jsonToUser());
+        genreService.saveAll(JsonToEntity.jsonToGenre());
+        movieService.saveAll(JsonToEntity.jsonToMovie());
+        projectionService.saveAll(JsonToEntity.jsonToProjection());
+        reservationService.saveAll(JsonToEntity.jsonToReservation());
+        reviewService.saveAll(JsonToEntity.jsonToReview());
 
     }
 

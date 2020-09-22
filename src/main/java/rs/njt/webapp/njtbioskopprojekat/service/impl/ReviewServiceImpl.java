@@ -52,7 +52,6 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
      */
-
     @Override
     public void saveReview(Long movieId, int gradeInt, String comment, UserDto user) {
 
@@ -62,9 +61,15 @@ public class ReviewServiceImpl implements ReviewService {
         review.setGrade(gradeInt);
         review.setComment(comment);
         movie.addReviewUser(UserConverter.convertFromDtoToEntity(user), review);
-        
+
         // ne radi ako vec postoji review sa istim id (movieid i userid)
         movieRepository.saveAndFlush(movie);
-        
+
+    }
+
+    @Override
+    public void saveAll(List<ReviewEntity> reviews) {
+        reviewRepository.saveAll(reviews);
+        reviewRepository.flush();
     }
 }

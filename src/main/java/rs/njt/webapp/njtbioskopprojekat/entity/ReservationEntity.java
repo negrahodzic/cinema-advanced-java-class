@@ -34,11 +34,11 @@ public class ReservationEntity implements Serializable {
     private Date dateTimeOfReservation;
     private int ticketQuantity;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) // Note: U nasem slucaju, rezervacija ima samo jednu projekciju
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH) // Note: U nasem slucaju, rezervacija ima samo jednu projekciju
     @JoinColumn(name = "PROJECTION_ID", referencedColumnName = "PROJECTION_ID")
     private ProjectionEntity projection;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL) // Note: U nasem slucaju, rezervacija ima samo jednog korisnika
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH) // Note: U nasem slucaju, rezervacija ima samo jednog korisnika
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private UserEntity user;
 

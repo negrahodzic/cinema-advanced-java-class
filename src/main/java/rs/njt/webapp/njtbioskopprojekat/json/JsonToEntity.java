@@ -23,6 +23,7 @@ import rs.njt.webapp.njtbioskopprojekat.dto.GenreDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.MovieDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.ProjectionDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.ReservationDto;
+import rs.njt.webapp.njtbioskopprojekat.dto.ReviewDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.RoomDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 import rs.njt.webapp.njtbioskopprojekat.entity.GenreEntity;
@@ -31,6 +32,8 @@ import rs.njt.webapp.njtbioskopprojekat.entity.ProjectionEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.ReservationEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.RoomEntity;
 import rs.njt.webapp.njtbioskopprojekat.entity.UserEntity;
+import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
+import rs.njt.webapp.njtbioskopprojekat.entity.ReviewId;
 
 /**
  *
@@ -40,21 +43,8 @@ public class JsonToEntity {
 
     public static List<GenreEntity> jsonToGenre() {
         List<GenreEntity> genres = new ArrayList<>();
-        System.out.println("==============================");
-        System.out.println("==============================");
-        System.out.println("===============1===============");
-        System.out.println("==============================");
-        System.out.println("==============================");
-        System.out.println("==============================");
 
         try (Reader reader = new FileReader("C:\\Users\\Negra\\Documents\\NetBeansProjects\\NjtBioskopProjekat\\NjtBioskopProjekat\\src\\main\\resources\\json\\genres.json")) {
-            System.out.println("==============================");
-            System.out.println("==============================");
-            System.out.println("===============2===============");
-            System.out.println("==============================");
-            System.out.println("==============================");
-            System.out.println("==============================");
-
             Gson gson = new Gson();
 
             GenreDto[] genreDtos = gson.fromJson(reader, GenreDto[].class);
@@ -184,6 +174,35 @@ public class JsonToEntity {
 
         return users;
     }
+    
+        public static List<ReviewEntity> jsonToReview() {
+        List<ReviewEntity> reviews = new ArrayList<>();
+
+        try (Reader reader = new FileReader("C:\\Users\\Negra\\Documents\\NetBeansProjects\\NjtBioskopProjekat\\NjtBioskopProjekat\\src\\main\\resources\\json\\reviews.json")) {
+            Gson gson = new Gson();
+
+            JsonObject[] jsonReview = gson.fromJson(reader, JsonObject[].class);
+
+            for (JsonObject jo : jsonReview) {
+                ReviewEntity r = new ReviewEntity();
+                
+                r.setReviewId(new ReviewId(jo.getAsJsonPrimitive("movieId").getAsLong(), jo.getAsJsonPrimitive("userId").getAsLong()));
+                r.setComment(jo.getAsJsonPrimitive("comment").getAsString());
+                r.setGrade(jo.getAsJsonPrimitive("grade").getAsInt());
+                r.setMovie(new MovieEntity(jo.getAsJsonPrimitive("movieId").getAsLong(), "", "", 0, "", new GenreEntity()));
+                r.setUser(new UserEntity(jo.getAsJsonPrimitive("userId").getAsLong(), "", "","", "",""));
+
+                reviews.add(r);
+
+            }
+        } catch (IOException e) {
+            System.out.println("IOException jsonToMovie()");
+        }
+
+        return reviews;
+    }
+    
+    
 
 //    public String genreToJson() {
 //        List<GenreDto> genres = genreService.getAll();

@@ -16,9 +16,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import rs.njt.webapp.njtbioskopprojekat.config.TestBeanConfig;
+import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
 import rs.njt.webapp.njtbioskopprojekat.service.RoomService;
 
 /**
@@ -29,7 +30,8 @@ import rs.njt.webapp.njtbioskopprojekat.service.RoomService;
 @DirtiesContext
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestBeanConfig.class})
+@ContextConfiguration(classes = {MyWebApplicationContextConfig.class})
+@TestPropertySource("classpath:/prop/persistance-njt-test.properties")
 public class RoomServiceImplTest {
 
     @Autowired

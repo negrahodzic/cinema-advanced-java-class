@@ -1,1 +1,13 @@
-[]
+[{
+        "movieId": 1,
+        "userId": 1,
+        "comment": "Prvi komentar",
+        "grade": 10        
+    },
+    {
+        "movieId": 2,
+        "userId": 1,
+        "comment": "Drugi komentar",
+        "grade": 9  
+    }
+]

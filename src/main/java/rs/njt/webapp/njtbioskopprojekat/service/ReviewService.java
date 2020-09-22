@@ -10,6 +10,8 @@ import java.util.List;
 import rs.njt.webapp.njtbioskopprojekat.dto.ReviewDto;
 import rs.njt.webapp.njtbioskopprojekat.dto.UserDto;
 
+import rs.njt.webapp.njtbioskopprojekat.entity.ReviewEntity;
+
 /**
  *
  * @author Negra Hodžić 221/16 & Marko Cvijović 168/16
@@ -19,5 +21,7 @@ public interface ReviewService {
     List<ReviewDto> getAll();
 
     public void saveReview(Long movieId, int gradeInt, String comment, UserDto user);
+    
+    public void saveAll(List<ReviewEntity> reviews);
 
 }

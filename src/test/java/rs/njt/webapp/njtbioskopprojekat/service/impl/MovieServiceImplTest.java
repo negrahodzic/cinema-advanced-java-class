@@ -16,9 +16,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import rs.njt.webapp.njtbioskopprojekat.config.TestBeanConfig;
+import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
+import rs.njt.webapp.njtbioskopprojekat.repository.MovieRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 
 /**
@@ -29,11 +31,15 @@ import rs.njt.webapp.njtbioskopprojekat.service.MovieService;
 @DirtiesContext
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestBeanConfig.class})
+@ContextConfiguration(classes = {MyWebApplicationContextConfig.class})
+@TestPropertySource("classpath:/prop/persistance-njt-test.properties")
 public class MovieServiceImplTest {
 
     @Autowired
     private MovieService movieService;
+    
+    @Autowired
+    private MovieRepository movieRepository;
 
     public MovieServiceImplTest() {
     }
@@ -93,8 +99,8 @@ public class MovieServiceImplTest {
      */
     @Test
     public void testsearchByTitleAndGenreGenreEmpty() {
-        String title = movieService.getById(1L).getTitle();
-
+        String title = movieRepository.findById(1L).get().getTitle();
+        
         assertEquals(title, movieService.searchByTitleAndGenre("The Seven Samurai".toLowerCase(), "- Choose genre -").get(0).getTitle());
     }
 
@@ -104,7 +110,7 @@ public class MovieServiceImplTest {
      */
     @Test
     public void testsearchByTitleAndGenreTitleEmpty() {
-        String title = movieService.getById(1L).getTitle();
+        String title = movieRepository.findById(1L).get().getTitle();
 
         assertEquals(title, movieService.searchByTitleAndGenre("".toLowerCase(), "Fantazy").get(0).getTitle());
     }
@@ -114,7 +120,7 @@ public class MovieServiceImplTest {
      */
     @Test
     public void testsearchByTitleAndGenre() {
-        String title = movieService.getById(1L).getTitle();
+        String title = movieRepository.findById(1L).get().getTitle();
 
         assertEquals(title, movieService.searchByTitleAndGenre("The Seven Samurai".toLowerCase(), "Fantazy").get(0).getTitle());
     }

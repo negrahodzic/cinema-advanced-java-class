@@ -17,9 +17,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import rs.njt.webapp.njtbioskopprojekat.config.TestBeanConfig;
+import rs.njt.webapp.njtbioskopprojekat.config.MyWebApplicationContextConfig;
+import rs.njt.webapp.njtbioskopprojekat.repository.ProjectionRepository;
 import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 
 /**
@@ -30,12 +32,16 @@ import rs.njt.webapp.njtbioskopprojekat.service.ProjectionService;
 @DirtiesContext
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestBeanConfig.class})
+@ContextConfiguration(classes = {MyWebApplicationContextConfig.class})
+@TestPropertySource("classpath:/prop/persistance-njt-test.properties")
 public class ProjectionServiceImplTest {
 
     @Autowired
     private ProjectionService projectionService;
-
+    
+    @Autowired
+    private ProjectionRepository projectionRepository;
+    
     public ProjectionServiceImplTest() {
     }
 
@@ -119,21 +125,21 @@ public class ProjectionServiceImplTest {
 
     @Test
     public void testSearchByTitleAndDateDateEmpty() {
-        String title = projectionService.getById(1L).getMovie().getTitle();
+        String title = projectionRepository.findById(1L).get().getMovie().getTitle();
 
         assertEquals(title, projectionService.searchByTitleAndDate("The Seven Samurai".toLowerCase(), "- Choose date -").get(0).getMovie().getTitle());
     }
 
     @Test
     public void testSearchByTitleAndDateTitleEmpty() {
-        String title = projectionService.getById(1L).getMovie().getTitle();
+        String title = projectionRepository.findById(1L).get().getMovie().getTitle();
 
         assertEquals(title, projectionService.searchByTitleAndDate("".toLowerCase(), "10-09-2020").get(0).getMovie().getTitle());
     }
 
     @Test
     public void testSearchByTitleAndDate() {
-        String title = projectionService.getById(1L).getMovie().getTitle();
+        String title = projectionRepository.findById(1L).get().getMovie().getTitle();
 
         assertEquals(title, projectionService.searchByTitleAndDate("The Seven Samurai".toLowerCase(), "10-09-2020").get(0).getMovie().getTitle());
     }
