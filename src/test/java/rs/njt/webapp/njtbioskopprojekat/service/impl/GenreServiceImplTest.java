@@ -69,7 +69,7 @@ public class GenreServiceImplTest {
      * null.
      */
     @Test(expected = java.lang.Exception.class)
-    public void saveAllNull() {
+    public void testSaveAllNull() {
         genreService.saveAll(null);
     }
 
